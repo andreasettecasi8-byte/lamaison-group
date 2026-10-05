@@ -1,0 +1,25 @@
+{
+  "_seo": {
+    "titolo": "Contact | LA MAISON GROUP",
+    "descrizione": "Contact LA MAISON GROUP to list your property, find a home to rent or buy, or get real estate advice. Phone, WhatsApp and email."
+  },
+  "intestazione": {
+    "etichetta_1": "Contact",
+    "titolo_1": "Let's talk about your *property*",
+    "testo_1": "Call us, message us on WhatsApp or fill in the form: one of us will get back to you personally, as soon as possible."
+  },
+  "scrivici": {
+    "testo_1": "Co-Founder",
+    "testo_2": "Co-Founder",
+    "titolo_1": "Write to us",
+    "testo_3": "Fields marked with * are required.",
+    "campo_1": "Full name *",
+    "campo_2": "Email *",
+    "campo_3": "Type of request *",
+    "campo_4": "Message *",
+    "pulsante_1": "Send request",
+    "sottotitolo_3": "Message sent",
+    "testo_4": "Thank you! We have received your request and will get back to you as soon as possible.",
+    "pulsante_2": "Send another message"
+  }
+}

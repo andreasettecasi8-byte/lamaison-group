@@ -1,0 +1,49 @@
+{
+  "_seo": {
+    "titolo": "Long-term rentals | LA MAISON GROUP",
+    "descrizione": "Long-term rentals with LA MAISON GROUP: tenant search and screening, contract, registration and lease management. Request a quote."
+  },
+  "intestazione": {
+    "etichetta_1": "Long-term rentals",
+    "titolo_1": "Rent out your property *with peace of mind*",
+    "testo_1": "We find the right tenant, draw up the contract and look after the lease over time."
+  },
+  "il_servizio": {
+    "etichetta_1": "Long-term rentals",
+    "titolo_1": "A reliable tenant, *a steady income*",
+    "testo_1": "A long-term rental is the basis of a secure income, as long as the tenant is chosen well. We find them, check their reliability and take care of every step of the contract.",
+    "foto_1_alt": "Cosy living room of an apartment for long-term rent"
+  },
+  "cosa_facciamo": {
+    "etichetta_1": "The service",
+    "titolo_1": "What we *do*",
+    "sottotitolo_1": "Tenant search",
+    "testo_1": "Well-crafted listings on the main portals, with photos and descriptions that attract the right candidates.",
+    "sottotitolo_2": "Screening and checks",
+    "testo_2": "We check the references, income and reliability of every candidate before introducing them to you.",
+    "sottotitolo_3": "Contract and registration",
+    "testo_3": "We choose the most suitable contract with you and take care of its registration."
+  },
+  "come_funziona": {
+    "etichetta_1": "In 4 steps",
+    "titolo_1": "How it *works*",
+    "sottotitolo_1": "Get in touch",
+    "testo_1": "Tell us about your property by phone, on WhatsApp or by filling in the form.",
+    "sottotitolo_2": "Valuation",
+    "testo_2": "We visit the property and tell you the right rent for the local market.",
+    "sottotitolo_3": "Tenant",
+    "testo_3": "We publish the listing, organise viewings and only introduce you to screened candidates.",
+    "sottotitolo_4": "Contract and management",
+    "testo_4": "We sign the contract and support you for the whole duration of the lease."
+  },
+  "invito_finale": {
+    "etichetta_1": "For owners",
+    "titolo_1": "Want to rent out your *property*?",
+    "testo_1": "Request a free rent valuation: we will tell you how much you can get and how we can help.",
+    "pulsante_1": "Request a valuation"
+  },
+  "immobili": {
+    "etichetta_1": "Available now",
+    "titolo_1": "Properties *for rent*"
+  }
+}

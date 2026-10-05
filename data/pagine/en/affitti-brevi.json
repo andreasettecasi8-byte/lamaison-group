@@ -1,0 +1,93 @@
+{
+  "_seo": {
+    "titolo": "Short-term rental management | LA MAISON GROUP",
+    "descrizione": "Short-term rental management with LA MAISON GROUP: Full Management or Online Management, dynamic pricing, guest communication, police registration, tourist tax and CIR. Request a quote, or book your stay."
+  },
+  "intestazione": {
+    "foto_1_alt": "Furnished living room of an apartment ready for short-stay guests",
+    "etichetta_1": "Short-term rentals",
+    "titolo_1": "Short-term rental *management*",
+    "testo_1": "Your apartment always ready, always compliant, always working for you.\nListings, guests and paperwork are on us: you decide how much to hand over."
+  },
+  "il_servizio": {
+    "etichetta_1": "Property management",
+    "titolo_1": "Your property, *worry-free*",
+    "testo_1": "A short-term rental only really pays when it is managed with care. We create and optimise the listings, adjust prices to demand, answer guests and keep all the paperwork in order.",
+    "testo_2": "You receive your income and clear reports, without having to follow every booking.\nChoose the plan according to how much you want to delegate.",
+    "pulsante_1": "Discover the plans",
+    "foto_1_alt": "Bright modern kitchen of a managed apartment"
+  },
+  "formule": {
+    "etichetta_1": "Our plans",
+    "titolo_1": "Two *management* plans",
+    "testo_1": "No pre-packaged deals: we prepare a tailor-made quote for every property.",
+    "etichetta_piccola_1": "We take care of everything",
+    "sottotitolo_1": "Full Management",
+    "testo_2": "We handle everything, online and on site. All you do is collect the income.",
+    "voce_1": "Listings and photos",
+    "voce_2": "Pricing and calendar",
+    "voce_3": "Bookings",
+    "voce_4": "Check-in and check-out",
+    "voce_5": "Cleaning",
+    "voce_6": "Maintenance",
+    "voce_7": "Paperwork and permits",
+    "pulsante_1": "Request a quote",
+    "etichetta_piccola_2": "You handle the on-site part",
+    "sottotitolo_2": "Online Management",
+    "testo_3": "We manage listings, pricing, bookings and guests; you take care of check-in, cleaning and maintenance.",
+    "voce_8": "Listings and photos",
+    "voce_9": "Pricing and calendar",
+    "voce_10": "Bookings",
+    "voce_11": "Guest communication",
+    "voce_12": "Paperwork and permits",
+    "pulsante_2": "Request a quote"
+  },
+  "cosa_e_incluso": {
+    "etichetta_1": "In every plan",
+    "titolo_1": "What's *included*",
+    "sottotitolo_1": "Dynamic pricing",
+    "testo_1": "Rates updated according to season, events and demand, to get the most out of every night.",
+    "sottotitolo_2": "Guest communication",
+    "testo_2": "Fast, friendly replies before, during and after the stay: happy guests leave better reviews.",
+    "sottotitolo_3": "Police registration",
+    "testo_3": "We send guests' details to the police through the Alloggiati Web portal, as required by Italian law.",
+    "sottotitolo_4": "Tourist tax",
+    "testo_4": "We calculate and handle the tourist tax on your behalf.",
+    "sottotitolo_5": "CIR code",
+    "testo_5": "We take care of the Regional Identification Code (CIR) and add it to every listing.",
+    "sottotitolo_6": "Regular reports",
+    "testo_6": "Clear reports on bookings, income and expenses: you always know how much your property earns."
+  },
+  "servizio_extra": {
+    "etichetta_1": "Extra service",
+    "titolo_1": "Professional *photo shoot*",
+    "testo_1": "Photos are the first thing guests look at, and they often decide the booking.\nWith a professional shoot your property stands out among hundreds of listings.",
+    "pulsante_1": "Request a quote",
+    "foto_1_alt": "Professional camera for property photo shoots"
+  },
+  "preventivo_soggiorno": {
+    "etichetta_1": "For guests",
+    "titolo_1": "Book your *stay*",
+    "testo_1": "Choose the accommodation you like, then tell us your dates and how many you are: we will reply with availability and a personal quote.",
+    "sottotitolo_1": "Choose your accommodation",
+    "sottotitolo_2": "Pick your dates and send your request"
+  },
+  "come_funziona": {
+    "etichetta_1": "In 4 steps",
+    "titolo_1": "How it *works*",
+    "sottotitolo_1": "Get in touch",
+    "testo_1": "Tell us about your property by phone, on WhatsApp or by filling in the form.",
+    "sottotitolo_2": "Site visit",
+    "testo_2": "We visit the property and suggest the right plan, with a tailor-made quote.",
+    "sottotitolo_3": "Go live",
+    "testo_3": "We prepare listings, pricing and paperwork: your property is ready to welcome its first guests.",
+    "sottotitolo_4": "Reports and payments",
+    "testo_4": "You receive booking payments and clear, complete regular reports."
+  },
+  "invito_finale": {
+    "etichetta_1": "For owners",
+    "titolo_1": "How much could your property *earn*?",
+    "testo_1": "Tell us about your home: we will prepare a tailor-made management quote, free and with no obligation.",
+    "pulsante_1": "Request a quote"
+  }
+}

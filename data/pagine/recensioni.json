@@ -1,0 +1,40 @@
+{
+  "_seo": {
+    "titolo": "Recensioni | LA MAISON GROUP",
+    "descrizione": "Le recensioni di proprietari, ospiti e acquirenti che hanno scelto LA MAISON GROUP. Lascia anche tu la tua recensione."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "etichetta_1": "Recensioni",
+    "titolo_1": "La parola ai nostri *clienti*",
+    "testo_1": "Proprietari, ospiti e acquirenti raccontano la loro esperienza con                        *LA MAISON GROUP*."
+  },
+  "tutte_le_recensioni": {
+    "_titolo": "Tutte le recensioni",
+    "titolo_1": "Tutte le recensioni"
+  },
+  "lascia_una_recensione": {
+    "_titolo": "Lascia una recensione",
+    "titolo_1": "Lascia una *recensione*",
+    "testo_1": "La tua recensione sarà pubblicata dopo una verifica del nostro team. L'email non viene pubblicata. I campi con * sono obbligatori.",
+    "campo_1": "Nome *",
+    "nota_1": "Verrà pubblicato con la recensione.",
+    "campo_2": "Email *",
+    "nota_2": "Non verrà pubblicata.",
+    "campo_3": "Sei un… *",
+    "campo_4": "Valutazione *",
+    "campo_5": "La tua recensione *",
+    "voce_1": "Acconsento alla pubblicazione sul sito della mia recensione con il nome indicato. *",
+    "pulsante_1": "Invia la recensione",
+    "sottotitolo_1": "Grazie per la tua recensione!",
+    "testo_2": "L'abbiamo ricevuta: sarà pubblicata dopo una breve verifica del nostro team.",
+    "pulsante_2": "Scrivi un'altra recensione"
+  },
+  "invito_finale": {
+    "_titolo": "Invito finale",
+    "etichetta_1": "Per i proprietari",
+    "titolo_1": "Quanto può *rendere* il tuo immobile?",
+    "testo_1": "Raccontaci la tua casa: ti proponiamo la soluzione più adatta tra gestione, affitto e vendita, con una valutazione gratuita e senza impegno.",
+    "pulsante_1": "Richiedi una valutazione"
+  }
+}

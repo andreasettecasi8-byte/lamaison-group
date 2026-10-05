@@ -1,0 +1,36 @@
+{
+  "_seo": {
+    "titolo": "Cookie Policy | LA MAISON GROUP",
+    "descrizione": "Cookie Policy di LA MAISON GROUP: il sito non installa cookie di profilazione né pubblicitari e usa solo statistiche anonime senza cookie. Scopri come gestire le preferenze."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "etichetta_1": "Note legali",
+    "titolo_1": "Cookie *Policy*",
+    "testo_1": "Come il sito usa cookie e tecnologie simili: solo strumenti tecnici, nessuna profilazione."
+  },
+  "informativa": {
+    "_titolo": "Informativa",
+    "testo_1": "Ultimo aggiornamento: 4 ottobre 2026",
+    "testo_2": "Questa pagina spiega come il sito usa cookie e tecnologie simili, ai sensi dell'art. 122 del D.Lgs. 196/2003 (\"Codice privacy\") e delle Linee guida del Garante per la protezione dei dati personali su cookie e altri strumenti di tracciamento del 10 giugno 2021.",
+    "titolo_1": "1. Cosa sono i cookie",
+    "testo_3": "I cookie sono piccoli file di testo che un sito salva sul dispositivo di chi lo visita. Le stesse regole valgono per tecnologie simili, come la memoria locale o di sessione del browser (localStorage e sessionStorage).",
+    "testo_4": "I cookie tecnici servono al funzionamento del sito e non richiedono il consenso. I cookie di profilazione, quelli pubblicitari e la maggior parte degli strumenti di statistica richiedono invece un consenso preventivo.",
+    "titolo_2": "2. Cookie usati da questo sito",
+    "testo_5": "Questo sito non installa cookie sul tuo dispositivo. Non usiamo cookie di profilazione, pubblicitari o di statistica, né cookie di terze parti.",
+    "testo_6": "Gli unici strumenti tecnici sono le memorie del browser: la lingua che scegli (italiano o inglese) viene ricordata nella memoria locale (localStorage), così il sito si riapre nella stessa lingua; la memoria di sessione (sessionStorage) è usata solo dall'area riservata ai gestori del sito per mantenere l'accesso mentre la finestra è aperta. Nessuna delle due serve a tracciarti.",
+    "titolo_3": "3. Perché non vedi un banner dei cookie",
+    "testo_7": "Poiché il sito usa solo strumenti tecnici, non è necessario chiedere il consenso e quindi non compare alcun banner (art. 122, comma 1, Codice privacy).",
+    "testo_8": "Se in futuro aggiungeremo strumenti che richiedono il consenso (per esempio statistiche non anonime, mappe o video incorporati da altri siti, pulsanti dei social network), li attiveremo solo dopo averti chiesto il consenso con un apposito banner, e aggiorneremo questa pagina.",
+    "titolo_4": "4. Servizi esterni",
+    "voce_1": "Caratteri tipografici e mappa delle province sono ospitati direttamente sul sito: la navigazione non contatta servizi esterni.",
+    "voce_2": "I moduli (contatti, recensioni, richieste di preventivo) sono inviati tramite Formspree solo quando premi \"Invia\": il sito non installa cookie per questo.",
+    "voce_3": "I pulsanti WhatsApp, Facebook e Instagram sono semplici collegamenti: solo se li premi apri il servizio esterno, che usa i propri cookie secondo la sua informativa.",
+    "titolo_5": "5. Come gestire i cookie dal browser",
+    "testo_9": "Puoi sempre controllare e cancellare cookie e dati dei siti dalle impostazioni del browser: in Chrome da Impostazioni, Privacy e sicurezza; in Safari da Impostazioni, Privacy; in Firefox da Impostazioni, Privacy e sicurezza; in Edge da Impostazioni, Cookie e autorizzazioni sito.",
+    "titolo_6": "6. Titolare e contatti",
+    "testo_10": "La Maison Group S.r.l.s., con sede legale in Via dei Meleti 15b, 23027 Samolaco (SO), P. IVA 01105940140, REA SO-83227 (di seguito \"Titolare\" o \"noi\"). Per domande scrivi a lamaisongroup@outlook.it.",
+    "voce_4": "Statistiche anonime: contiamo visite e clic con Umami, che lavora senza cookie e senza salvare identificativi sul tuo dispositivo. I dati sono solo aggregati e non permettono di identificarti.",
+    "testo_11": "Anche le statistiche di visita sono anonime e non usano cookie: per questo non serve il consenso (art. 122 Codice privacy e Linee guida del Garante del 10 giugno 2021)."
+  }
+}

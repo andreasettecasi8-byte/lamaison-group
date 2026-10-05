@@ -1,0 +1,23 @@
+{
+  "_seo": {
+    "titolo": "Progetti e ristrutturazioni | LA MAISON GROUP",
+    "descrizione": "I progetti di LA MAISON GROUP: acquisto, ristrutturazione e valorizzazione di immobili. Guarda il prima e dopo dei nostri lavori."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "etichetta_1": "Progetti",
+    "titolo_1": "Immobili che *rinascono*",
+    "testo_1": "Acquistiamo immobili da valorizzare, li ristrutturiamo e li riportiamo sul mercato."
+  },
+  "tutti_i_progetti": {
+    "_titolo": "Tutti i progetti",
+    "titolo_1": "Tutti i progetti"
+  },
+  "invito_finale": {
+    "_titolo": "Invito finale",
+    "etichetta_1": "Investimenti",
+    "titolo_1": "Hai un immobile da *valorizzare*?",
+    "testo_1": "Ristrutturazione, messa a reddito o vendita: studiamo insieme il progetto che fa crescere il valore del tuo immobile.",
+    "pulsante_1": "Richiedi una consulenza"
+  }
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>LA MAISON GROUP | Gestione affitti brevi e investimenti immobiliari</title>
+  <meta name="description" content="LA MAISON GROUP: acquisizione, valorizzazione e gestione di immobili a reddito. Affitti brevi, affitti a lungo termine, compravendita e consulenza immobiliare. Valutazione gratuita.">
+  <link rel="canonical" href="https://www.lamaison-group.it/">
+  <link rel="alternate" hreflang="it" href="https://www.lamaison-group.it/">
+  <link rel="alternate" hreflang="en" href="https://www.lamaison-group.it/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://www.lamaison-group.it/">
+  <meta name="theme-color" content="#0B1F3A">
+  <meta property="og:title" content="LA MAISON GROUP">
+  <meta property="og:description" content="LA MAISON GROUP: acquisizione, valorizzazione e gestione di immobili a reddito. Affitti brevi, affitti a lungo termine, compravendita e consulenza immobiliare. Valutazione gratuita.">
+  <meta property="og:image" content="https://www.lamaison-group.it/img/hero.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preload" href="fonts/inter-latin-3.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="preload" as="image" href="img/hero.webp" type="image/webp">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js', 'content-loading');</script>
+  <script src="js/main.js" defer></script>
+  <script src="js/content.js" defer></script>
+  <script src="js/statistiche.js" defer></script>
+  <script src="js/lingua.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/mappa.js" defer></script>
+</head>
+<body data-page="index">
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html" aria-label="LA MAISON GROUP, torna alla home">
+        <img data-edit-img="@sito.logo_chiaro" class="logo--light" src="img/logo-chiaro.png" alt="Logo LA MAISON GROUP" width="240" height="134">
+        <img data-edit-img="@sito.logo" class="logo--dark" src="img/logo.png" alt="" width="240" height="134">
+      </a>
+      <nav class="nav" aria-label="Menu principale">
+        <a data-edit="@menu.index" href="index.html" aria-current="page">Home</a>
+        <a data-edit="@menu.chi_siamo" href="chi-siamo.html">Chi siamo</a>
+        <a data-edit="@menu.affitti_brevi" href="affitti-brevi.html">Affitti brevi</a>
+        <a data-edit="@menu.affitti_tradizionali" href="affitti-tradizionali.html">Affitti tradizionali</a>
+        <a data-edit="@menu.vendita" href="vendita.html">Vendita</a>
+        <a data-edit="@menu.progetti" href="progetti.html">Progetti</a>
+        <a data-edit="@menu.recensioni" href="recensioni.html">Recensioni</a>
+        <a data-edit="@menu.contatti" href="contatti.html">Contatti</a>
+      </nav>
+      <a data-edit="@menu.pulsante" class="btn btn--gold header__cta" href="contatti.html?tipo=affidare">Affida il tuo immobile</a>
+      <div class="lang-switch" role="group" aria-label="Lingua">
+        <button type="button" data-lang="it" lang="it" aria-pressed="true"><span class="visually-hidden">Italiano</span><span aria-hidden="true">IT</span></button>
+        <button type="button" data-lang="en" lang="en" aria-pressed="false"><span class="visually-hidden">English</span><span aria-hidden="true">EN</span></button>
+      </div>
+      <button class="burger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="burger__label" aria-hidden="true">Menù</span>
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-label="Menu">
+    <div class="mobile-menu__lang" role="group" aria-label="Lingua">
+      <button type="button" data-lang="it" lang="it" aria-pressed="true">Italiano</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">English</button>
+    </div>
+    <ul>
+      <li><a data-edit="@menu.index" href="index.html" aria-current="page">Home</a></li>
+      <li><a data-edit="@menu.chi_siamo" href="chi-siamo.html">Chi siamo</a></li>
+      <li><a data-edit="@menu.affitti_brevi" href="affitti-brevi.html">Affitti brevi</a></li>
+      <li><a data-edit="@menu.affitti_tradizionali" href="affitti-tradizionali.html">Affitti tradizionali</a></li>
+      <li><a data-edit="@menu.vendita" href="vendita.html">Vendita</a></li>
+      <li><a data-edit="@menu.progetti" href="progetti.html">Progetti</a></li>
+      <li><a data-edit="@menu.recensioni" href="recensioni.html">Recensioni</a></li>
+      <li><a data-edit="@menu.contatti" href="contatti.html">Contatti</a></li>
+    </ul>
+    <a data-edit="@menu.pulsante" class="btn btn--gold" href="contatti.html?tipo=affidare">Affida il tuo immobile</a>
+  </div>
+
+  <main id="contenuto">
+    <!-- ===== Hero ===== -->
+    <section class="hero on-navy" aria-labelledby="hero-title">
+      <img data-edit-img="intestazione.foto_1" data-hero-slide class="hero__img is-active" src="img/hero.webp" width="1920" height="1080" fetchpriority="high"
+           alt="Soggiorno luminoso di un appartamento moderno con cucina a vista">
+      <img data-edit-img="intestazione.foto_2" data-hero-slide class="hero__img" src="img/hero-2.webp" width="1920" height="1080" decoding="async"
+           alt="Soggiorno moderno e luminoso con divani e grandi vetrate">
+      <img data-edit-img="intestazione.foto_3" data-hero-slide class="hero__img" src="img/hero-3.webp" width="1920" height="1080" decoding="async"
+           alt="Villa moderna con piscina">
+      <div class="container hero__content">
+        <h1 data-edit="intestazione.titolo_1" id="hero-title">LA <span class="accent">MAISON</span> GROUP</h1>
+        <p data-edit="intestazione.testo_1" class="hero__subtitle">Acquisizione, Valorizzazione e Gestione di Immobili a Reddito</p>
+      </div>
+    </section>
+
+    <!-- ===== Per i proprietari ===== -->
+    <section class="section section--navy cta on-navy" aria-labelledby="cta-title">
+      <div class="container reveal">
+        <span data-edit="invito_finale.etichetta_1" class="label">Per i proprietari</span>
+        <h2 data-edit="invito_finale.titolo_1" id="cta-title">Quanto può <span class="accent">rendere</span> il tuo immobile?</h2>
+        <p data-edit="invito_finale.testo_1">Raccontaci la tua casa: ti diciamo quanto vale e ti proponiamo la strada più redditizia tra affitto breve, affitto a lungo termine e vendita. Gratis e senza impegno.</p>
+        <div class="btn-row">
+          <a data-edit="invito_finale.pulsante_1" class="btn btn--gold" href="valutazione.html">Richiedi una valutazione gratuita</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Servizi ===== -->
+    <section class="section" aria-labelledby="servizi-title">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span data-edit="servizi.etichetta_1" class="label">Cosa facciamo</span>
+          <h2 data-edit="servizi.titolo_1" id="servizi-title">Tutto ciò che serve al tuo <span class="accent">immobile</span></h2>
+        </div>
+        <div class="grid">
+          <article class="card service reveal">
+            <div class="card__media">
+              <img data-edit-img="servizi.foto_1" src="img/servizio-affitti-brevi.webp" width="800" height="600" loading="lazy"
+                   alt="Soggiorno arredato di un appartamento per affitti brevi">
+            </div>
+            <div class="card__body">
+              <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span>
+              <h3><a data-edit="servizi.sottotitolo_1" class="card__stretched" href="affitti-brevi.html">Affitti brevi</a></h3>
+              <p data-edit="servizi.testo_1">Annunci, prezzi, ospiti e pratiche burocratiche li gestiamo noi. Tu scegli la formula e incassi, senza pensieri.</p>
+              <span data-edit="servizi.link_1" class="card__link">Scopri il servizio</span>
+            </div>
+          </article>
+          <article class="card service reveal">
+            <div class="card__media">
+              <img data-edit-img="servizi.foto_2" src="img/servizio-affitti-tradizionali.webp" width="800" height="600" loading="lazy"
+                   alt="Interno di un appartamento disponibile in affitto a lungo termine">
+            </div>
+            <div class="card__body">
+              <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>
+              <h3><a data-edit="servizi.sottotitolo_2" class="card__stretched" href="affitti-tradizionali.html">Affitti tradizionali</a></h3>
+              <p data-edit="servizi.testo_2">Troviamo un inquilino affidabile, prepariamo il contratto e seguiamo la locazione: un reddito stabile, senza sorprese.</p>
+              <span data-edit="servizi.link_2" class="card__link">Scopri il servizio</span>
+            </div>
+          </article>
+          <article class="card service reveal">
+            <div class="card__media">
+              <img data-edit-img="servizi.foto_3" src="img/servizio-compravendita.webp" width="800" height="600" loading="lazy"
+                   alt="Facciata di una casa moderna in vendita">
+            </div>
+            <div class="card__body">
+              <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+              <h3><a data-edit="servizi.sottotitolo_3" class="card__stretched" href="vendita.html">Compravendita</a></h3>
+              <p data-edit="servizi.testo_3">Valutazione, promozione, trattativa e rogito: ti accompagniamo passo dopo passo fino alla firma.</p>
+              <span data-edit="servizi.link_3" class="card__link">Vedi gli immobili</span>
+            </div>
+          </article>
+          <article class="card service reveal">
+            <div class="card__media">
+              <img data-edit-img="servizi.foto_4" src="img/servizio-consulenza.webp" width="800" height="600" loading="lazy"
+                   alt="Consulenti al lavoro su documenti e computer">
+            </div>
+            <div class="card__body">
+              <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+              <h3><a data-edit="servizi.sottotitolo_4" class="card__stretched" href="contatti.html?tipo=consulenza">Consulenza immobiliare</a></h3>
+              <p data-edit="servizi.testo_4">Vuoi investire o far rendere di più ciò che hai? Analizziamo i numeri e ti indichiamo la strategia giusta.</p>
+              <span data-edit="servizi.link_4" class="card__link">Richiedi una consulenza</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Perché sceglierci ===== -->
+    <section class="section section--grey" aria-labelledby="perche-title">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span data-edit="perche_sceglierci.etichetta_1" class="label">Perché sceglierci</span>
+          <h2 data-edit="perche_sceglierci.titolo_1" id="perche-title">Il tuo immobile in <span class="accent">buone mani</span></h2>
+        </div>
+        <ul class="grid grid--4">
+          <li class="feature reveal">
+            <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+            <h3 data-edit="perche_sceglierci.sottotitolo_1">Un unico referente</h3>
+            <p data-edit="perche_sceglierci.testo_1">Affitti brevi, affitti a lungo termine, compravendita e consulenza: un solo interlocutore per tutto, con un contatto diretto con i titolari.</p>
+          </li>
+          <li class="feature reveal">
+            <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+            <h3 data-edit="perche_sceglierci.sottotitolo_2">Ragioniamo da investitori</h3>
+            <p data-edit="perche_sceglierci.testo_2">Compriamo e ristrutturiamo immobili anche per noi: ogni consiglio nasce dai numeri e dall'esperienza sul campo.</p>
+          </li>
+          <li class="feature reveal">
+            <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>
+            <h3 data-edit="perche_sceglierci.sottotitolo_3">Zero burocrazia</h3>
+            <p data-edit="perche_sceglierci.testo_3">Contratti, registrazioni, pratiche e adempimenti: li seguiamo noi dall'inizio alla fine, sempre in regola.</p>
+          </li>
+          <li class="feature reveal">
+            <span class="icon-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+            <h3 data-edit="perche_sceglierci.sottotitolo_4">Soluzioni su misura</h3>
+            <p data-edit="perche_sceglierci.testo_4">Vendere, affittare o investire: analizziamo il tuo immobile e ti proponiamo la strada più conveniente, non quella standard.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Dove operiamo ===== -->
+    <section class="section" aria-labelledby="zone-title">
+      <div class="container zone">
+        <div class="zone__text reveal">
+          <div class="section-head">
+            <span data-edit="dove_operiamo.etichetta_1" class="label">Dove operiamo</span>
+            <h2 data-edit="dove_operiamo.titolo_1" id="zone-title">Dove <span class="accent">operiamo</span></h2>
+          </div>
+          <p data-edit="dove_operiamo.testo_1">Seguiamo di persona gli immobili nelle province evidenziate sulla mappa. Il tuo immobile si trova altrove? Scrivici: valutiamo ogni richiesta.</p>
+        </div>
+        <figure class="zone__map reveal" data-map>
+          <div class="zone__canvas"></div>
+          <figcaption>Confini delle province: ISTAT</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== Immobili in vendita (da data/vendita.json) ===== -->
+    <section class="section" aria-labelledby="vendita-title">
+      <div class="container">
+        <div class="section-head-row reveal">
+          <div class="section-head">
+            <span data-edit="immobili_in_vendita.etichetta_1" class="label">In vendita</span>
+            <h2 data-edit="immobili_in_vendita.titolo_1" id="vendita-title">Le nostre proposte <span class="accent">in vendita</span></h2>
+          </div>
+          <a data-edit="immobili_in_vendita.pulsante_1" class="btn btn--secondary" href="vendita.html">Vedi tutti</a>
+        </div>
+        <div class="grid grid--3" data-render="vendita" data-limit="3"></div>
+      </div>
+    </section>
+
+    <!-- ===== Progetti (da data/progetti.json) ===== -->
+    <section class="section section--grey" aria-labelledby="progetti-title">
+      <div class="container">
+        <div class="section-head-row reveal">
+          <div class="section-head">
+            <span data-edit="progetti.etichetta_1" class="label">Progetti</span>
+            <h2 data-edit="progetti.titolo_1" id="progetti-title">Immobili che <span class="accent">rinascono</span></h2>
+          </div>
+          <a data-edit="progetti.pulsante_1" class="btn btn--secondary" href="progetti.html">Scopri i progetti</a>
+        </div>
+        <div class="grid grid--3" data-render="progetti" data-limit="3"></div>
+      </div>
+    </section>
+
+    <!-- ===== Recensioni (da data/recensioni.json) ===== -->
+    <section class="section" aria-labelledby="recensioni-title">
+      <div class="container">
+        <div class="section-head-row reveal">
+          <div class="section-head">
+            <span data-edit="recensioni.etichetta_1" class="label">Recensioni</span>
+            <h2 data-edit="recensioni.titolo_1" id="recensioni-title">Cosa dicono <span class="accent">di noi</span></h2>
+          </div>
+          <a data-edit="recensioni.pulsante_1" class="btn btn--secondary" href="recensioni.html#lascia">Lascia una recensione</a>
+        </div>
+        <div class="grid grid--3 reviews-track" data-render="recensioni" data-limit="3"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="header__logo footer__logo" href="index.html" aria-label="LA MAISON GROUP, torna alla home">
+            <img data-edit-img="@sito.logo_chiaro" src="img/logo-chiaro.png" alt="Logo LA MAISON GROUP" width="240" height="134" loading="lazy">
+          </a>
+          <p data-edit="@footer.testo_1">Investimenti immobiliari e property management</p>
+          <ul class="footer__social" data-social hidden>
+            <li data-social-item="facebook"><a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5z"/></svg></a></li>
+            <li data-social-item="instagram"><a href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-edit="@footer.titolo_1">Contatti</h2>
+          <p><strong data-edit="@footer.nome_1">Andrea Settecasi</strong> · <span data-edit="@footer.voce_1">Co-Founder</span><br>
+            <a data-edit="@footer.telefono_1" data-edit-href="tel" href="tel:+393932671463">+39 393 267 1463</a><br>
+            <a data-edit="@footer.telefono_2" data-edit-href="tel" data-optional="svizzero" href="tel:+41762862796">+41 76 286 27 96</a></p>
+          <p><strong data-edit="@footer.nome_2">Paolo Malugani</strong> · <span data-edit="@footer.voce_2">Co-Founder</span><br>
+            <a data-edit="@footer.telefono_3" data-edit-href="tel" href="tel:+393313308349">+39 331 330 8349</a></p>
+          <p><a data-edit="@footer.email_1" data-edit-href="mailto" href="mailto:lamaisongroup@outlook.it">lamaisongroup@outlook.it</a></p>
+        </div>
+        <div>
+          <h2 data-edit="@footer.titolo_3">Dati societari</h2>
+          <p data-edit="@footer.testo_2"><strong>La Maison Group S.r.l.s.</strong></p>
+          <p data-edit="@footer.sede">Sede legale: Via dei Meleti 15b, 23027 Samolaco (SO)</p>
+          <p data-edit="@footer.testo_3">P. IVA 01105940140</p>
+          <p data-edit="@footer.rea">REA SO-83227</p>
+          <p data-edit="@footer.capitale">Capitale sociale € 1.000,00 i.v.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span data-edit="@footer.voce_3">© 2026 La Maison Group S.r.l.s. – Tutti i diritti riservati</span>
+        <nav aria-label="Note legali">
+          <a data-edit="@menu.privacy" href="privacy.html">Privacy Policy</a>
+          <a data-edit="@menu.cookie" href="cookie.html">Cookie Policy</a>
+          <a href="#admin" data-admin-link>Area riservata</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/393932671463?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20vostri%20servizi." target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp" data-wa="1">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  </a>
+</body>
+</html>

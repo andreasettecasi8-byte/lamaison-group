@@ -1,0 +1,40 @@
+{
+  "_seo": {
+    "titolo": "Free property valuation | LA MAISON GROUP",
+    "descrizione": "Request a valuation of your property: enter the details of your home and we will arrange a no-obligation site visit. For sale and rental."
+  },
+  "intestazione": {
+    "etichetta_1": "Property valuation",
+    "titolo_1": "What is your *property* worth?",
+    "testo_1": "Fill in the form with the details of your property."
+  },
+  "richiesta_di_valutazione": {
+    "titolo_1": "How it works",
+    "voce_1": "**Tell us about the property**\nA few details are enough: where it is, what it is like and what condition it is in.",
+    "voce_2": "**We call you**\nWe get back to you within 24 hours to arrange an appointment on the day that suits you.",
+    "voce_3": "**Site visit and valuation**\nWe visit the property and give you a realistic estimate of its market value.",
+    "titolo_2": "Request your valuation",
+    "testo_1": "Fields marked with * are required.",
+    "sottotitolo_1": "The property",
+    "campo_1": "Property type *",
+    "campo_2": "What would you like to do? *",
+    "campo_3": "Address *",
+    "campo_4": "Town *",
+    "campo_5": "Province *",
+    "campo_6": "Floor area (m²) *",
+    "campo_7": "Rooms",
+    "campo_8": "Bathrooms",
+    "campo_9": "Floor",
+    "campo_10": "Condition *",
+    "campo_11": "Year built",
+    "campo_12": "Features",
+    "sottotitolo_2": "Your details",
+    "campo_13": "Full name *",
+    "campo_14": "Phone *",
+    "campo_15": "Email *",
+    "pulsante_1": "Request the valuation",
+    "sottotitolo_3": "Request sent",
+    "testo_2": "Thank you! We have received the details of your property: we will call you shortly to arrange the appointment.",
+    "pulsante_2": "Value another property"
+  }
+}

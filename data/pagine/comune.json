@@ -1,0 +1,63 @@
+{
+  "sito": {
+    "logo": "img/logo.png",
+    "logo_chiaro": "img/logo-chiaro.png",
+    "logo_alt": "Logo LA MAISON GROUP",
+    "whatsapp_1": "393932671463",
+    "whatsapp_2": "393313308349",
+    "province": [
+      "TO",
+      "SO",
+      "CO",
+      "LC",
+      "BG"
+    ],
+    "mostra_svizzero": true,
+    "facebook": "https://www.facebook.com/share/197SyYZWhG/?mibextid=wwXIfr",
+    "instagram": "https://www.instagram.com/lamaisongroup?stkn=dmZnamphdDAzZWY5&utm_source=qr",
+    "dominio": "https://www.lamaison-group.it/",
+    "sede_legale": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via dei Meleti 15b",
+      "postalCode": "23027",
+      "addressLocality": "Samolaco",
+      "addressRegion": "SO",
+      "addressCountry": "IT"
+    },
+    "umami_id": "e9194d0d-2eed-43d0-8d35-8135d02105d6",
+    "umami_script": "https://cloud.umami.is/script.js",
+    "umami_condivisione": "https://cloud.umami.is/share/YBlIxOPtp7m3hv7J"
+  },
+  "menu": {
+    "index": "Home",
+    "chi_siamo": "Chi siamo",
+    "affitti_brevi": "Affitti brevi",
+    "affitti_tradizionali": "Affitti a lungo termine",
+    "vendita": "Vendita",
+    "progetti": "Progetti",
+    "recensioni": "Recensioni",
+    "contatti": "Contatti",
+    "pulsante": "Affida il tuo immobile",
+    "privacy": "Privacy Policy",
+    "cookie": "Cookie Policy"
+  },
+  "footer": {
+    "testo_1": "Investimenti immobiliari e property management",
+    "titolo_1": "Contatti",
+    "nome_1": "Andrea Settecasi",
+    "voce_1": "Co-Founder",
+    "telefono_1": "+39 393 267 1463",
+    "telefono_2": "+41 76 286 27 96",
+    "nome_2": "Paolo Malugani",
+    "voce_2": "Co-Founder",
+    "telefono_3": "+39 331 330 8349",
+    "email_1": "lamaisongroup@outlook.it",
+    "titolo_3": "Dati societari",
+    "testo_2": "**La Maison Group S.r.l.s.**",
+    "sede": "Sede legale: Via dei Meleti 15b, 23027 Samolaco (SO)",
+    "testo_3": "P. IVA 01105940140",
+    "rea": "REA SO-83227",
+    "capitale": "Capitale sociale € 1.000,00 i.v.",
+    "voce_3": "© 2026 La Maison Group S.r.l.s. – Tutti i diritti riservati"
+  }
+}

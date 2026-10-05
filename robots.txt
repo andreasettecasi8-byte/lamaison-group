@@ -1,0 +1,6 @@
+# LA MAISON GROUP — istruzioni per i motori di ricerca
+# Tutte le pagine possono essere indicizzate. La riga "Sitemap" viene aggiunta
+# da strumenti/sitemap.py quando il sito ha il suo dominio.
+User-agent: *
+Allow: /
+Sitemap: https://www.lamaison-group.it/sitemap.xml

@@ -1,0 +1,263 @@
+/* LA MAISON GROUP — stile dell'area riservata (modalità modifica)
+   Caricato solo quando si entra nell'area riservata. Pensato prima per il telefono. */
+
+.lm-ui { font-family: var(--font-text); font-size: 15px; line-height: 1.4; color: var(--text); }
+.lm-ui *, .lm-ui *::before, .lm-ui *::after { box-sizing: border-box; }
+.lm-hidden { position: fixed; left: -9999px; }
+
+/* ---------- Pulsanti ---------- */
+.lm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-8);
+  min-height: 44px; padding: 0 var(--s-16);
+  border: 1px solid var(--navy); border-radius: var(--radius-btn);
+  background: var(--white); color: var(--navy);
+  font: 600 15px/1 var(--font-text); cursor: pointer; white-space: nowrap;
+}
+.lm-btn:hover { background: var(--grey-bg); }
+.lm-btn:disabled { opacity: 0.5; cursor: default; }
+.lm-btn--primary { background: var(--navy); color: var(--white); }
+.lm-btn--primary:hover { background: var(--navy-light); }
+.lm-btn--ghost { border-color: transparent; background: transparent; }
+.lm-btn--small { min-height: 36px; padding: 0 var(--s-12); font-size: 14px; }
+.lm-icon-btn {
+  display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0;
+  border: 1px solid var(--border); border-radius: var(--radius-btn);
+  background: var(--white); color: var(--navy); font-size: 18px; line-height: 1; cursor: pointer;
+}
+.lm-icon-btn:disabled { opacity: 0.35; cursor: default; }
+.lm-danger { color: var(--error); }
+.lm-btn:focus-visible, .lm-icon-btn:focus-visible, .lm-tool:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ---------- Pagina in modifica ---------- */
+.lm-editing body { padding-bottom: 96px; }
+.lm-editing .whatsapp-float { display: none; }
+.lm-editing .reveal { opacity: 1 !important; transform: none !important; }
+
+.lm-editable {
+  outline: 1px dashed rgba(201, 162, 39, 0.8);
+  outline-offset: 3px;
+  border-radius: 2px;
+  cursor: text;
+  min-width: 1ch;
+}
+.lm-editable:hover { outline-style: solid; }
+.lm-editable:focus { outline: 2px solid var(--gold); background: rgba(201, 162, 39, 0.08); }
+/* i link-scheda coprono la card: in modifica devono restare cliccabili solo come testo */
+.lm-editing .card__stretched::before { display: none; }
+
+.lm-editable-img { cursor: pointer; }
+.lm-imghost { position: relative; }
+.lm-imgtools {
+  position: absolute; top: var(--s-12); right: var(--s-12); z-index: 30;
+  display: flex; flex-wrap: wrap; gap: var(--s-8); justify-content: flex-end;
+}
+.lm-imgtools .lm-btn { box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); }
+.lm-imgtools .lm-btn--ghost { background: rgba(255, 255, 255, 0.92); }
+/* Foto grandi in testata: i pulsanti vanno sotto la navbar */
+.hero > .lm-imgtools, .page-hero > .lm-imgtools { top: calc(var(--header-h) + var(--s-12)); }
+.header__logo .lm-editable-img { outline: 1px dashed rgba(201, 162, 39, 0.8); outline-offset: 2px; }
+
+/* ---------- Schede (immobili, progetti, recensioni) ---------- */
+.lm-card { position: relative; }
+.lm-cardbar {
+  position: absolute; top: var(--s-8); left: var(--s-8); z-index: 30;
+  display: flex; gap: var(--s-4); padding: var(--s-4);
+  border-radius: var(--radius); background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.review.lm-card { padding-top: 64px; }
+.is-unpublished { opacity: 0.55; }
+.lm-hidden-tag {
+  position: absolute; right: var(--s-8); bottom: var(--s-8); z-index: 30;
+  padding: 2px var(--s-8); border-radius: 999px; background: var(--navy); color: var(--white); font-size: 12px;
+}
+.lm-listbar { display: flex; flex-wrap: wrap; gap: var(--s-12); margin-top: var(--s-24); }
+
+/* ---------- Barra in basso ---------- */
+.lm-toolbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000;
+  display: flex; align-items: center; gap: var(--s-8);
+  padding: var(--s-8) var(--s-12) calc(var(--s-8) + env(safe-area-inset-bottom));
+  background: var(--navy); color: var(--white);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+}
+.lm-badge {
+  display: none;
+  padding: var(--s-4) var(--s-8); border-radius: 999px;
+  background: var(--gold); color: var(--navy); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+}
+.lm-pages {
+  min-height: 40px; max-width: 150px; padding: 0 var(--s-8);
+  border: 1px solid rgba(255, 255, 255, 0.35); border-radius: var(--radius-btn);
+  background: var(--navy-light); color: var(--white); font: 600 14px var(--font-text);
+}
+.lm-fmtgroup { display: none; gap: var(--s-4); }
+.lm-text-focus .lm-fmtgroup { display: flex; }
+.lm-tool {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-8);
+  min-width: 40px; height: 40px; padding: 0 var(--s-8);
+  border: 1px solid rgba(255, 255, 255, 0.35); border-radius: var(--radius-btn);
+  background: transparent; color: var(--white); font: 600 15px var(--font-text); cursor: pointer;
+}
+.lm-tool:hover { background: rgba(255, 255, 255, 0.1); }
+.lm-tool__text { display: none; }
+.lm-gold { color: var(--gold); font-family: var(--font-title); font-size: 18px; }
+.lm-spacer { flex: 1; }
+.lm-save { min-height: 40px; border-color: var(--gold); background: var(--gold); color: var(--navy); }
+.lm-save:hover { background: #d9b53a; }
+.lm-save:disabled { opacity: 0.6; background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.35); }
+.lm-save__count:not(:empty) {
+  display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px;
+  border-radius: 999px; background: var(--navy); color: var(--white); font-size: 12px;
+}
+/* Sul telefono, mentre si scrive, i pulsanti di formato prendono il posto dell'elenco pagine */
+.lm-text-focus .lm-pages { display: none; }
+
+@media (min-width: 640px) {
+  .lm-toolbar { gap: var(--s-12); padding-left: var(--s-16); padding-right: var(--s-16); }
+  .lm-badge { display: inline-block; }
+  .lm-text-focus .lm-pages { display: inline-block; }
+  .lm-pages { max-width: none; }
+}
+@media (min-width: 1024px) {
+  .lm-tool__text { display: inline; }
+}
+
+/* ---------- Finestre: a tutto schermo su telefono, centrate o laterali su schermi grandi ---------- */
+.lm-modal-open body { overflow: hidden; }
+.lm-modal {
+  position: fixed; inset: 0; z-index: 1100;
+  display: flex; align-items: stretch; justify-content: center;
+  background: rgba(11, 31, 58, 0.55);
+}
+.lm-modal__panel {
+  display: flex; flex-direction: column;
+  width: 100%; max-height: 100%;
+  background: var(--white);
+}
+.lm-modal__head {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-12);
+  padding: var(--s-12) var(--s-16); border-bottom: 1px solid var(--border);
+}
+.lm-modal__head h2 { margin: 0; font: 600 20px var(--font-title); color: var(--navy); }
+.lm-modal__body { overflow-y: auto; padding: var(--s-16) var(--s-16) calc(var(--s-24) + env(safe-area-inset-bottom)); }
+
+@media (min-width: 640px) {
+  .lm-modal { align-items: center; padding: var(--s-24); }
+  .lm-modal__panel { max-width: 440px; max-height: calc(100vh - 48px); border-radius: var(--radius); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35); }
+  .lm-modal.is-drawer { justify-content: flex-end; align-items: stretch; padding: 0; }
+  .lm-modal.is-drawer .lm-modal__panel { max-width: 520px; max-height: none; border-radius: 0; }
+  .lm-modal__panel.is-wide { max-width: 1100px; }
+  .lm-modal__head, .lm-modal__body { padding-left: var(--s-24); padding-right: var(--s-24); }
+}
+
+/* ---------- Moduli ---------- */
+.lm-form { display: flex; flex-direction: column; gap: var(--s-16); }
+.lm-form h3 { margin: var(--s-8) 0 0; font: 600 17px var(--font-text); color: var(--navy); }
+.lm-form--grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-16); }
+.lm-form--grid > * { grid-column: 1 / -1; }
+.lm-form--grid > .is-half { grid-column: auto; }
+.lm-field { display: flex; flex-direction: column; gap: var(--s-4); }
+.lm-field__label { font-size: 14px; font-weight: 600; color: var(--navy); }
+.lm-field__hint { font-size: 13px; color: var(--text-muted); }
+.lm-field input, .lm-field select, .lm-field textarea {
+  width: 100%; min-height: 44px; padding: var(--s-8) var(--s-12);
+  border: 1px solid var(--border); border-radius: var(--radius-btn);
+  background: var(--white); color: var(--text);
+  font: 16px var(--font-text); /* 16px: iPhone non fa lo zoom */
+}
+.lm-field textarea { resize: vertical; }
+.lm-field input:focus, .lm-field select:focus, .lm-field textarea:focus { outline: 2px solid var(--navy-light); outline-offset: -1px; }
+.lm-check { display: flex; align-items: center; gap: var(--s-12); min-height: 44px; font-weight: 600; color: var(--navy); }
+.lm-check input { width: 22px; height: 22px; accent-color: var(--navy); }
+.lm-muted { margin: 0; color: var(--text-muted); }
+.lm-error { margin: 0; color: var(--error); font-weight: 600; }
+.lm-error:empty { display: none; }
+.lm-details { border: 1px solid var(--border); border-radius: var(--radius); padding: var(--s-12); }
+.lm-details summary { cursor: pointer; font-weight: 600; color: var(--navy); }
+.lm-details[open] summary { margin-bottom: var(--s-12); }
+.lm-details .lm-field + .lm-field { margin-top: var(--s-12); }
+.lm-form__actions {
+  position: sticky; bottom: calc(-1 * var(--s-24)); z-index: 1;
+  display: flex; justify-content: space-between; gap: var(--s-12);
+  margin: 0 calc(-1 * var(--s-16)); padding: var(--s-12) var(--s-16);
+  border-top: 1px solid var(--border); background: var(--white);
+}
+.lm-form__actions .lm-btn--primary { flex: 1; }
+.lm-modal__body hr { margin: var(--s-24) 0; border: 0; border-top: 1px solid var(--border); }
+
+/* Foto nei moduli */
+.lm-imgfield { display: flex; flex-direction: column; gap: var(--s-8); }
+.lm-imgfield img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-btn); background: var(--grey-bg); }
+.lm-imgfield__btns { display: flex; flex-wrap: wrap; gap: var(--s-8); }
+.lm-photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-8); }
+@media (min-width: 640px) { .lm-photos { grid-template-columns: repeat(3, 1fr); } }
+.lm-photo { position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius-btn); overflow: hidden; background: var(--grey-bg); }
+.lm-photo img { width: 100%; height: 100%; object-fit: cover; }
+.lm-photo__cover {
+  position: absolute; left: var(--s-4); bottom: var(--s-4);
+  padding: 2px var(--s-8); border-radius: 999px; background: var(--gold); color: var(--navy); font-size: 12px; font-weight: 600;
+}
+.lm-photo__btns { position: absolute; top: var(--s-4); right: var(--s-4); display: flex; gap: var(--s-4); }
+.lm-photo--add {
+  display: grid; place-items: center; width: 100%;
+  border: 2px dashed var(--border); color: var(--navy); font: 600 14px var(--font-text); cursor: pointer;
+}
+
+/* Elenco completo */
+.lm-list { margin: var(--s-16) 0; padding: 0; list-style: none; counter-reset: lm; }
+.lm-list li {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-8);
+  padding: var(--s-12) 0; border-bottom: 1px solid var(--border);
+}
+.lm-list__title { flex: 1 1 180px; font-weight: 600; color: var(--navy); }
+.lm-list__title::before { counter-increment: lm; content: counter(lm) ". "; color: var(--text-muted); }
+.lm-list__actions { display: flex; gap: var(--s-4); }
+
+/* ---------- Avvisi ---------- */
+.lm-toast {
+  position: fixed; left: 50%; bottom: calc(80px + env(safe-area-inset-bottom)); z-index: 1200;
+  max-width: calc(100% - 32px); padding: var(--s-12) var(--s-16);
+  border-radius: var(--radius); background: var(--text); color: var(--white);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.lm-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.lm-toast.is-ok { background: var(--success); }
+.lm-toast.is-error { background: var(--error); }
+
+/* ---------- Scheda "Carica nuovo immobile" ---------- */
+.lm-form__heading {
+  margin: var(--s-8) 0 0; padding-top: var(--s-16);
+  border-top: 1px solid var(--border);
+  font: 600 13px var(--font-text); letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy-light);
+}
+.lm-form > .lm-form__heading:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.lm-tags { display: flex; flex-wrap: wrap; gap: var(--s-8); margin-bottom: var(--s-8); }
+.lm-tag {
+  display: inline-flex; align-items: center; gap: var(--s-8);
+  min-height: 40px; padding: 0 var(--s-12);
+  border: 1px solid var(--border); border-radius: 999px; background: var(--white);
+  font-size: 14px; color: var(--navy); cursor: pointer;
+}
+.lm-tag input { width: 18px; height: 18px; margin: 0; accent-color: var(--navy); }
+.lm-tag:has(input:checked) { border-color: var(--navy); background: var(--grey-bg); font-weight: 600; }
+/* Sul telefono i campi affiancati vanno uno sotto l'altro se lo schermo è molto stretto */
+@media (max-width: 359px) { .lm-form--grid > .is-half { grid-column: 1 / -1; } }
+
+.lm-scheda-bar { margin: 0 0 var(--s-24); }
+.lm-suggest { display: block; }
+/* campi affiancati: le caselle restano allineate anche se un'etichetta va a capo */
+.lm-form--grid { align-items: end; }
+.lm-form--grid > .lm-form__heading, .lm-form--grid > .lm-field:not(.is-half) { align-self: start; }
+
+/* Mappa "Dove operiamo" in modifica */
+.lm-map-hint { margin: 0 0 var(--s-8); padding: var(--s-8) var(--s-12); border-radius: var(--radius-btn); background: var(--gold); color: var(--navy); font-size: 14px; font-weight: 600; text-align: center; }
+
+/* Statistiche (Umami) */
+.lm-stats__frame { display: block; width: 100%; height: min(70vh, 900px); margin: 12px 0; border: 1px solid #d9dee6; border-radius: 8px; background: #fff; }
+.lm-stats__note { font-size: 14px; color: #5b6472; }
+.lm-stats__warn { padding: 10px 12px; border-radius: 6px; background: #fdecea; color: #b3261e; font-size: 14px; }
+.lm-stats__steps { padding-left: 20px; line-height: 1.6; }
+.lm-stats__steps li { margin-bottom: 6px; }

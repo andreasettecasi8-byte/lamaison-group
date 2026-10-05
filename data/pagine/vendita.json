@@ -1,0 +1,23 @@
+{
+  "_seo": {
+    "titolo": "Immobili in vendita | LA MAISON GROUP",
+    "descrizione": "Immobili in vendita selezionati da LA MAISON GROUP in collaborazione con HomePanda: appartamenti, ville e immobili a reddito. Richiedi informazioni o una visita."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "etichetta_1": "Vendita",
+    "titolo_1": "Immobili *in vendita*",
+    "testo_1": "Per la compravendita collaboriamo con **HomePanda**: uniamo la nostra conoscenza del territorio alla forza di un partner specializzato nella vendita. Richiedi informazioni o prenota una visita: ti rispondiamo in tempi brevi."
+  },
+  "tutti_gli_immobili": {
+    "_titolo": "Tutti gli immobili",
+    "titolo_1": "Tutti gli immobili in vendita"
+  },
+  "invito_finale": {
+    "_titolo": "Invito finale",
+    "etichetta_1": "Compravendita",
+    "titolo_1": "Vuoi vendere o cerchi *casa*?",
+    "testo_1": "Che tu voglia vendere al giusto prezzo o trovare la casa ideale, insieme a HomePanda ti seguiamo in ogni fase: valutazione, promozione, trattativa e rogito.",
+    "pulsante_1": "Contattaci"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "_seo": {
+    "titolo": "LA MAISON GROUP | Short-term rental management and real estate investment",
+    "descrizione": "LA MAISON GROUP: acquisition, enhancement and management of income-producing properties. Short-term and long-term rentals, sales and real estate consulting in Northern Italy. Free valuation."
+  },
+  "intestazione": {
+    "foto_1_alt": "Bright living room of a modern apartment with open kitchen",
+    "foto_2_alt": "Modern, bright living room with sofas and large windows",
+    "foto_3_alt": "Modern villa with swimming pool",
+    "testo_1": "Acquisition, Enhancement and Management of Income Properties"
+  },
+  "invito_finale": {
+    "etichetta_1": "For owners",
+    "titolo_1": "How much could your property *earn*?",
+    "testo_1": "Tell us about your home: we will tell you what it is worth and suggest the most profitable route between short-term rental, long-term rental and sale. Free and with no obligation.",
+    "pulsante_1": "Request a free valuation"
+  },
+  "servizi": {
+    "etichetta_1": "What we do",
+    "titolo_1": "Everything your *property* needs",
+    "foto_1_alt": "Furnished living room of a short-term rental apartment",
+    "sottotitolo_1": "Short-term rentals",
+    "testo_1": "Listings, pricing, guests and paperwork: we handle it all. You choose the plan and collect the income, worry-free.",
+    "link_1": "Discover the service",
+    "foto_2_alt": "Interior of an apartment available for long-term rent",
+    "sottotitolo_2": "Long-term rentals",
+    "testo_2": "We find a reliable tenant, draw up the contract and manage the lease: a steady income, with no surprises.",
+    "link_2": "Discover the service",
+    "foto_3_alt": "Façade of a modern house for sale",
+    "sottotitolo_3": "Buying & selling",
+    "testo_3": "Valuation, marketing, negotiation and closing: we guide you step by step all the way to the signature.",
+    "link_3": "See the properties",
+    "foto_4_alt": "Consultants working on documents and a computer",
+    "sottotitolo_4": "Real estate consulting",
+    "testo_4": "Want to invest, or make more from what you already own? We analyse the numbers and show you the right strategy.",
+    "link_4": "Request a consultation"
+  },
+  "perche_sceglierci": {
+    "etichetta_1": "Why choose us",
+    "titolo_1": "Your property in *good hands*",
+    "sottotitolo_1": "One single point of contact",
+    "testo_1": "Short-term rentals, long-term rentals, sales and consulting: one partner for everything, with direct access to the owners of the company.",
+    "sottotitolo_2": "We think like investors",
+    "testo_2": "We buy and renovate properties for ourselves too: every piece of advice comes from real numbers and hands-on experience.",
+    "sottotitolo_3": "Zero red tape",
+    "testo_3": "Contracts, registrations, permits and formalities: we take care of them from start to finish, always compliant.",
+    "sottotitolo_4": "Tailor-made solutions",
+    "testo_4": "Selling, renting or investing: we analyse your property and propose the most profitable route, not a one-size-fits-all one."
+  },
+  "dove_operiamo": {
+    "etichetta_1": "Where we work",
+    "titolo_1": "Where we *work*",
+    "testo_1": "We personally manage properties in the provinces highlighted on the map. Is your property somewhere else? Get in touch: we consider every request."
+  },
+  "immobili_in_vendita": {
+    "etichetta_1": "For sale",
+    "titolo_1": "Our properties *for sale*",
+    "pulsante_1": "See all"
+  },
+  "progetti": {
+    "etichetta_1": "Projects",
+    "titolo_1": "Properties *reborn*",
+    "pulsante_1": "Discover our projects"
+  },
+  "recensioni": {
+    "etichetta_1": "Reviews",
+    "titolo_1": "What people say *about us*",
+    "pulsante_1": "Leave a review"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "menu": {
+    "index": "Home",
+    "chi_siamo": "About us",
+    "affitti_brevi": "Short-term rentals",
+    "affitti_tradizionali": "Long-term rentals",
+    "vendita": "For sale",
+    "progetti": "Projects",
+    "recensioni": "Reviews",
+    "contatti": "Contact",
+    "pulsante": "List your property",
+    "privacy": "Privacy Policy",
+    "cookie": "Cookie Policy"
+  },
+  "footer": {
+    "testo_1": "Real estate investment and property management",
+    "titolo_1": "Contact",
+    "voce_1": "Co-Founder",
+    "voce_2": "Co-Founder",
+    "titolo_3": "Company details",
+    "sede": "Registered office: Via dei Meleti 15b, 23027 Samolaco (SO), Italy",
+    "testo_3": "VAT no. IT01105940140",
+    "rea": "REA (business register) SO-83227",
+    "capitale": "Share capital € 1,000.00 fully paid",
+    "voce_3": "© 2026 La Maison Group S.r.l.s. – All rights reserved"
+  }
+}

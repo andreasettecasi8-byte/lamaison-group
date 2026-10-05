@@ -1,0 +1,104 @@
+{
+  "_seo": {
+    "titolo": "Gestione affitti brevi | LA MAISON GROUP",
+    "descrizione": "Gestione affitti brevi con LA MAISON GROUP: Gestione Completa o Gestione Online, prezzi dinamici, comunicazione con gli ospiti, Alloggiati Web, imposta di soggiorno e CIR. Richiedi un preventivo."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "foto_1": "img/affitti-brevi-hero.webp",
+    "foto_1_alt": "Soggiorno arredato di un appartamento pronto per ospiti in affitto breve",
+    "etichetta_1": "Affitti brevi",
+    "titolo_1": "Gestione *affitti brevi*",
+    "testo_1": "Il tuo appartamento sempre pronto, sempre in regola, sempre al lavoro per te.\nAnnunci, ospiti e pratiche li gestiamo noi: tu decidi quanto delegare."
+  },
+  "il_servizio": {
+    "_titolo": "Il servizio",
+    "etichetta_1": "Property management",
+    "titolo_1": "Il tuo immobile, *senza pensieri*",
+    "testo_1": "Un affitto breve rende davvero solo se è gestito con cura. Creiamo e ottimizziamo gli annunci, adeguiamo i prezzi alla domanda, rispondiamo agli ospiti e teniamo in ordine tutte le pratiche.",
+    "testo_2": "Tu ricevi i tuoi incassi e report chiari, senza dover seguire ogni prenotazione.\nScegli la formula in base a quanto vuoi delegare.",
+    "pulsante_1": "Scopri le formule",
+    "foto_1": "img/affitti-brevi-gestione.webp",
+    "foto_1_alt": "Cucina moderna e luminosa di un appartamento in gestione"
+  },
+  "formule": {
+    "_titolo": "Formule",
+    "etichetta_1": "Le formule",
+    "titolo_1": "Due formule di *gestione*",
+    "testo_1": "Nessun pacchetto preconfezionato: per ogni immobile prepariamo un preventivo su misura.",
+    "etichetta_piccola_1": "Pensiamo a tutto noi",
+    "sottotitolo_1": "Gestione Completa",
+    "testo_2": "Pensiamo a tutto noi, online e sul posto. Tu pensi solo a incassare.",
+    "voce_1": "Annunci e foto",
+    "voce_2": "Prezzi e calendario",
+    "voce_3": "Prenotazioni",
+    "voce_4": "Check-in e check-out",
+    "voce_5": "Pulizie",
+    "voce_6": "Manutenzioni",
+    "voce_7": "Pratiche burocratiche",
+    "pulsante_1": "Richiedi un preventivo",
+    "etichetta_piccola_2": "Tu segui la parte fisica",
+    "sottotitolo_2": "Gestione Online",
+    "testo_3": "Noi curiamo annunci, prezzi, prenotazioni e ospiti; tu segui check-in, pulizie e manutenzioni.",
+    "voce_8": "Annunci e foto",
+    "voce_9": "Prezzi e calendario",
+    "voce_10": "Prenotazioni",
+    "voce_11": "Comunicazione con gli ospiti",
+    "voce_12": "Pratiche burocratiche",
+    "pulsante_2": "Richiedi un preventivo"
+  },
+  "cosa_e_incluso": {
+    "_titolo": "Cosa è incluso",
+    "etichetta_1": "In ogni formula",
+    "titolo_1": "Cosa è *incluso*",
+    "sottotitolo_1": "Prezzi dinamici",
+    "testo_1": "Tariffe aggiornate in base a stagione, eventi e domanda, per far rendere al massimo ogni notte.",
+    "sottotitolo_2": "Comunicazione con gli ospiti",
+    "testo_2": "Risposte rapide e cordiali prima, durante e dopo il soggiorno: ospiti soddisfatti lasciano recensioni migliori.",
+    "sottotitolo_3": "Alloggiati Web",
+    "testo_3": "Comunichiamo i dati degli ospiti tramite il portale Alloggiati Web, come previsto dalla legge.",
+    "sottotitolo_4": "Imposta di soggiorno",
+    "testo_4": "Calcoliamo e gestiamo l'imposta di soggiorno per tuo conto.",
+    "sottotitolo_5": "CIR",
+    "testo_5": "Ci occupiamo del Codice Identificativo Regionale e lo inseriamo in tutti gli annunci.",
+    "sottotitolo_6": "Report periodici",
+    "testo_6": "Report chiari su prenotazioni, incassi e spese: sai sempre quanto rende il tuo immobile."
+  },
+  "servizio_extra": {
+    "_titolo": "Servizio extra",
+    "etichetta_1": "Servizio extra",
+    "titolo_1": "Shooting fotografico *professionale*",
+    "testo_1": "Le foto sono la prima cosa che un ospite guarda, e spesso decidono la prenotazione.\nCon uno shooting professionale il tuo immobile si fa notare tra centinaia di annunci.",
+    "pulsante_1": "Richiedi un preventivo",
+    "foto_1": "img/affitti-brevi-shooting.webp",
+    "foto_1_alt": "Fotocamera professionale per lo shooting degli immobili"
+  },
+  "preventivo_soggiorno": {
+    "_titolo": "Prenota il soggiorno",
+    "etichetta_1": "Per gli ospiti",
+    "titolo_1": "Prenota il tuo *soggiorno*",
+    "testo_1": "Scegli l'alloggio che preferisci, poi indica le date e quanti siete: ti rispondiamo con la disponibilità e un preventivo dedicato.",
+    "sottotitolo_1": "Scegli l'alloggio",
+    "sottotitolo_2": "Scegli le date e invia la richiesta"
+  },
+  "come_funziona": {
+    "_titolo": "Come funziona",
+    "etichetta_1": "In 4 passi",
+    "titolo_1": "Come *funziona*",
+    "sottotitolo_1": "Contatto",
+    "testo_1": "Ci racconti il tuo immobile per telefono, su WhatsApp o compilando il modulo.",
+    "sottotitolo_2": "Sopralluogo",
+    "testo_2": "Visitiamo l'immobile e ti proponiamo la formula giusta, con un preventivo su misura.",
+    "sottotitolo_3": "Attivazione",
+    "testo_3": "Prepariamo annunci, prezzi e pratiche: il tuo immobile è pronto ad accogliere i primi ospiti.",
+    "sottotitolo_4": "Report e pagamenti",
+    "testo_4": "Ricevi i pagamenti delle prenotazioni e report periodici chiari e completi."
+  },
+  "invito_finale": {
+    "_titolo": "Invito finale",
+    "etichetta_1": "Per i proprietari",
+    "titolo_1": "Quanto può *rendere* il tuo immobile?",
+    "testo_1": "Raccontaci la tua casa: ti prepariamo un preventivo di gestione su misura, gratuito e senza impegno.",
+    "pulsante_1": "Richiedi un preventivo"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_seo": {
+    "titolo": "Contatti | LA MAISON GROUP",
+    "descrizione": "Contatta LA MAISON GROUP per affidare il tuo immobile, cercare casa in affitto o in vendita, o ricevere una consulenza immobiliare. Telefono, WhatsApp ed email."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "etichetta_1": "Contatti",
+    "titolo_1": "Parliamo del tuo *immobile*",
+    "testo_1": "Chiamaci, scrivici su WhatsApp o compila il modulo: ti risponde direttamente uno di noi, al più presto."
+  },
+  "scrivici": {
+    "_titolo": "Scrivici",
+    "sottotitolo_1": "Andrea Settecasi",
+    "testo_1": "Co-Founder",
+    "telefono_1": "+39 393 267 1463",
+    "telefono_2": "+41 76 286 27 96",
+    "sottotitolo_2": "Paolo Malugani",
+    "testo_2": "Co-Founder",
+    "telefono_3": "+39 331 330 8349",
+    "email_1": "lamaisongroup@outlook.it",
+    "titolo_1": "Scrivici",
+    "testo_3": "I campi con * sono obbligatori.",
+    "campo_1": "Nome e cognome *",
+    "campo_2": "Email *",
+    "campo_3": "Tipo di richiesta *",
+    "campo_4": "Messaggio *",
+    "pulsante_1": "Invia la richiesta",
+    "sottotitolo_3": "Messaggio inviato",
+    "testo_4": "Grazie! Abbiamo ricevuto la tua richiesta e ti ricontatteremo al più presto.",
+    "pulsante_2": "Invia un altro messaggio"
+  }
+}

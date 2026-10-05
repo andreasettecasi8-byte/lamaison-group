@@ -1,0 +1,36 @@
+{
+  "_seo": {
+    "titolo": "Reviews | LA MAISON GROUP",
+    "descrizione": "Reviews from owners, guests and buyers who chose LA MAISON GROUP. Leave your own review too."
+  },
+  "intestazione": {
+    "etichetta_1": "Reviews",
+    "titolo_1": "Our *clients* have their say",
+    "testo_1": "Owners, guests and buyers share their experience with *LA MAISON GROUP*."
+  },
+  "tutte_le_recensioni": {
+    "titolo_1": "All reviews"
+  },
+  "lascia_una_recensione": {
+    "titolo_1": "Leave a *review*",
+    "testo_1": "Your review will be published after a check by our team. Your email address is never published. Fields marked with * are required.",
+    "campo_1": "Name *",
+    "nota_1": "It will be published with your review.",
+    "campo_2": "Email *",
+    "nota_2": "It will not be published.",
+    "campo_3": "You are… *",
+    "campo_4": "Rating *",
+    "campo_5": "Your review *",
+    "voce_1": "I agree to my review being published on the website with the name given. *",
+    "pulsante_1": "Send review",
+    "sottotitolo_1": "Thank you for your review!",
+    "testo_2": "We have received it: it will be published after a quick check by our team.",
+    "pulsante_2": "Write another review"
+  },
+  "invito_finale": {
+    "etichetta_1": "For owners",
+    "titolo_1": "How much could your property *earn*?",
+    "testo_1": "Tell us about your home: we will suggest the best solution between management, rental and sale, with a free, no-obligation valuation.",
+    "pulsante_1": "Request a valuation"
+  }
+}

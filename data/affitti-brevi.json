@@ -1,0 +1,25 @@
+{
+  "immobili": [
+    {
+      "citta": "Samolaco",
+      "pubblicata": true,
+      "titolo": "Casa di montagna",
+      "zona": "S.Pietro",
+      "minimo_notti": 3,
+      "tipologia": "Bilocale",
+      "ospiti": 2,
+      "camere": 1,
+      "letti": 1,
+      "bagni": 1,
+      "mq": 49,
+      "caratteristiche": [
+        "Balcone",
+        "Riscaldamento autonomo",
+        "Arredato",
+        "Lavatrice",
+        "Aria condizionata"
+      ],
+      "id": "casa-di-montagna"
+    }
+  ]
+}

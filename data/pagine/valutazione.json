@@ -1,0 +1,42 @@
+{
+  "_seo": {
+    "titolo": "Valutazione immobile gratuita | LA MAISON GROUP",
+    "descrizione": "Richiedi la valutazione del tuo immobile: inserisci i dati della casa e fissiamo un appuntamento per un sopralluogo senza impegno. Vendita e affitto."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "etichetta_1": "Valutazione immobile",
+    "titolo_1": "Quanto vale il tuo *immobile*?",
+    "testo_1": "Compila il modulo con i dati della tua proprietà."
+  },
+  "richiesta_di_valutazione": {
+    "_titolo": "Richiesta di valutazione",
+    "titolo_1": "Come funziona",
+    "voce_1": "**Ci descrivi l'immobile**\nBastano pochi dati: dove si trova, com'è fatto e in che stato è.",
+    "voce_2": "**Ti chiamiamo**\nTi contattiamo entro 24 ore per fissare l'appuntamento nel giorno che preferisci.",
+    "voce_3": "**Sopralluogo e valutazione**\nVisitiamo l'immobile e ti diamo una stima realistica del valore di vendita.",
+    "titolo_2": "Richiedi la valutazione",
+    "testo_1": "I campi con * sono obbligatori.",
+    "sottotitolo_1": "L'immobile",
+    "campo_1": "Tipologia *",
+    "campo_2": "Cosa vorresti fare? *",
+    "campo_3": "Indirizzo *",
+    "campo_4": "Comune *",
+    "campo_5": "Provincia *",
+    "campo_6": "Superficie (m²) *",
+    "campo_7": "Locali",
+    "campo_8": "Bagni",
+    "campo_9": "Piano",
+    "campo_10": "Stato dell'immobile *",
+    "campo_11": "Anno di costruzione",
+    "campo_12": "Caratteristiche",
+    "sottotitolo_2": "I tuoi dati",
+    "campo_13": "Nome e cognome *",
+    "campo_14": "Telefono *",
+    "campo_15": "Email *",
+    "pulsante_1": "Richiedi la valutazione",
+    "sottotitolo_3": "Richiesta inviata",
+    "testo_2": "Grazie! Abbiamo ricevuto i dati del tuo immobile: ti chiameremo a breve per fissare l'appuntamento.",
+    "pulsante_2": "Valuta un altro immobile"
+  }
+}

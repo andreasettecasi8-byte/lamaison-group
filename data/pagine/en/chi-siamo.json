@@ -1,0 +1,42 @@
+{
+  "_seo": {
+    "titolo": "About us | LA MAISON GROUP",
+    "descrizione": "Meet LA MAISON GROUP: investors and property managers who buy, enhance and manage income-producing properties in Northern Italy. Our team and the way we work."
+  },
+  "intestazione": {
+    "etichetta_1": "About us",
+    "titolo_1": "Real estate investment and *property management*",
+    "testo_1": "We buy, renovate and manage income-producing properties, and we put our experience at the service of owners who want their home to earn without the hassle."
+  },
+  "la_nostra_storia": {
+    "etichetta_1": "Our story",
+    "titolo_1": "One partner for your *property*",
+    "testo_1": "*LA MAISON GROUP* was born from a simple idea: every property owner deserves a single partner who can take care of everything. Short-term and long-term rentals, sales, investment advice: one point of contact, one goal – getting the best out of your property.",
+    "testo_2": "Before being consultants, we are investors: we buy and renovate properties ourselves. We know what it really takes to add value to a home and make it pay over time, and we advise you as we would advise ourselves.",
+    "foto_1_alt": "Handshake between an owner and a consultant"
+  },
+  "il_team": {
+    "etichetta_1": "The team",
+    "titolo_1": "The people behind *LA MAISON GROUP*",
+    "testo_1": "Co-Founder",
+    "testo_3": "Co-Founder",
+    "testo_2": "Looks after owners from the first valuation to day-to-day management, with clear reports and always a direct line.",
+    "testo_4": "Leads the acquisition, renovation and enhancement projects: he turns properties in need of work into investments that pay."
+  },
+  "i_nostri_valori": {
+    "etichetta_1": "How we work",
+    "titolo_1": "Three promises we *keep*",
+    "sottotitolo_1": "Transparency",
+    "testo_1": "We always tell you how things stand: realistic valuations, clear costs and regular updates, whether you are renting, selling or investing.",
+    "sottotitolo_2": "Care",
+    "testo_2": "We look after every property as if it were our own: from the first visit to the signing of the contract, and on to day-to-day management.",
+    "sottotitolo_3": "Tailor-made",
+    "testo_3": "No standard solutions: we listen to your goals and build the right strategy for your property together."
+  },
+  "invito_finale": {
+    "etichetta_1": "For owners",
+    "titolo_1": "How much could your property *earn*?",
+    "testo_1": "Let's talk: we will suggest the best solution between management, rental and sale, with a free, no-obligation valuation.",
+    "pulsante_1": "Request a valuation"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "_seo": {
+    "titolo": "Cookie Policy | LA MAISON GROUP",
+    "descrizione": "LA MAISON GROUP Cookie Policy: the website sets no profiling or advertising cookies and uses only anonymous, cookie-free statistics. Find out how to manage your preferences."
+  },
+  "intestazione": {
+    "etichetta_1": "Legal",
+    "titolo_1": "Cookie *Policy*",
+    "testo_1": "How the website uses cookies and similar technologies: technical tools only, no profiling. This is a translation for your convenience: the Italian version prevails."
+  },
+  "informativa": {
+    "testo_1": "Last updated: 4 October 2026",
+    "testo_2": "This page explains how the website uses cookies and similar technologies, pursuant to Art. 122 of Italian Legislative Decree 196/2003 (\"Privacy Code\") and the Guidelines of the Italian Data Protection Authority on cookies and other tracking tools of 10 June 2021.",
+    "titolo_1": "1. What cookies are",
+    "testo_3": "Cookies are small text files that a website saves on the visitor's device. The same rules apply to similar technologies, such as the browser's local or session storage (localStorage and sessionStorage).",
+    "testo_4": "Technical cookies are needed for the website to work and do not require consent. Profiling and advertising cookies, and most statistics tools, require prior consent.",
+    "titolo_2": "2. Cookies used by this website",
+    "testo_5": "This website does not set cookies on your device. We do not use profiling, advertising or statistics cookies, nor third-party cookies.",
+    "testo_6": "The only technical tools are the browser's storage: the language you choose (Italian or English) is remembered in localStorage so the website opens in that language next time, and the session storage (sessionStorage) is used only by the restricted area for website managers to keep them logged in while the window is open. Neither is used to track you.",
+    "titolo_3": "3. Why you don't see a cookie banner",
+    "testo_7": "Since the website uses only technical tools, consent is not required and therefore no banner is shown (Art. 122(1) of the Privacy Code).",
+    "testo_11": "Visit statistics are also anonymous and cookie-free: for this reason no consent is needed (Art. 122 of the Privacy Code and the Italian Data Protection Authority Guidelines of 10 June 2021).",
+    "testo_8": "If in the future we add tools that require consent (for example non-anonymous statistics, maps or videos embedded from other sites, social network buttons), we will only activate them after asking for your consent with a dedicated banner, and we will update this page.",
+    "titolo_4": "4. External services",
+    "voce_1": "Fonts and the province map are hosted directly on the website: browsing does not contact external services.",
+    "voce_2": "Forms (contact, reviews, quote requests) are sent through Formspree only when you press \"Send\": the website does not set cookies for this.",
+    "voce_3": "The WhatsApp, Facebook and Instagram buttons are simple links: only if you press them do you open the external service, which uses its own cookies under its own policy.",
+    "voce_4": "Anonymous statistics: we count visits and clicks with Umami, which works without cookies and without storing identifiers on your device. The data are only aggregated and cannot identify you.",
+    "titolo_5": "5. How to manage cookies in your browser",
+    "testo_9": "You can always check and delete cookies and site data in your browser settings: in Chrome under Settings, Privacy and security; in Safari under Settings, Privacy; in Firefox under Settings, Privacy & Security; in Edge under Settings, Cookies and site permissions.",
+    "titolo_6": "6. Controller and contacts",
+    "testo_10": "La Maison Group S.r.l.s., registered office at Via dei Meleti 15b, 23027 Samolaco (SO), Italy, VAT no. 01105940140, REA SO-83227 (hereinafter the \"Controller\" or \"we\"). For questions write to lamaisongroup@outlook.it."
+  }
+}

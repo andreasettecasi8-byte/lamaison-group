@@ -1,0 +1,50 @@
+{
+  "_seo": {
+    "titolo": "Chi siamo | LA MAISON GROUP",
+    "descrizione": "Conosci LA MAISON GROUP: investitori e property manager che acquistano, valorizzano e gestiscono immobili a reddito. Il team e il nostro modo di lavorare."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "etichetta_1": "Chi siamo",
+    "titolo_1": "Investimenti immobiliari e *property management*",
+    "testo_1": "Compriamo, ristrutturiamo e gestiamo immobili a reddito. Mettiamo la nostra esperienza al servizio dei proprietari che vogliono far rendere la propria casa senza pensieri."
+  },
+  "la_nostra_storia": {
+    "_titolo": "La nostra storia",
+    "etichetta_1": "La nostra storia",
+    "titolo_1": "Un unico partner per il tuo *immobile*",
+    "testo_1": "*LA MAISON GROUP* nasce da un'idea semplice: chi possiede un immobile merita un unico interlocutore, capace di seguirlo in tutto. Affitti brevi e a lungo termine, compravendita, consulenza sugli investimenti: un solo referente, un solo obiettivo, far rendere al meglio la tua proprietà.",
+    "testo_2": "Prima ancora che consulenti, siamo investitori: acquistiamo e ristrutturiamo immobili in prima persona. Sappiamo cosa serve davvero per valorizzare una casa e farla rendere nel tempo, e ti consigliamo come faremmo per noi stessi.",
+    "foto_1": "img/chi-siamo-storia.webp",
+    "foto_1_alt": "Stretta di mano tra proprietario e consulente"
+  },
+  "il_team": {
+    "_titolo": "Il team",
+    "etichetta_1": "Il team",
+    "titolo_1": "Le persone dietro *LA MAISON GROUP*",
+    "sottotitolo_1": "Andrea Settecasi",
+    "testo_1": "Co-Founder",
+    "testo_2": "Segue i proprietari dalla prima valutazione alla gestione di tutti i giorni, con report chiari e un contatto sempre diretto.",
+    "sottotitolo_2": "Paolo Malugani",
+    "testo_3": "Co-Founder",
+    "testo_4": "Guida i progetti di acquisto, ristrutturazione e valorizzazione: trasforma immobili da sistemare in investimenti che rendono."
+  },
+  "i_nostri_valori": {
+    "_titolo": "I nostri valori",
+    "etichetta_1": "Come lavoriamo",
+    "titolo_1": "Tre impegni che *manteniamo*",
+    "sottotitolo_1": "Trasparenza",
+    "testo_1": "Ti diciamo sempre come stanno le cose: valutazioni realistiche, costi chiari e aggiornamenti costanti, che tu stia affittando, vendendo o investendo.",
+    "sottotitolo_2": "Cura",
+    "testo_2": "Seguiamo ogni immobile come se fosse nostro: dalla prima visita alla firma del contratto, fino alla gestione di tutti i giorni.",
+    "sottotitolo_3": "Su misura",
+    "testo_3": "Nessuna soluzione standard: ascoltiamo i tuoi obiettivi e costruiamo insieme la strategia giusta per il tuo immobile."
+  },
+  "invito_finale": {
+    "_titolo": "Invito finale",
+    "etichetta_1": "Per i proprietari",
+    "titolo_1": "Quanto può *rendere* il tuo immobile?",
+    "testo_1": "Parliamone: ti proponiamo la soluzione più adatta tra gestione, affitto e vendita, con una valutazione gratuita e senza impegno.",
+    "pulsante_1": "Richiedi una valutazione"
+  }
+}

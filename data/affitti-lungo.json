@@ -1,0 +1,27 @@
+{
+  "immobili": [
+    {
+      "citta": "Torino",
+      "pubblicata": true,
+      "contratto": "4+4",
+      "arredamento": "Arredato",
+      "classe_energetica": "A1",
+      "titolo": "Appartamento",
+      "tipologia": "Bilocale",
+      "mq": 50,
+      "locali": 2,
+      "camere": 1,
+      "bagni": 1,
+      "piano": "3",
+      "caratteristiche": [
+        "Arredato",
+        "Riscaldamento autonomo",
+        "Box auto",
+        "Terrazzo",
+        "Ascensore",
+        "Wi-Fi"
+      ],
+      "id": "appartamento"
+    }
+  ]
+}

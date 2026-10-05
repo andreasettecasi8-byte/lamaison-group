@@ -1,0 +1,57 @@
+{
+  "_seo": {
+    "titolo": "Affitti a lungo termine | LA MAISON GROUP",
+    "descrizione": "Affitti a lungo termine con LA MAISON GROUP: ricerca e selezione dell'inquilino, contratto, registrazione e gestione della locazione. Richiedi un preventivo."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "etichetta_1": "Affitti a lungo termine",
+    "titolo_1": "Affitta il tuo immobile *in tranquillità*",
+    "testo_1": "Troviamo l'inquilino giusto, prepariamo il contratto e seguiamo la locazione nel tempo."
+  },
+  "il_servizio": {
+    "_titolo": "Il servizio",
+    "etichetta_1": "Affitti a lungo termine",
+    "titolo_1": "Un inquilino affidabile, *un reddito stabile*",
+    "testo_1": "Un affitto a lungo termine è la base di un reddito sicuro, a patto di scegliere bene l'inquilino. Noi lo cerchiamo, ne verifichiamo l'affidabilità e curiamo ogni passaggio del contratto.",
+    "testo_2": "",
+    "foto_1": "img/affitti-lungo-servizio.webp",
+    "foto_1_alt": "Soggiorno accogliente di un appartamento in affitto a lungo termine"
+  },
+  "cosa_facciamo": {
+    "_titolo": "Cosa facciamo",
+    "etichetta_1": "Il servizio",
+    "titolo_1": "Cosa *facciamo*",
+    "sottotitolo_1": "Ricerca dell'inquilino",
+    "testo_1": "Annunci curati sui principali portali, con foto e descrizioni che attirano i candidati giusti.",
+    "sottotitolo_2": "Selezione e verifica",
+    "testo_2": "Verifichiamo referenze, reddito e affidabilità di ogni candidato prima di proportelo.",
+    "sottotitolo_3": "Contratto e registrazione",
+    "testo_3": "Scegliamo con te il contratto più adatto e ci occupiamo della registrazione."
+  },
+  "come_funziona": {
+    "_titolo": "Come funziona",
+    "etichetta_1": "In 4 passi",
+    "titolo_1": "Come *funziona*",
+    "sottotitolo_1": "Contatto",
+    "testo_1": "Ci racconti il tuo immobile per telefono, su WhatsApp o compilando il modulo.",
+    "sottotitolo_2": "Valutazione",
+    "testo_2": "Visitiamo l'immobile e ti indichiamo il canone giusto per il mercato della tua zona.",
+    "sottotitolo_3": "Inquilino",
+    "testo_3": "Pubblichiamo l'annuncio, organizziamo le visite e ti presentiamo solo candidati verificati.",
+    "sottotitolo_4": "Contratto e gestione",
+    "testo_4": "Firmiamo il contratto e ti affianchiamo per tutta la durata della locazione."
+  },
+  "invito_finale": {
+    "_titolo": "Invito finale",
+    "etichetta_1": "Per i proprietari",
+    "titolo_1": "Vuoi affittare il tuo *immobile*?",
+    "testo_1": "Richiedi una valutazione gratuita del canone: ti diciamo quanto puoi ottenere e come possiamo seguirti.",
+    "pulsante_1": "Richiedi una valutazione"
+  },
+  "immobili": {
+    "_titolo": "Immobili",
+    "etichetta_1": "Disponibili ora",
+    "titolo_1": "Immobili in *affitto*"
+  }
+}

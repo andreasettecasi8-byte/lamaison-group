@@ -1,0 +1,86 @@
+{
+  "_seo": {
+    "titolo": "LA MAISON GROUP | Gestione affitti brevi e investimenti immobiliari",
+    "descrizione": "LA MAISON GROUP: acquisizione, valorizzazione e gestione di immobili a reddito. Affitti brevi, affitti a lungo termine, compravendita e consulenza immobiliare. Valutazione gratuita."
+  },
+  "intestazione": {
+    "_titolo": "Intestazione",
+    "foto_1": "img/hero.webp",
+    "foto_1_alt": "Soggiorno luminoso di un appartamento moderno con cucina a vista",
+    "foto_2": "img/hero-2.webp",
+    "foto_2_alt": "Soggiorno moderno e luminoso con divani e grandi vetrate",
+    "foto_3": "img/hero-3.webp",
+    "foto_3_alt": "Villa moderna con piscina",
+    "titolo_1": "**LA MAISON GROUP**",
+    "testo_1": "Acquisizione, Valorizzazione e Gestione di Immobili a Reddito"
+  },
+  "invito_finale": {
+    "_titolo": "Per i proprietari",
+    "etichetta_1": "Per i proprietari",
+    "titolo_1": "Quanto può *rendere* il tuo immobile?",
+    "testo_1": "Raccontaci la tua casa: ti diciamo quanto vale e ti proponiamo la strada più redditizia tra affitto breve, affitto a lungo termine e vendita. Gratis e senza impegno.",
+    "pulsante_1": "Richiedi una valutazione gratuita"
+  },
+  "servizi": {
+    "_titolo": "Servizi",
+    "etichetta_1": "Cosa facciamo",
+    "titolo_1": "Tutto ciò che serve al tuo *immobile*",
+    "foto_1": "img/servizio-affitti-brevi.webp",
+    "foto_1_alt": "Soggiorno arredato di un appartamento per affitti brevi",
+    "sottotitolo_1": "Affitti brevi",
+    "testo_1": "Annunci, prezzi, ospiti e pratiche burocratiche li gestiamo noi. Tu scegli la formula e incassi, senza pensieri.",
+    "link_1": "Scopri il servizio",
+    "foto_2": "img/servizio-affitti-tradizionali.webp",
+    "foto_2_alt": "Interno di un appartamento disponibile in affitto a lungo termine",
+    "sottotitolo_2": "Affitti a lungo termine",
+    "testo_2": "Troviamo un inquilino affidabile, prepariamo il contratto e seguiamo la locazione: un reddito stabile, senza sorprese.",
+    "link_2": "Scopri il servizio",
+    "foto_3": "img/servizio-compravendita.webp",
+    "foto_3_alt": "Facciata di una casa moderna in vendita",
+    "sottotitolo_3": "Compravendita",
+    "testo_3": "Valutazione, promozione, trattativa e rogito: ti accompagniamo passo dopo passo fino alla firma.",
+    "link_3": "Vedi gli immobili",
+    "foto_4": "img/servizio-consulenza.webp",
+    "foto_4_alt": "Consulenti al lavoro su documenti e computer",
+    "sottotitolo_4": "Consulenza immobiliare",
+    "testo_4": "Vuoi investire o far rendere di più ciò che hai? Analizziamo i numeri e ti indichiamo la strategia giusta.",
+    "link_4": "Richiedi una consulenza"
+  },
+  "perche_sceglierci": {
+    "_titolo": "Perché sceglierci",
+    "etichetta_1": "Perché sceglierci",
+    "titolo_1": "Il tuo immobile in *buone mani*",
+    "sottotitolo_1": "Un unico referente",
+    "testo_1": "Affitti brevi, affitti a lungo termine, compravendita e consulenza: un solo interlocutore per tutto, con un contatto diretto con i titolari.",
+    "sottotitolo_2": "Ragioniamo da investitori",
+    "testo_2": "Compriamo e ristrutturiamo immobili anche per noi: ogni consiglio nasce dai numeri e dall'esperienza sul campo.",
+    "sottotitolo_3": "Zero burocrazia",
+    "testo_3": "Contratti, registrazioni, pratiche e adempimenti: li seguiamo noi dall'inizio alla fine, sempre in regola.",
+    "sottotitolo_4": "Soluzioni su misura",
+    "testo_4": "Vendere, affittare o investire: analizziamo il tuo immobile e ti proponiamo la strada più conveniente, non quella standard."
+  },
+  "dove_operiamo": {
+    "_titolo": "Dove operiamo",
+    "etichetta_1": "Dove operiamo",
+    "titolo_1": "Dove *operiamo*",
+    "testo_1": "Seguiamo di persona gli immobili nelle province evidenziate sulla mappa. Il tuo immobile si trova altrove? Scrivici: valutiamo ogni richiesta."
+  },
+  "immobili_in_vendita": {
+    "_titolo": "Immobili in vendita",
+    "etichetta_1": "In vendita",
+    "titolo_1": "Le nostre proposte *in vendita*",
+    "pulsante_1": "Vedi tutti"
+  },
+  "progetti": {
+    "_titolo": "Progetti",
+    "etichetta_1": "Progetti",
+    "titolo_1": "Immobili che *rinascono*",
+    "pulsante_1": "Scopri i progetti"
+  },
+  "recensioni": {
+    "_titolo": "Recensioni",
+    "etichetta_1": "Recensioni",
+    "titolo_1": "Cosa dicono *di noi*",
+    "pulsante_1": "Lascia una recensione"
+  }
+}
