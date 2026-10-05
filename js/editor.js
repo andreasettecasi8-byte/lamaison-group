@@ -388,6 +388,8 @@
       decrypt(pw.value, cfg.key)
         .then(function (secret) {
           var session = { token: secret.token || '', repo: cfg.repo || '', branch: cfg.branch || 'main' };
+          // sul sito online serve il collegamento a GitHub: se manca lo si chiede subito
+          if (!IS_LOCAL && !(session.token && session.repo)) return showConnect(cfg, pw.value, session);
           sessionSet(session);
           closeModal();
           start(session);
@@ -439,6 +441,39 @@
         .catch(function (ex) { busy(btn, false); err.textContent = ex.message; });
     });
     modal('Crea il tuo accesso', form);
+  }
+
+  // Collegamento a GitHub dal sito online (accesso creato sul Mac senza token)
+  function showConnect(cfg, password, session) {
+    var repo = h('input', { type: 'text', placeholder: 'utente/repository', value: session.repo, autocapitalize: 'off', spellcheck: 'false', required: true });
+    var token = h('input', { type: 'password', placeholder: 'github_pat_…', autocomplete: 'off', required: true });
+    var err = errorBox();
+    var btn = h('button', { type: 'submit', class: 'lm-btn lm-btn--primary', text: 'Collega e entra' });
+    var form = h('form', { class: 'lm-form' }, [
+      h('p', { class: 'lm-muted', text: 'Password corretta. Per salvare le modifiche online collega il sito a GitHub: serve solo la prima volta.' }),
+      field('Repository GitHub', repo, 'Es. andreasettecasi8-byte/lamaison-group'),
+      field('Token GitHub', token, 'GitHub → Settings → Developer settings → Fine-grained tokens. Accesso solo a questo repository, permesso "Contents: Read and write".'),
+      err, btn
+    ]);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.textContent = '';
+      var s = { token: token.value.trim(), repo: repo.value.trim(), branch: session.branch || 'main' };
+      var backend = GitHub(s.repo, s.branch, s.token);
+      busy(btn, true, 'Collego…');
+      backend.check()
+        .then(function () { return encrypt(password, { token: s.token }); })
+        .then(function (key) { return saveAdminConfig({ repo: s.repo, branch: s.branch, key: key }, backend); })
+        .then(function () {
+          sessionSet(s);
+          closeModal();
+          toast('Sito collegato a GitHub.', 'ok');
+          start(s);
+        })
+        .catch(function (ex) { busy(btn, false); err.textContent = ex.message; });
+    });
+    closeModal();
+    modal('Collega GitHub', form);
   }
 
   function resume() {
