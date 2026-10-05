@@ -220,11 +220,11 @@
     if (!document.querySelector('link[href="css/editor.css"]')) {
       var css = document.createElement('link');
       css.rel = 'stylesheet';
-      css.href = 'css/editor.css';
+      css.href = 'css/editor.css?v=' + Date.now(); // sempre l'ultima versione dell'area riservata
       document.head.appendChild(css);
     }
     var script = document.createElement('script');
-    script.src = 'js/editor.js';
+    script.src = 'js/editor.js?v=' + Date.now();
     script.onload = function () { window.LaMaisonEditor[action](); };
     document.head.appendChild(script);
   }

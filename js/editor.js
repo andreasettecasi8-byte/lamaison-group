@@ -507,8 +507,12 @@
         updateSaveButton();
       })
       .catch(function (ex) {
-        toast(ex.message, 'error');
         sessionSet(null);
+        // online senza collegamento a GitHub: si torna alla password, poi si collega
+        if (!IS_LOCAL && !(session.token && session.repo)) {
+          return readAdminConfig().then(function (cfg) { if (cfg.key) showLogin(cfg); else showSetup(cfg); });
+        }
+        toast(ex.message, 'error');
       });
   }
 
