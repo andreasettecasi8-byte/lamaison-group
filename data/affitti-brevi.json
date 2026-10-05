@@ -3,7 +3,7 @@
     {
       "citta": "Samolaco",
       "pubblicata": true,
-      "titolo": "Casa di montagna",
+      "titolo": "Nido Alpino",
       "zona": "S.Pietro",
       "minimo_notti": 3,
       "tipologia": "Bilocale",
@@ -19,7 +19,8 @@
         "Lavatrice",
         "Aria condizionata"
       ],
-      "id": "casa-di-montagna"
+      "id": "casa-di-montagna",
+      "indirizzo": "Via Alle Fontane 14A"
     }
   ]
 }
