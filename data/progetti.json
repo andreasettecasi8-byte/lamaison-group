@@ -1,32 +1,3 @@
 {
-  "progetti": [
-    {
-      "id": "esempio-riqualificazione",
-      "esempio": true,
-      "titolo": "Riqualificazione residenziale",
-      "zona": "Torino",
-      "stato": "In corso",
-      "descrizione": "Progetto di esempio: acquisto, ristrutturazione completa e valorizzazione.",
-      "foto_prima": "img/progetto-1-prima.webp",
-      "foto_dopo": "img/progetto-1-dopo.webp"
-    },
-    {
-      "id": "esempio-immobile-reddito",
-      "esempio": true,
-      "titolo": "Immobile a reddito",
-      "zona": "Torino",
-      "stato": "In arrivo",
-      "descrizione": "Progetto di esempio: immobile di proprietà destinato alla locazione.",
-      "foto": "img/progetto-2.webp"
-    },
-    {
-      "id": "esempio-flip",
-      "esempio": true,
-      "titolo": "Operazione di flip",
-      "zona": "Torino",
-      "stato": "In arrivo",
-      "descrizione": "Progetto di esempio: acquisto, ristrutturazione e rivendita.",
-      "foto": "img/progetto-3.webp"
-    }
-  ]
+  "progetti": []
 }
