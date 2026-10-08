@@ -52,7 +52,7 @@
   --fs-h2: 28px;
   --fs-h3: 20px;
   --fs-body: 16px;
-  --fs-label: 12px;
+  --fs-label: 13px; /* leggibile anche su telefono */
 
   --font-title: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-text: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1884,3 +1884,64 @@ main { overflow-x: clip; }
 
 /* Chi siamo: "La nostra storia" solo testo */
 .storia > div { max-width: 780px; margin-inline: auto; text-align: center; }
+
+/* =========================================================
+   Telefono e tablet (ottobre 2026): pulsanti comodi da toccare,
+   niente effetti "appiccicati" al tocco, margini per il notch di iPhone
+   ========================================================= */
+html { -webkit-tap-highlight-color: transparent; }
+
+/* Aree da toccare di almeno 44 px */
+.hero__dots button, .reviews-dots button { width: 44px; height: 44px; }
+.hero__dots { gap: 0; }
+.footer__grid > :nth-child(2) p > a { min-height: 44px; }
+.card__link { display: inline-flex; align-items: center; min-height: 44px; padding-top: 0; }
+.card h3 a { display: inline-block; padding-block: 10px; margin-block: -10px; }
+.cal__day { height: 44px; }
+.consent input { width: 24px; height: 24px; margin-top: 0; }
+.consent { align-items: center; min-height: 44px; }
+@media (max-width: 767px) {
+  .lang-switch button { min-width: 44px; }
+}
+
+/* Schermi touch: gli effetti al passaggio del mouse non restano attivi dopo il tocco */
+@media (hover: none) {
+  .card:hover, .plan:hover, .btn:hover, .btn--primary:hover, .btn--gold:hover, .btn--secondary:hover { transform: none; }
+  .card:hover { box-shadow: var(--shadow), 0 0 0 var(--line) var(--hairline); }
+  .btn--gold:hover::before, .form button[type="submit"]:hover::before, .plan .btn:hover::before { transform: translateX(-120%) skewX(-18deg); transition: none; }
+  .btn--gold:hover::after, .form button[type="submit"]:hover::after, .plan .btn:hover::after { transform: none; }
+  .js .card.reveal.is-visible:hover .card__media img { scale: 1; }
+  /* risposta immediata al tocco */
+  .btn:active { transform: scale(0.97); transition-duration: 0.1s; }
+  .card:active { transform: scale(0.99); }
+}
+
+/* iPhone in orizzontale: il contenuto non finisce sotto il notch */
+.container {
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+.whatsapp-float { right: calc(var(--s-24) + env(safe-area-inset-right, 0px)); }
+.footer { padding-bottom: calc(var(--s-16) + env(safe-area-inset-bottom, 0px)); }
+
+/* Telefono: il pulsante WhatsApp non copre gli ultimi link in fondo alla pagina */
+@media (max-width: 767px) {
+  .footer__bottom { padding-bottom: 72px; }
+  .whatsapp-float { right: calc(var(--s-16) + env(safe-area-inset-right, 0px)); bottom: calc(var(--s-16) + env(safe-area-inset-bottom, 0px)); width: 52px; height: 52px; }
+}
+
+/* Menu a tendina su tablet: altezza corretta anche con la barra del browser */
+@media (min-width: 768px) {
+  .mobile-menu { max-height: calc(100dvh - var(--header-h) - var(--s-32)); }
+}
+.footer__grid > :nth-child(2) p > br { display: none; } /* i numeri sono già uno sotto l'altro */
+
+/* Telefono in orizzontale: titoli più contenuti, tutto il testo dentro la foto */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero #hero-title { font-size: clamp(32px, 11vh, 48px); letter-spacing: 2px; }
+  .hero__subtitle { margin: var(--s-8) 0 0; font-size: 17px; }
+  .hero__dots { display: none; }
+  .page-hero { min-height: 0; padding: calc(var(--header-h) + var(--s-24)) 0 var(--s-32); }
+  .page-hero h1 { font-size: 32px; }
+  .page-hero p { margin-top: var(--s-8); font-size: 16px; }
+}

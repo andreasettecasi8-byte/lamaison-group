@@ -84,7 +84,10 @@
       var key = img.dataset.editImg;
       var src = lookup(all, key);
       var alt = lookup(all, key + '_alt');
-      if (typeof src === 'string' && src && img.getAttribute('src') !== src) img.src = src;
+      if (typeof src === 'string' && src && img.getAttribute('src') !== src) {
+        img.removeAttribute('srcset'); // le versioni ridotte sono della foto originale
+        img.src = src;
+      }
       if (typeof alt === 'string') img.alt = alt;
     });
     // Numeri WhatsApp (1 = principale, 2 = secondo contatto)

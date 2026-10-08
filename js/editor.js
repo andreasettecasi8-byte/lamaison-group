@@ -819,7 +819,7 @@
       if (!path) return;
       setPath(state.data[imageFileOf(key)], pathOf(key), path);
       markDirty(imageFileOf(key));
-      document.querySelectorAll('[data-edit-img="' + key + '"]').forEach(function (img) { img.src = previewSrc(path); });
+      document.querySelectorAll('[data-edit-img="' + key + '"]').forEach(function (img) { img.removeAttribute('srcset'); img.src = previewSrc(path); });
     });
   }
   function changeAlt(key) {
