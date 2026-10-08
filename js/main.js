@@ -50,8 +50,15 @@
     document.addEventListener('click', function (e) { if (!group.contains(e.target)) set(false); });
   });
 
-  // ----- Ombra dell'header quando si scorre -----
-  function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 8); }
+  // ----- Barra in alto: trasparente sulla foto iniziale, vetro bianco quando la si supera -----
+  var cover = document.querySelector('.hero, .page-hero');
+  function onScroll() {
+    var past = cover
+      ? cover.getBoundingClientRect().bottom <= header.offsetHeight + 1
+      : window.scrollY > 8;
+    header.classList.toggle('is-scrolled', past);
+  }
+  window.addEventListener('resize', onScroll);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 

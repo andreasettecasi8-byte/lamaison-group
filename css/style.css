@@ -1686,15 +1686,59 @@ html:not(.lm-editing) [data-edit][data-empty] { display: none; }
 .header .burger, .header .lang-switch { border-color: rgba(11, 31, 58, 0.28); }
 .header .burger:hover { border-color: var(--navy); }
 
-/* Vetro bianco: si vede la pagina sotto, sfocata. Barra sottile. */
-.header, .header.is-scrolled {
-  background: rgba(255, 255, 255, 0.6);
-  -webkit-backdrop-filter: blur(18px) saturate(1.6);
-  backdrop-filter: blur(18px) saturate(1.6);
-  box-shadow: 0 var(--line) 0 var(--hairline);
+/* Sulla foto in cima: trasparente. Quando si scorre oltre la foto: vetro bianco sfocato. Barra sottile. */
+.header {
+  background: transparent;
+  box-shadow: none;
+  transition: background-color 0.4s, box-shadow 0.4s, -webkit-backdrop-filter 0.4s, backdrop-filter 0.4s;
 }
 .header.is-scrolled {
   background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  backdrop-filter: blur(18px) saturate(1.6);
   box-shadow: 0 var(--line) 0 var(--hairline), 0 12px 32px -16px rgba(11, 31, 58, 0.3);
 }
+
+/* Foto più chiare: velatura leggera; in alto una sfumatura bianca tiene leggibili logo e menu */
+.hero::before, .page-hero::before {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0, rgba(255, 255, 255, 0.35) calc(var(--header-h) * 0.9), rgba(255, 255, 255, 0) calc(var(--header-h) + 56px)),
+    linear-gradient(180deg, rgba(11, 31, 58, 0.05) 18%, rgba(11, 31, 58, 0.5) 52%, rgba(11, 31, 58, 0.6) 100%);
+}
+@media (min-width: 1024px) {
+  .hero::before, .page-hero::before {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0, rgba(255, 255, 255, 0.35) calc(var(--header-h) * 0.9), rgba(255, 255, 255, 0) calc(var(--header-h) + 56px)),
+      linear-gradient(90deg, rgba(11, 31, 58, 0.62) 0%, rgba(11, 31, 58, 0.32) 50%, rgba(11, 31, 58, 0.06) 100%);
+  }
+}
+.hero h1, .hero__subtitle, .page-hero h1, .page-hero p { text-shadow: 0 1px 2px rgba(11, 31, 58, 0.35), 0 2px 18px rgba(11, 31, 58, 0.55); }
+.hero__subtitle { font-weight: 500; }
+
+/* Le animazioni che entrano di lato non devono far scorrere la pagina in orizzontale */
+main { overflow-x: clip; }
 .menu-open .header { background: var(--white); }
+
+/* Intestazioni delle pagine interne senza foto: chiare, così la barra trasparente
+   con il logo nei colori originali resta leggibile */
+.page-hero--plain {
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(201, 162, 39, 0.08) 0%, rgba(201, 162, 39, 0) 55%),
+    linear-gradient(180deg, var(--white) 0%, var(--grey-bg) 100%);
+  color: var(--text);
+  box-shadow: inset 0 calc(-1 * var(--line)) 0 var(--hairline);
+}
+.page-hero--plain h1 { color: var(--navy); text-shadow: none; }
+.page-hero--plain p { color: var(--text-muted); text-shadow: none; }
+.page-hero--plain.on-navy .label { color: var(--navy-light); } /* oro piccolo su bianco non si legge */
+.page-hero--plain .btn--outline-light { border-color: rgba(11, 31, 58, 0.35); color: var(--navy); }
+/* Pagine interne con foto (es. Affitti brevi): il testo occupa più spazio, velatura un po' più decisa */
+@media (max-width: 1023px) {
+  .page-hero:not(.page-hero--plain)::before {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0, rgba(255, 255, 255, 0.35) calc(var(--header-h) * 0.9), rgba(255, 255, 255, 0) calc(var(--header-h) + 56px)),
+      linear-gradient(180deg, rgba(11, 31, 58, 0.25) 15%, rgba(11, 31, 58, 0.6) 45%, rgba(11, 31, 58, 0.65) 100%);
+  }
+}
+/* Etichetta piccola sopra il titolo, sulle foto: bianca (l'oro piccolo su foto chiare non si legge) */
+.page-hero:not(.page-hero--plain) .label { color: var(--white); text-shadow: 0 1px 8px rgba(11, 31, 58, 0.6); }
