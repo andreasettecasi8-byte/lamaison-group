@@ -96,7 +96,6 @@
     document.body.appendChild(bar);
     var heroes = [].slice.call(document.querySelectorAll('.hero, .page-hero'));
     var floaters = [].slice.call(document.querySelectorAll('.split__media'));
-    var bands = [].slice.call(document.querySelectorAll('.cta'));
     var ticking = false;
     var paint = function () {
       ticking = false;
@@ -120,11 +119,6 @@
         if (r.bottom < 0 || r.top > vh) return;
         var p = (r.top + r.height / 2 - vh / 2) / vh; // -0,5 … 0,5 mentre attraversa lo schermo
         m.style.setProperty('--py', (p * -60).toFixed(1) + 'px');
-      });
-      bands.forEach(function (b) {
-        var r = b.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > vh) return;
-        b.style.setProperty('--p', ((vh - r.top) / (vh + r.height)).toFixed(3));
       });
     };
     var onScrollFx = function () { if (!ticking) { ticking = true; window.requestAnimationFrame(paint); } };

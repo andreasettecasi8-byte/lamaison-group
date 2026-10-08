@@ -860,18 +860,6 @@ p .accent { color: var(--gold); font-weight: 600; }
   pointer-events: none;
 }
 
-/* riquadri blu: grande scritta in trasparenza che scorre di lato */
-.cta { position: relative; overflow: hidden; }
-.cta > .container { position: relative; z-index: 1; }
-.cta::before {
-  content: "LA MAISON GROUP";
-  position: absolute; top: 50%; left: 0;
-  font-family: var(--font-title, serif); font-weight: 700;
-  font-size: clamp(96px, 18vw, 260px); line-height: 1; white-space: nowrap;
-  color: rgba(201, 162, 39, 0.1);
-  transform: translate(calc(8% - var(--p, 0.5) * 32%), -50%);
-  pointer-events: none;
-}
 
 /* logo un po' più piccolo quando si scorre */
 .header__logo img { transition: scale 0.35s var(--ease-out); transform-origin: 0 50%; }
@@ -912,7 +900,6 @@ p .accent { color: var(--gold); font-weight: 600; }
   .js .reveal .label::before { width: var(--s-24); }
   .page-hero__content > *, .js .page-hero__content .label::before { animation: none; }
   .js .split__media img { scale: none; translate: none; }
-  .cta::before { transform: translate(0, -50%); }
   .zone__map:not(.is-shown) .zone__prov.is-active { fill: var(--gold); }
   .hero__img[data-hero-slide], .hero__content > * { transition: none; animation: none; transform: none; }
   .card, .card:hover { transition: none; transform: none; }
@@ -1742,3 +1729,63 @@ main { overflow-x: clip; }
 }
 /* Etichetta piccola sopra il titolo, sulle foto: bianca (l'oro piccolo su foto chiare non si legge) */
 .page-hero:not(.page-hero--plain) .label { color: var(--white); text-shadow: 0 1px 8px rgba(11, 31, 58, 0.6); }
+
+/* Numeri e icone tonde: solo bordo, disegno interno a linee blu navy (ottobre 2026) */
+.icon-circle, .step::before, .val-steps li::before, .stay-step__n {
+  background: var(--white);
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+  box-shadow: 0 6px 16px -8px rgba(11, 31, 58, 0.35);
+}
+.step::before, .val-steps li::before, .stay-step__n { font-family: var(--font-title); font-weight: 500; }
+.icon-circle svg { stroke-width: 1.5; }
+.service .icon-circle { box-shadow: 0 0 0 var(--s-4) var(--white), 0 10px 22px -10px rgba(11, 31, 58, 0.45); }
+/* Su sfondo navy: bordo e linee bianche */
+.section--navy .icon-circle, .on-navy .icon-circle, .section--navy .step::before, .section--navy .val-steps li::before {
+  background: transparent; border-color: rgba(255, 255, 255, 0.85); color: var(--white); box-shadow: none;
+}
+
+/* Mappa "Dove operiamo": zoom sulla zona, province sollevate in oro, spille, piccola Italia (ottobre 2026) */
+.zone__canvas { position: relative; }
+.zone__canvas.is-zoomed {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--white) 0%, var(--grey-bg) 100%);
+  box-shadow: var(--shadow-lg), 0 0 0 var(--line) var(--hairline);
+}
+.zone__prov { vector-effect: non-scaling-stroke; }
+.is-zoomed .zone__prov { fill: #EEF1F5; stroke: var(--white); stroke-width: 1.5; }
+.is-zoomed .zone__prov:hover, .is-zoomed .zone__prov.is-hover { fill: #DDE3EA; }
+.is-zoomed .zone__prov.is-active { fill: var(--gold); stroke: var(--white); stroke-width: 2; }
+.is-zoomed .zone__prov.is-active:hover, .is-zoomed .zone__prov.is-active.is-hover { fill: #b8931f; }
+.zone__lit { filter: drop-shadow(0 8px 10px rgba(11, 31, 58, 0.28)); }
+.zone__pin { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.is-shown .zone__pin { animation: pin-in 0.6s var(--ease-back, ease) forwards; }
+.zone__pin-dot { fill: var(--navy); stroke: var(--white); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.zone__pin-ring { fill: rgba(11, 31, 58, 0.18); transform-box: fill-box; transform-origin: center; animation: pin-pulse 2.4s ease-out 2s infinite; }
+.zone__pins { pointer-events: none; }
+@keyframes pin-in { from { opacity: 0; scale: 0.2; } to { opacity: 1; scale: 1; } }
+@keyframes pin-pulse { 0% { scale: 0.4; opacity: 0.9; } 100% { scale: 1.6; opacity: 0; } }
+.zone__mini {
+  position: absolute; right: var(--s-12); bottom: var(--s-12);
+  width: 26%; height: auto; padding: 6px;
+  border-radius: 6px; background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-sm); pointer-events: none;
+}
+.zone__mini path { fill: #DCE1E8; stroke: none; }
+.zone__mini path.is-active { fill: var(--gold); }
+.zone__mini-frame { fill: none; stroke: var(--navy); stroke-width: 14; }
+.zone__list { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }
+.zone__list li {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px 6px 10px;
+  border: var(--line) solid rgba(11, 31, 58, 0.25); border-radius: 999px;
+  background: var(--white); color: var(--navy);
+  font-size: 15px; font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+.zone__list svg { width: 18px; height: 18px; color: var(--gold); }
+@media (prefers-reduced-motion: reduce) {
+  .zone__pin { opacity: 1; animation: none !important; }
+  .zone__pin-ring { animation: none; opacity: 0.6; }
+}
