@@ -1881,3 +1881,6 @@ main { overflow-x: clip; }
   .btn--gold::before, .form button[type="submit"]::before, .plan .btn::before { display: none; }
   .btn--gold:hover::after, .form button[type="submit"]:hover::after, .plan .btn:hover::after { transform: none; }
 }
+
+/* Chi siamo: "La nostra storia" solo testo */
+.storia > div { max-width: 780px; margin-inline: auto; text-align: center; }
