@@ -49,7 +49,7 @@
   --fs-body: 16px;
   --fs-label: 12px;
 
-  --font-title: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-title: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-text: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -375,11 +375,10 @@ p .accent { color: var(--gold); font-weight: 600; }
 }
 .hero__content { position: relative; z-index: 2; }
 .hero h1 { color: var(--white); letter-spacing: 1px; }
-/* Titolo della Home: corsivo elegante, sempre maiuscolo */
+/* Titolo della Home: sempre maiuscolo */
 .hero #hero-title {
-  font-family: "Cormorant Garamond", var(--font-title);
-  font-style: italic;
-  font-weight: 600;
+  font-family: var(--font-title);
+  font-weight: 700;
   font-size: calc(var(--fs-h1) * 1.2);
   line-height: 1;
   letter-spacing: 3px;
@@ -857,7 +856,7 @@ p .accent { color: var(--gold); font-weight: 600; }
 .cta::before {
   content: "LA MAISON GROUP";
   position: absolute; top: 50%; left: 0;
-  font-family: var(--font-title, serif); font-style: italic; font-weight: 600;
+  font-family: var(--font-title, serif); font-weight: 700;
   font-size: clamp(96px, 18vw, 260px); line-height: 1; white-space: nowrap;
   color: rgba(201, 162, 39, 0.1);
   transform: translate(calc(8% - var(--p, 0.5) * 32%), -50%);
