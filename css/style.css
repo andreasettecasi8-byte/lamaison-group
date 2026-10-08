@@ -9,10 +9,12 @@
   --navy-light: #1C3A63;
   --gold: #C9A227;
   --white: #FFFFFF;
-  --grey-bg: #F4F6F9;
+  --grey-bg: #FAFBFD; /* quasi bianco (ottobre 2026) */
   --text: #1A1A1A;
   --text-muted: #5A6475;
-  --border: #D5DAE1;
+  --border: #E4E8EE;
+  --hairline: rgba(11, 31, 58, 0.09); /* linee sottili */
+  --line: 1px;
   --whatsapp: #25D366;
   --success: #1E7B4C;
   --error: #B42318;
@@ -20,8 +22,11 @@
   /* Forme */
   --radius: 8px;
   --radius-btn: 6px;
-  --shadow: 0 4px 16px rgba(11, 31, 58, 0.08);
-  --shadow-hover: 0 12px 32px rgba(11, 31, 58, 0.14);
+  /* Ombre morbide a più strati */
+  --shadow-sm: 0 1px 2px rgba(11, 31, 58, 0.06), 0 4px 12px -2px rgba(11, 31, 58, 0.08);
+  --shadow: 0 1px 2px rgba(11, 31, 58, 0.04), 0 8px 20px -4px rgba(11, 31, 58, 0.08), 0 24px 48px -16px rgba(11, 31, 58, 0.14);
+  --shadow-hover: 0 2px 4px rgba(11, 31, 58, 0.04), 0 16px 32px -6px rgba(11, 31, 58, 0.12), 0 40px 80px -24px rgba(11, 31, 58, 0.28);
+  --shadow-lg: 0 2px 6px rgba(11, 31, 58, 0.05), 0 24px 48px -12px rgba(11, 31, 58, 0.18), 0 56px 100px -32px rgba(11, 31, 58, 0.30);
 
   /* Spaziature (solo questi valori) */
   --s-4: 4px;
@@ -51,6 +56,11 @@
 
   --font-title: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-text: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Schermi Retina (iPhone, iPad, Mac): linee da mezzo pixel, più fini */
+@media (min-resolution: 2dppx) {
+  :root { --line: 0.5px; --hairline: rgba(11, 31, 58, 0.14); }
 }
 
 @media (min-width: 768px) {
@@ -1598,3 +1608,69 @@ ol.steps { margin: 0; padding: 0; list-style: none; }
 
 /* Testo svuotato dall'area riservata: non occupa spazio (in modifica resta visibile per riscriverlo) */
 html:not(.lm-editing) [data-edit][data-empty] { display: none; }
+
+/* =========================================================
+   Rifinitura (ottobre 2026): linee sottili, più bianco, ombre
+   ========================================================= */
+
+/* Linee: più fini e più chiare */
+.specs, .facts div, .contact-person, .form__title, .mobile-menu li a { border-color: var(--hairline); border-width: 0; border-style: solid; }
+.specs { border-top-width: var(--line); }
+.facts div, .contact-person, .form__title, .mobile-menu li a { border-bottom-width: var(--line); }
+.plan, .booking__chosen { border: var(--line) solid var(--hairline); }
+.empty { border: var(--line) dashed rgba(11, 31, 58, 0.2); }
+.step:not(:last-child)::after { height: var(--line); background: linear-gradient(90deg, var(--gold), rgba(201, 162, 39, 0.15)); }
+.mobile-menu__group ul { border-left-width: 1px; }
+.footer { border-top: 0; }
+.footer h2 { border-bottom: var(--line) solid rgba(201, 162, 39, 0.45); }
+.footer__bottom { border-top: var(--line) solid rgba(255, 255, 255, 0.14); }
+.label::before { height: 1px; background: linear-gradient(90deg, var(--gold), rgba(201, 162, 39, 0.35)); }
+@media (min-width: 1024px) {
+  .nav a[aria-current="page"]::after { height: 1px; }
+}
+.scroll-progress { height: 2px; box-shadow: 0 0 8px rgba(201, 162, 39, 0.6); }
+
+/* Pulsanti: bordo sottile e ombra che si alza */
+.btn { border-width: 1px; transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+.btn--primary { box-shadow: 0 1px 2px rgba(11, 31, 58, 0.2), 0 8px 20px -6px rgba(11, 31, 58, 0.45); }
+.btn--gold { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 10px 24px -10px rgba(0, 0, 0, 0.6); }
+.btn--secondary { border-color: rgba(11, 31, 58, 0.35); background: var(--white); box-shadow: var(--shadow-sm); }
+.btn--primary:hover, .btn--gold:hover, .btn--secondary:hover { transform: translateY(-2px); }
+.btn--primary:hover { box-shadow: 0 2px 4px rgba(11, 31, 58, 0.2), 0 16px 32px -8px rgba(11, 31, 58, 0.5); }
+.btn--gold:hover { box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 18px 36px -12px rgba(0, 0, 0, 0.7); }
+.btn--secondary:hover { border-color: var(--navy); box-shadow: 0 12px 28px -8px rgba(11, 31, 58, 0.45); }
+.btn--outline-light { border-color: rgba(255, 255, 255, 0.7); }
+.btn:active { transform: translateY(0); }
+
+/* Schede, foto e moduli: ombre più profonde e morbide */
+.card { box-shadow: var(--shadow), 0 0 0 var(--line) var(--hairline); }
+.card:hover { box-shadow: var(--shadow-hover), 0 0 0 var(--line) var(--hairline); }
+.split__media img, .js .split__media { box-shadow: var(--shadow-lg); }
+.js .split__media img { box-shadow: none; }
+.form-card { box-shadow: var(--shadow-lg), 0 0 0 var(--line) var(--hairline); }
+.plan { box-shadow: var(--shadow); transition: box-shadow 0.3s, transform 0.3s; }
+.plan:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+.icon-circle, .step::before { box-shadow: 0 6px 16px -4px rgba(11, 31, 58, 0.45); }
+.service .icon-circle { box-shadow: 0 0 0 var(--s-4) var(--white), 0 10px 22px -6px rgba(11, 31, 58, 0.5); }
+.form-success { background: var(--white); box-shadow: var(--shadow); }
+.booking__chosen { background: var(--white); box-shadow: var(--shadow-sm); }
+
+/* Campi dei moduli: linea sottile, ombra interna leggera, anello morbido quando si scrive */
+.field input, .field select, .field textarea {
+  border: var(--line) solid rgba(11, 31, 58, 0.22);
+  box-shadow: inset 0 1px 2px rgba(11, 31, 58, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field input:hover, .field select:hover, .field textarea:hover { border-color: rgba(11, 31, 58, 0.4); }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--navy-light);
+  box-shadow: inset 0 1px 2px rgba(11, 31, 58, 0.05), 0 0 0 4px rgba(28, 58, 99, 0.14);
+}
+
+/* Header in navy quando si scorre: ombra più morbida */
+.header.is-scrolled { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 32px -12px rgba(0, 0, 0, 0.5); }
+.whatsapp-float { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 14px 32px -8px rgba(37, 211, 102, 0.65); }
+
+/* Sezioni chiare alternate: il quasi bianco si stacca con una linea sottilissima */
+.section--grey { box-shadow: inset 0 var(--line) 0 var(--hairline), inset 0 calc(-1 * var(--line)) 0 var(--hairline); }
