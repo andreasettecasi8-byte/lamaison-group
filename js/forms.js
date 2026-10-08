@@ -48,8 +48,7 @@ var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mppwrybn';
     }
     var category = ['vendita', 'affitti-brevi', 'affitti-lungo'].indexOf(params.get('c')) !== -1 ? params.get('c') : 'vendita';
     if (propertyId && message && !message.value) {
-      fetch('data/' + category + '.json')
-        .then(function (res) { return res.json(); })
+      window.LaMaisonDati.json('data/' + category + '.json')
         .then(function (data) {
           var list = Array.isArray(data) ? data : (data && data.immobili) || [];
           var p = list.find(function (x) { return x.id === propertyId; });

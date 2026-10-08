@@ -254,9 +254,8 @@
 
   // Pagina Affitti brevi: modulo con l'elenco degli immobili pubblicati
   document.querySelectorAll('[data-booking]').forEach(function (host) {
-    fetch('data/affitti-brevi.json', { cache: 'no-cache' })
-      .then(function (r) { return r.ok ? r.json() : {}; })
-      .catch(function () { return {}; })
+    window.LaMaisonDati.json('data/affitti-brevi.json')
+      .then(function (d) { return d || {}; })
       .then(function (d) {
         var list = ((d && d.immobili) || []).filter(function (p) { return p && p.pubblicata !== false; });
         mount(host, { immobili: list });

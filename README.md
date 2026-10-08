@@ -94,6 +94,24 @@ se la dimentichi, svuota `data/admin.json` (scrivi solo `{}`) e creane una nuova
 **Sicurezza:** il token GitHub è salvato in `data/admin.json` cifrato con la tua password:
 senza password nessuno può usarlo. Usa una password lunga e non riutilizzata altrove.
 
+## Contenuti su Supabase
+Con Supabase collegato, testi (IT/EN), immobili, progetti e recensioni stanno nella tabella
+`contenuti` (una riga per file, colonna `percorso` = es. `data/vendita.json`) e le nuove foto
+nello spazio di archiviazione `foto`. Le modifiche dall'area riservata si vedono subito.
+I file in `data/` restano come **copia di riserva**: se Supabase non risponde il sito usa quelli
+(con i contenuti com'erano al momento del collegamento).
+
+1. Crea il progetto su supabase.com (piano gratuito, regione Europa).
+2. SQL Editor → incolla `supabase/setup.sql`, cambia l'email nell'ultima riga, premi Run.
+3. Authentication → Users → Add user → stessa email e una password (spunta "Auto Confirm User").
+   In Authentication → Sign In / Providers disattiva "Allow new users to sign up".
+4. In `js/dati.js` inserisci `SUPABASE_URL` e la chiave pubblica `SUPABASE_KEY`
+   (Project Settings → API). Mai la chiave secret / service_role.
+5. Area riservata → entra con email e password: al primo accesso i contenuti vengono copiati
+   su Supabase. Da Impostazioni → "Password e copia di sicurezza" puoi scaricarli tutti in un file.
+
+Senza `SUPABASE_URL` il sito funziona come prima (file in `data/` e salvataggio su GitHub).
+
 ## Aggiungere contenuti a mano (senza area riservata)
 Immobili in `data/vendita.json`, progetti in `data/progetti.json`, recensioni in
 `data/recensioni.json`, testi delle pagine in `data/pagine/`.

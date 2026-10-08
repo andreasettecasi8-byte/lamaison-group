@@ -5,7 +5,11 @@
    Accesso: password scelta al primo accesso. La password cifra (AES) il token
    GitHub, salvato in data/admin.json: senza password il token non è leggibile.
    Salvataggio: sul Mac (server.py) scrive nei file della cartella;
-   online scrive su GitHub con un unico commit, e il sito si aggiorna in 1-2 minuti. */
+   online scrive su GitHub con un unico commit, e il sito si aggiorna in 1-2 minuti.
+
+   Con Supabase collegato (js/dati.js) si entra con email e password dell'utente
+   Supabase, i contenuti si salvano nella tabella "contenuti" e le nuove foto
+   nello spazio "foto": il sito si aggiorna subito. */
 (function () {
   'use strict';
 
@@ -17,6 +21,13 @@
   var SESSION_KEY = 'lm-admin-session';
   var IS_LOCAL = ['localhost', '127.0.0.1'].indexOf(location.hostname) !== -1;
   var ITERATIONS = 600000;
+  var D = window.LaMaisonDati || {};
+  var SUPA = !!D.active;
+  // Tutti i contenuti: si copiano su Supabase al primo accesso
+  var ALL_FILES = ['data/vendita.json', 'data/affitti-brevi.json', 'data/affitti-lungo.json', 'data/progetti.json', 'data/recensioni.json']
+    .concat(['comune', 'immobile'].concat(PAGES.map(function (p) { return p[0]; })).reduce(function (out, name) {
+      return out.concat(['data/pagine/' + name + '.json', 'data/pagine/en/' + name + '.json']);
+    }, []));
 
   // Con il sito in inglese si modificano i testi inglesi (data/pagine/en/…);
   // foto, immobili e impostazioni restano in comune tra le due lingue.
@@ -307,7 +318,115 @@
     };
   }
 
+  // ----- Supabase: accesso con email e password, contenuti nella tabella "contenuti" -----
+  function supaFetch(path, opts) {
+    opts = opts || {};
+    var headers = { apikey: D.key };
+    if (opts.token) headers.Authorization = 'Bearer ' + opts.token;
+    if (opts.json !== undefined) headers['Content-Type'] = 'application/json';
+    Object.keys(opts.headers || {}).forEach(function (k) { headers[k] = opts.headers[k]; });
+    return fetch(D.url + path, {
+      method: opts.method || 'GET', headers: headers, cache: 'no-store',
+      body: opts.json !== undefined ? JSON.stringify(opts.json) : opts.body
+    }).catch(function () {
+      throw new Error('Supabase non risponde: controlla la connessione (o che il progetto non sia in pausa).');
+    }).then(function (r) {
+      return r.text().then(function (t) {
+        var d = null;
+        try { d = t ? JSON.parse(t) : null; } catch (e) {}
+        if (!r.ok) {
+          var raw = (d && (d.msg || d.message || d.error_description || d.error)) || '';
+          var msg = /invalid login credentials/i.test(raw) ? 'Email o password non corrette.' :
+            /email not confirmed/i.test(raw) ? 'Conferma prima l\'email: apri il link che Supabase ti ha mandato.' :
+            /row-level security|permission denied|42501/i.test(raw) || r.status === 403 ? 'Questo utente non è autorizzato a modificare il sito.' :
+            r.status === 401 ? 'Accesso scaduto: esci ed entra di nuovo.' :
+            'Supabase ha risposto ' + r.status + (raw ? ': ' + raw : '');
+          var err = new Error(msg); err.status = r.status; throw err;
+        }
+        return d;
+      });
+    });
+  }
+  function supaSession(d) {
+    return { supa: true, email: (d.user && d.user.email) || '', access: d.access_token, refresh: d.refresh_token, expires: Date.now() + (Number(d.expires_in) || 3600) * 1000 };
+  }
+  function supaLogin(email, password) {
+    return supaFetch('/auth/v1/token?grant_type=password', { method: 'POST', json: { email: email, password: password } })
+      .then(function (d) {
+        var session = supaSession(d);
+        return supaFetch('/rest/v1/rpc/is_admin', { method: 'POST', json: {}, token: session.access }).then(function (ok) {
+          if (ok !== true) throw new Error('Questo utente non è tra gli amministratori del sito (tabella "amministratori" su Supabase).');
+          return session;
+        });
+      });
+  }
+
+  function Supabase(session) {
+    // Il token dura un'ora: prima di ogni operazione lo si rinnova se sta per scadere
+    function token() {
+      if (Date.now() < session.expires - 120000) return Promise.resolve(session.access);
+      return supaFetch('/auth/v1/token?grant_type=refresh_token', { method: 'POST', json: { refresh_token: session.refresh } })
+        .then(function (d) {
+          var fresh = supaSession(d);
+          Object.keys(fresh).forEach(function (k) { if (fresh[k]) session[k] = fresh[k]; });
+          sessionSet(session);
+          return session.access;
+        });
+    }
+    function table(query, opts) {
+      return token().then(function (t) { opts = opts || {}; opts.token = t; return supaFetch('/rest/v1/contenuti' + query, opts); });
+    }
+    function upsert(rows) {
+      return table('?on_conflict=percorso', { method: 'POST', json: rows, headers: { Prefer: 'resolution=merge-duplicates,return=minimal' } });
+    }
+    return {
+      name: 'supabase',
+      read: function (path) {
+        return table('?select=dati&percorso=eq.' + encodeURIComponent(path)).then(function (rows) {
+          return rows && rows.length ? rows[0].dati : D.file(path);
+        });
+      },
+      // Primo accesso: la tabella è vuota, ci si copiano i file del sito
+      seed: function () {
+        return table('?select=percorso&limit=1').then(function (rows) {
+          if (rows && rows.length) return false;
+          toast('Primo collegamento: copio i contenuti del sito su Supabase…');
+          return Promise.all(ALL_FILES.map(function (path) {
+            return D.file(path).then(function (d) { return d ? { percorso: path, dati: d } : null; });
+          })).then(function (rows) {
+            return upsert(rows.filter(Boolean));
+          }).then(function () { toast('Contenuti copiati su Supabase.', 'ok'); return true; });
+        });
+      },
+      save: function (files) {
+        var photos = files.filter(function (f) { return f.blob; });
+        var docs = files.filter(function (f) { return !f.blob; });
+        return token().then(function (t) {
+          // prima le foto, poi i testi che le usano
+          return Promise.all(photos.map(function (f) {
+            return supaFetch('/storage/v1/object/foto/' + f.path.split('/foto/').pop(), {
+              method: 'POST', token: t, body: f.blob,
+              headers: { 'Content-Type': f.blob.type || 'image/jpeg', 'x-upsert': 'true', 'Cache-Control': 'max-age=31536000' }
+            });
+          }));
+        }).then(function () {
+          return docs.length ? upsert(docs.map(function (f) { return { percorso: f.path, dati: f.data, aggiornato: new Date().toISOString() }; })) : null;
+        });
+      },
+      // Copia di sicurezza: tutti i contenuti in un unico file
+      backup: function () {
+        return table('?select=percorso,dati,aggiornato&order=percorso');
+      },
+      password: function (pw) {
+        return token().then(function (t) { return supaFetch('/auth/v1/user', { method: 'PUT', token: t, json: { password: pw } }); });
+      }
+    };
+  }
+
   function chooseBackend(session) {
+    if (SUPA) {
+      return session && session.supa ? Promise.resolve(Supabase(session)) : Promise.reject(new Error('Entra con l\'email e la password di Supabase.'));
+    }
     return (IS_LOCAL ? Local.available() : Promise.resolve(false)).then(function (local) {
       if (local) return Local;
       if (session.token && session.repo) return GitHub(session.repo, session.branch || 'main', session.token);
@@ -367,6 +486,7 @@
   // =====================================================================
   function open() {
     var session = sessionGet();
+    if (SUPA && !(session && session.supa)) { sessionSet(null); return showSupaLogin(); }
     if (session) return resume();
     readAdminConfig().then(function (cfg) {
       if (cfg.key) showLogin(cfg); else showSetup(cfg);
@@ -443,6 +563,31 @@
     modal('Crea il tuo accesso', form);
   }
 
+  function showSupaLogin(message) {
+    var email = h('input', { type: 'email', autocomplete: 'username', required: true, autocapitalize: 'off', spellcheck: 'false' });
+    var pw = h('input', { type: 'password', autocomplete: 'current-password', required: true });
+    var err = errorBox();
+    if (message) err.textContent = message;
+    var btn = h('button', { type: 'submit', class: 'lm-btn lm-btn--primary', text: 'Entra' });
+    var form = h('form', { class: 'lm-form' }, [
+      h('p', { class: 'lm-muted', text: 'Entra con l\'email e la password del tuo utente Supabase.' }),
+      field('Email', email), field('Password', pw), err, btn
+    ]);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.textContent = '';
+      busy(btn, true, 'Verifica…');
+      supaLogin(email.value.trim(), pw.value)
+        .then(function (session) {
+          sessionSet(session);
+          closeModal();
+          start(session);
+        })
+        .catch(function (ex) { busy(btn, false); err.textContent = ex.message; pw.select(); });
+    });
+    modal('Area riservata', form);
+  }
+
   // Collegamento a GitHub dal sito online (accesso creato sul Mac senza token)
   function showConnect(cfg, password, session) {
     var repo = h('input', { type: 'text', placeholder: 'utente/repository', value: session.repo, autocapitalize: 'off', spellcheck: 'false', required: true });
@@ -489,6 +634,10 @@
     chooseBackend(session)
       .then(function (backend) {
         state.backend = backend;
+        return backend.seed ? backend.seed() : null;
+      })
+      .then(function () {
+        var backend = state.backend;
         return Promise.all(Object.keys(FILES).map(function (k) {
           return backend.read(FILES[k]).then(function (d) { state.data[k] = d || {}; });
         }));
@@ -508,6 +657,7 @@
       })
       .catch(function (ex) {
         sessionSet(null);
+        if (SUPA) return showSupaLogin(ex.message);
         // online senza collegamento a GitHub: si torna alla password, poi si collega
         if (!IS_LOCAL && !(session.token && session.repo)) {
           return readAdminConfig().then(function (cfg) { if (cfg.key) showLogin(cfg); else showSetup(cfg); });
@@ -652,7 +802,8 @@
       if (!file) return null;
       toast('Preparo la foto…');
       return processImage(file).then(function (out) {
-        var path = 'img/' + slug(nameHint) + '-' + Date.now().toString(36) + '.' + out.ext;
+        var name = slug(nameHint) + '-' + Date.now().toString(36) + '.' + out.ext;
+        var path = state.backend && state.backend.name === 'supabase' ? D.url + '/storage/v1/object/public/foto/' + name : 'img/' + name;
         state.uploads[path] = out.blob;
         state.previews[path] = URL.createObjectURL(out.blob);
         updateSaveButton();
@@ -1052,7 +1203,7 @@
       closeModal();
       toast('Impostazioni applicate. Ricordati di salvare.', 'ok');
     });
-    var access = h('button', { type: 'button', class: 'lm-btn', text: 'Cambia password o collegamento GitHub', onclick: showAccessSettings });
+    var access = h('button', { type: 'button', class: 'lm-btn', text: SUPA ? 'Password e copia di sicurezza' : 'Cambia password o collegamento GitHub', onclick: SUPA ? showSupaSettings : showAccessSettings });
     modal('Impostazioni', [form, h('hr'), access], { drawer: true, noAutofocus: true });
   }
 
@@ -1088,6 +1239,37 @@
       body.push(h('button', { type: 'button', class: 'lm-btn lm-btn--primary', text: 'Vai alle impostazioni', onclick: showSettings }));
     }
     modal('Statistiche del sito', body, { wide: true, noAutofocus: true });
+  }
+
+  function showSupaSettings() {
+    var pw = h('input', { type: 'password', autocomplete: 'new-password', minlength: 10, required: true });
+    var pw2 = h('input', { type: 'password', autocomplete: 'new-password', required: true });
+    var err = errorBox();
+    var btn = h('button', { type: 'submit', class: 'lm-btn lm-btn--primary', text: 'Cambia password' });
+    var form = h('form', { class: 'lm-form' }, [
+      h('p', { class: 'lm-muted', text: 'Sei entrato come ' + (state.session.email || 'amministratore') + '.' }),
+      field('Nuova password (almeno 10 caratteri)', pw), field('Ripeti la password', pw2), err, btn
+    ]);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.textContent = '';
+      if (pw.value.length < 10) { err.textContent = 'La password deve avere almeno 10 caratteri.'; return; }
+      if (pw.value !== pw2.value) { err.textContent = 'Le due password non coincidono.'; return; }
+      busy(btn, true, 'Salvo…');
+      state.backend.password(pw.value)
+        .then(function () { closeModal(); toast('Password cambiata.', 'ok'); })
+        .catch(function (ex) { busy(btn, false); err.textContent = ex.message; });
+    });
+    var copy = h('button', { type: 'button', class: 'lm-btn', text: 'Scarica una copia di sicurezza dei contenuti' });
+    copy.addEventListener('click', function () {
+      busy(copy, true, 'Preparo il file…');
+      state.backend.backup().then(function (rows) {
+        var a = h('a', { href: URL.createObjectURL(new Blob([json(rows)], { type: 'application/json' })), download: 'lamaison-contenuti-' + new Date().toISOString().slice(0, 10) + '.json' });
+        document.body.appendChild(a); a.click(); a.remove();
+        busy(copy, false);
+      }).catch(function (ex) { busy(copy, false); toast(ex.message, 'error'); });
+    });
+    modal('Accesso', [form, h('hr'), h('p', { class: 'lm-muted', text: 'Tutti i testi, gli immobili e le recensioni in un file da conservare sul computer.' }), copy], { drawer: true });
   }
 
   function showAccessSettings() {
@@ -1148,11 +1330,11 @@
     var keyOf = {};
     Object.keys(FILES).forEach(function (k) { keyOf[FILES[k]] = k; });
     var jsonFiles = Object.keys(state.dirty).map(function (path) {
-      return { path: path, content: textToB64(json(state.data[keyOf[path]])) };
+      return { path: path, content: textToB64(json(state.data[keyOf[path]])), data: state.data[keyOf[path]] };
     });
     var names = Object.keys(state.uploads);
     return Promise.all(names.map(function (path) {
-      return blobToB64(state.uploads[path]).then(function (b64) { return { path: path, content: b64 }; });
+      return blobToB64(state.uploads[path]).then(function (b64) { return { path: path, content: b64, blob: state.uploads[path] }; });
     })).then(function (imgs) {
       var message = 'Modifiche dal sito: ' + Object.keys(state.dirty).concat(names).map(function (p) { return p.split('/').pop(); }).join(', ');
       return state.backend.save(imgs.concat(jsonFiles), message);
@@ -1161,7 +1343,8 @@
       state.uploads = {};
       busy(btn, false);
       updateSaveButton();
-      toast(state.backend.name === 'github' ? 'Salvato! Il sito online si aggiorna in 1-2 minuti.' : 'Salvato!', 'ok');
+      toast(state.backend.name === 'github' ? 'Salvato! Il sito online si aggiorna in 1-2 minuti.' :
+        state.backend.name === 'supabase' ? 'Salvato! Il sito è già aggiornato.' : 'Salvato!', 'ok');
     }).catch(function (ex) {
       busy(btn, false);
       updateSaveButton();

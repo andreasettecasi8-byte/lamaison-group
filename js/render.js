@@ -170,10 +170,10 @@
   }
 
   function fill(box) {
-    fetch('data/' + box.dataset.render + '.json', { cache: 'no-cache' })
-      .then(function (res) {
-        if (!res.ok) throw new Error(res.status);
-        return res.json();
+    window.LaMaisonDati.json('data/' + box.dataset.render + '.json')
+      .then(function (data) {
+        if (!data) throw new Error('dati non trovati');
+        return data;
       })
       .then(function (data) {
         if (!box.dataset.editing) draw(box, data, false);
@@ -203,8 +203,7 @@
 
   // ----- Media delle stelle (pagina Recensioni) -----
   document.querySelectorAll('[data-rating]').forEach(function (box) {
-    fetch('data/recensioni.json', { cache: 'no-cache' })
-      .then(function (res) { return res.json(); })
+    window.LaMaisonDati.json('data/recensioni.json')
       .then(function (data) {
         var items = list(data, 'recensioni');
         if (!items.length) return;

@@ -226,8 +226,8 @@
   });
 
   if (!id) return notFound();
-  fetch('data/' + cat + '.json', { cache: 'no-cache' })
-    .then(function (res) { if (!res.ok) throw new Error(res.status); return res.json(); })
+  window.LaMaisonDati.json('data/' + cat + '.json')
+    .then(function (data) { if (!data) throw new Error('dati non trovati'); return data; })
     .then(function (data) { last = data; if (!root.dataset.editing) render(data, false); })
     .catch(function () { if (!root.dataset.editing) notFound(); });
 })();

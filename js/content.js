@@ -135,9 +135,7 @@
   }
 
   function load(path) {
-    return fetch(path, { cache: 'no-cache' })
-      .then(function (res) { return res.ok ? res.json() : {}; })
-      .catch(function () { return {}; });
+    return window.LaMaisonDati.json(path).then(function (d) { return d || {}; });
   }
 
   // Testi inglesi: si sovrappongono a quelli italiani; ciò che manca resta in italiano.
@@ -211,7 +209,7 @@
           name: 'LA MAISON GROUP',
           legalName: 'La Maison Group S.r.l.s.',
           url: base,
-          logo: base + (sito.logo || 'img/logo.png'),
+          logo: /^https?:\/\//.test(sito.logo || '') ? sito.logo : base + (sito.logo || 'img/logo.png'),
           image: base + 'img/hero.webp',
           description: (current.page._seo && current.page._seo.descrizione) || '',
           email: email || undefined,
