@@ -1881,3 +1881,21 @@ main { overflow-x: clip; }
   .btn--gold::before, .form button[type="submit"]::before, .plan .btn::before { display: none; }
   .btn--gold:hover::after, .form button[type="submit"]:hover::after, .plan .btn:hover::after { transform: none; }
 }
+
+/* Chi siamo: foto sotto il testo iniziale */
+.page-hero__photo {
+  position: relative; z-index: 2;
+  margin: var(--s-32) 0 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg), 0 0 0 var(--line) var(--hairline);
+}
+.page-hero__photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 7; object-fit: cover; }
+@media (max-width: 767px) {
+  .page-hero__photo img { aspect-ratio: 4 / 3; }
+}
+@media (min-width: 1024px) {
+  .page-hero__photo { margin-top: var(--s-48); }
+}
+.js .page-hero__photo { animation: hero-in 1s var(--ease-out) 0.45s both; }
+@media (prefers-reduced-motion: reduce) { .js .page-hero__photo { animation: none; } }
