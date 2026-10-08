@@ -11,8 +11,8 @@
      È fatta per stare nel sito: da sola permette solo di leggere.
      Non mettere MAI qui la chiave "secret" / "service_role".
    ============================================================ */
-var SUPABASE_URL = '';
-var SUPABASE_KEY = '';
+var SUPABASE_URL = 'https://rpulygtgmckbsgqtfkqf.supabase.co';
+var SUPABASE_KEY = 'sb_publishable_sD1mGEblZI7JrRkHD6lxpg_ilw0aZK4';
 
 (function () {
   'use strict';
