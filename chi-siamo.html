@@ -18,6 +18,7 @@
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" as="image" href="img/chi-siamo-intro.webp" type="image/webp">
   <script>document.documentElement.classList.add('js', 'content-loading');</script>
   <script src="js/main.js" defer></script>
   <script src="js/dati.js" defer></script>
@@ -79,17 +80,15 @@
 
   <main id="contenuto">
     <!-- ===== Intestazione ===== -->
-    <section class="page-hero page-hero--plain on-navy" aria-labelledby="page-title">
+    <section class="page-hero on-navy" aria-labelledby="page-title">
+      <img data-edit-img="intestazione.foto_1" class="hero__img" src="img/chi-siamo-intro.webp" width="1920" height="1080" fetchpriority="high"
+           alt="Appartamento luminoso e arredato con grande finestra sulla via">
       <div class="container">
         <div class="page-hero__content">
           <span data-edit="intestazione.etichetta_1" class="label">Chi siamo</span>
           <h1 data-edit="intestazione.titolo_1" id="page-title">Investimenti immobiliari e <span class="accent">property management</span></h1>
           <p data-edit="intestazione.testo_1">Compriamo, ristrutturiamo e gestiamo immobili a reddito. E mettiamo la stessa esperienza al servizio dei proprietari che vogliono far rendere la propria casa, senza pensieri.</p>
         </div>
-        <figure class="page-hero__photo">
-          <img data-edit-img="intestazione.foto_1" src="img/chi-siamo-intro.webp" width="1920" height="840" fetchpriority="high"
-               alt="Appartamento luminoso e arredato con grande finestra sulla via">
-        </figure>
       </div>
     </section>
 
