@@ -1789,3 +1789,95 @@ main { overflow-x: clip; }
   .zone__pin { opacity: 1; animation: none !important; }
   .zone__pin-ring { animation: none; opacity: 0.6; }
 }
+
+/* =========================================================
+   Pulsanti di richiesta (ottobre 2026): "Affida il tuo immobile", "Richiedi…",
+   invio dei moduli. Oro sfumato con riflesso, freccia che avanza al passaggio.
+   ========================================================= */
+.btn--gold,
+.form button[type="submit"],
+.plan .btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  letter-spacing: 0.2px;
+}
+.btn--gold {
+  background: linear-gradient(135deg, #E2C158 0%, #C9A227 52%, #B18A17 100%);
+  color: var(--navy);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 1px 2px rgba(0, 0, 0, 0.2), 0 10px 24px -10px rgba(11, 31, 58, 0.55);
+}
+.btn--gold:hover {
+  background: linear-gradient(135deg, #EACB66 0%, #D2AC31 52%, #BA931F 100%);
+  color: var(--navy);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 4px rgba(0, 0, 0, 0.2), 0 18px 34px -12px rgba(11, 31, 58, 0.6);
+}
+.form button[type="submit"],
+.plan .btn--primary {
+  background: linear-gradient(135deg, #1F4170 0%, var(--navy) 60%);
+  color: var(--white);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 2px rgba(11, 31, 58, 0.25), 0 12px 26px -10px rgba(11, 31, 58, 0.6);
+}
+.form button[type="submit"]:hover,
+.plan .btn--primary:hover {
+  background: linear-gradient(135deg, #285089 0%, #10284A 60%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 4px rgba(11, 31, 58, 0.25), 0 18px 34px -12px rgba(11, 31, 58, 0.7);
+}
+
+/* riflesso che attraversa il pulsante */
+.btn--gold::before,
+.form button[type="submit"]::before,
+.plan .btn::before {
+  content: "";
+  position: absolute; inset: 0 auto 0 0; z-index: -1;
+  width: 45%;
+  background: linear-gradient(105deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+}
+.btn--gold:hover::before,
+.form button[type="submit"]:hover::before,
+.plan .btn:hover::before { transform: translateX(320%) skewX(-18deg); transition: transform 0.9s var(--ease-out, ease); }
+
+/* freccia */
+.btn--gold::after,
+.form button[type="submit"]::after,
+.plan .btn::after {
+  content: "";
+  width: 18px; height: 18px; flex: none;
+  margin-right: -4px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform 0.3s var(--ease-out, ease);
+}
+.btn--gold:hover::after,
+.form button[type="submit"]:hover::after,
+.plan .btn:hover::after { transform: translateX(4px); }
+
+.btn--gold:focus-visible,
+.form button[type="submit"]:focus-visible,
+.plan .btn:focus-visible { outline: 2px solid var(--navy-light); outline-offset: 3px; }
+
+/* Invio dei moduli: più alto e, su telefono, a tutta larghezza */
+.form button[type="submit"] { min-height: 54px; padding-inline: 32px; font-size: 16px; }
+.form button[type="submit"][disabled]::after { display: none; }
+@media (max-width: 767px) {
+  .form button[type="submit"] { justify-self: stretch; width: 100%; }
+}
+
+/* "Affida il tuo immobile" nella barra in alto */
+.header__cta { min-height: 44px; padding-inline: 20px; font-size: 15px; }
+@media (max-width: 767px) {
+  .header .header__cta { padding: 4px 12px; font-size: 13px; line-height: 1.15; font-weight: 700; }
+  .header .header__cta::after { display: none; } /* su telefono non c'è spazio per la freccia */
+}
+@media (max-width: 359px) {
+  .header .header__cta { max-width: 104px; padding-inline: 8px; font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--gold::before, .form button[type="submit"]::before, .plan .btn::before { display: none; }
+  .btn--gold:hover::after, .form button[type="submit"]:hover::after, .plan .btn:hover::after { transform: none; }
+}
