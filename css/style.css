@@ -1950,10 +1950,18 @@ html { -webkit-tap-highlight-color: transparent; }
 .hero__content { max-height: 100%; }
 .hero__dots { bottom: calc(var(--s-24) + env(safe-area-inset-bottom, 0px)); }
 @media (max-height: 640px) {
-  .hero #hero-title { font-size: clamp(32px, 9vh, 56px); }
+  .hero #hero-title { font-size: max(32px, min(calc(var(--fs-h1) * 1.2), 9vh)); }
   .hero__subtitle { font-size: 17px; margin-top: var(--s-8); }
 }
 @media (min-width: 1600px) and (min-height: 900px) {
   .hero #hero-title { font-size: calc(var(--fs-h1) * 1.45); }
   .hero__subtitle { font-size: 24px; max-width: 760px; }
 }
+
+/* Scritta della Home: Montserrat leggero, lettere spaziate (ottobre 2026) */
+.hero #hero-title, .hero #hero-title strong {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+.hero #hero-title { letter-spacing: 6px; line-height: 1.08; }
+@media (max-width: 767px) { .hero #hero-title { letter-spacing: 4px; } }
