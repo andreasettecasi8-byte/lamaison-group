@@ -359,10 +359,10 @@ p .accent { color: var(--gold); font-weight: 600; }
   position: relative;
   display: flex;
   align-items: center;
+  /* sempre a tutto schermo: altezza esatta della finestra visibile (anche su iPhone con la barra del browser) */
   height: 100vh;
   height: 100svh;
-  min-height: 600px;
-  max-height: 900px;
+  min-height: 0;
   padding-top: var(--header-h);
   overflow: hidden;
   background: var(--navy);
@@ -1944,4 +1944,16 @@ html { -webkit-tap-highlight-color: transparent; }
   .page-hero { min-height: 0; padding: calc(var(--header-h) + var(--s-24)) 0 var(--s-32); }
   .page-hero h1 { font-size: 32px; }
   .page-hero p { margin-top: var(--s-8); font-size: 16px; }
+}
+
+/* Home a tutto schermo su ogni schermo: il testo resta sempre dentro la foto */
+.hero__content { max-height: 100%; }
+.hero__dots { bottom: calc(var(--s-24) + env(safe-area-inset-bottom, 0px)); }
+@media (max-height: 640px) {
+  .hero #hero-title { font-size: clamp(32px, 9vh, 56px); }
+  .hero__subtitle { font-size: 17px; margin-top: var(--s-8); }
+}
+@media (min-width: 1600px) and (min-height: 900px) {
+  .hero #hero-title { font-size: calc(var(--fs-h1) * 1.45); }
+  .hero__subtitle { font-size: 24px; max-width: 760px; }
 }

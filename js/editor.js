@@ -819,7 +819,11 @@
       if (!path) return;
       setPath(state.data[imageFileOf(key)], pathOf(key), path);
       markDirty(imageFileOf(key));
-      document.querySelectorAll('[data-edit-img="' + key + '"]').forEach(function (img) { img.removeAttribute('srcset'); img.src = previewSrc(path); });
+      document.querySelectorAll('[data-edit-img="' + key + '"]').forEach(function (img) {
+        img.removeAttribute('srcset');
+        if (img.parentNode && img.parentNode.tagName === 'PICTURE') img.parentNode.querySelectorAll('source').forEach(function (s) { s.remove(); });
+        img.src = previewSrc(path);
+      });
     });
   }
   function changeAlt(key) {
@@ -845,11 +849,12 @@
       if (img.hasAttribute('data-hero-slide')) {
         var slides = [].slice.call(document.querySelectorAll('[data-hero-slide]'));
         var n = slides.indexOf(img);
-        var bar = img.parentElement.querySelector(':scope > .lm-imgtools');
+        var heroHost = img.closest('.hero') || img.parentElement; // le foto possono stare dentro <picture>
+        var bar = heroHost.querySelector(':scope > .lm-imgtools');
         if (!bar) {
-          img.parentElement.classList.add('lm-imghost');
+          heroHost.classList.add('lm-imghost');
           bar = h('div', { class: 'lm-imgtools lm-ui' }, []);
-          img.parentElement.appendChild(bar);
+          heroHost.appendChild(bar);
         }
         bar.appendChild(h('button', { type: 'button', class: 'lm-btn lm-btn--small', text: 'Cambia foto ' + (n + 1), onclick: function () {
           if (window.LaMaisonHero) window.LaMaisonHero.go(n);
@@ -864,7 +869,7 @@
         }
         return;
       }
-      var host = img.parentElement;
+      var host = img.parentElement.tagName === 'PICTURE' ? img.parentElement.parentElement : img.parentElement;
       host.classList.add('lm-imghost');
       host.appendChild(h('div', { class: 'lm-imgtools lm-ui' }, [
         h('button', { type: 'button', class: 'lm-btn lm-btn--small', text: 'Cambia foto', onclick: function () { changeImage(key); } }),

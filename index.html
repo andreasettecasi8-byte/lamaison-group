@@ -17,7 +17,8 @@
   <link rel="icon" href="img/favicon.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/fonts.css">
-  <link rel="preload" as="image" href="img/hero-luce-1.webp" imagesrcset="img/hero-luce-1-800.webp 800w, img/hero-luce-1-1280.webp 1280w, img/hero-luce-1.webp 1920w" imagesizes="100vw" type="image/webp">
+  <link rel="preload" as="image" media="(orientation: portrait)" href="img/hero-luce-1-v1080.webp" imagesrcset="img/hero-luce-1-v720.webp 720w, img/hero-luce-1-v1080.webp 1080w" imagesizes="(max-aspect-ratio: 9/16) 56.25vh, 100vw" type="image/webp">
+  <link rel="preload" as="image" media="(orientation: landscape)" href="img/hero-luce-1.webp" imagesrcset="img/hero-luce-1-800.webp 800w, img/hero-luce-1-1280.webp 1280w, img/hero-luce-1.webp 1920w, img/hero-luce-1-2400.webp 2400w" imagesizes="(max-aspect-ratio: 16/9) 177.78vh, 100vw" type="image/webp">
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js', 'content-loading');</script>
   <script src="js/main.js" defer></script>
@@ -82,18 +83,18 @@
   <main id="contenuto">
     <!-- ===== Hero ===== -->
     <section class="hero on-navy" aria-labelledby="hero-title">
-      <img data-edit-img="intestazione.foto_4" data-hero-slide class="hero__img is-active" src="img/hero-luce-1.webp" srcset="img/hero-luce-1-800.webp 800w, img/hero-luce-1-1280.webp 1280w, img/hero-luce-1.webp 1920w" sizes="100vw" width="1920" height="1080" fetchpriority="high"
-           alt="Villa moderna bianca con piscina e giardino">
-      <img data-edit-img="intestazione.foto_5" data-hero-slide class="hero__img" src="img/hero-luce-2.webp" srcset="img/hero-luce-2-800.webp 800w, img/hero-luce-2-1280.webp 1280w, img/hero-luce-2.webp 1920w" sizes="100vw" width="1920" height="1080" decoding="async"
-           alt="Soggiorno luminoso con grandi finestre ad arco e camino">
-      <img data-edit-img="intestazione.foto_6" data-hero-slide class="hero__img" src="img/hero-luce-3.webp" srcset="img/hero-luce-3-800.webp 800w, img/hero-luce-3-1280.webp 1280w, img/hero-luce-3.webp 1920w" sizes="100vw" width="1920" height="1080" decoding="async"
-           alt="Cucina bianca con isola e sgabelli in legno">
-      <img data-edit-img="intestazione.foto_7" data-hero-slide class="hero__img" src="img/hero-luce-4.webp" srcset="img/hero-luce-4-800.webp 800w, img/hero-luce-4-1280.webp 1280w, img/hero-luce-4.webp 1920w" sizes="100vw" width="1920" height="1080" decoding="async"
-           alt="Open space luminoso con scala in legno e grandi vetrate">
-      <img data-edit-img="intestazione.foto_8" data-hero-slide class="hero__img" src="img/hero-luce-5.webp" srcset="img/hero-luce-5-800.webp 800w, img/hero-luce-5-1280.webp 1280w, img/hero-luce-5.webp 1920w" sizes="100vw" width="1920" height="1080" decoding="async"
-           alt="Soggiorno chiaro con divano angolare e piante">
-      <img data-edit-img="intestazione.foto_3" data-hero-slide class="hero__img" src="img/hero-3.webp" srcset="img/hero-3-800.webp 800w, img/hero-3-1280.webp 1280w, img/hero-3.webp 1920w" sizes="100vw" width="1920" height="1080" decoding="async"
-           alt="Villa moderna con piscina">
+      <picture><source media="(orientation: portrait)" srcset="img/hero-luce-1-v720.webp 720w, img/hero-luce-1-v1080.webp 1080w" sizes="(max-aspect-ratio: 9/16) 56.25vh, 100vw"><img data-edit-img="intestazione.foto_4" data-hero-slide class="hero__img is-active" src="img/hero-luce-1.webp" srcset="img/hero-luce-1-800.webp 800w, img/hero-luce-1-1280.webp 1280w, img/hero-luce-1.webp 1920w, img/hero-luce-1-2400.webp 2400w" sizes="(max-aspect-ratio: 16/9) 177.78vh, 100vw" width="1920" height="1080" fetchpriority="high"
+           alt="Villa moderna bianca con piscina e giardino"></picture>
+      <picture><source media="(orientation: portrait)" srcset="img/hero-luce-2-v720.webp 720w, img/hero-luce-2-v1080.webp 1080w" sizes="(max-aspect-ratio: 9/16) 56.25vh, 100vw"><img data-edit-img="intestazione.foto_5" data-hero-slide class="hero__img" src="img/hero-luce-2.webp" srcset="img/hero-luce-2-800.webp 800w, img/hero-luce-2-1280.webp 1280w, img/hero-luce-2.webp 1920w, img/hero-luce-2-2400.webp 2400w" sizes="(max-aspect-ratio: 16/9) 177.78vh, 100vw" width="1920" height="1080" decoding="async"
+           alt="Soggiorno luminoso con grandi finestre ad arco e camino"></picture>
+      <picture><source media="(orientation: portrait)" srcset="img/hero-luce-3-v720.webp 720w, img/hero-luce-3-v1080.webp 1080w" sizes="(max-aspect-ratio: 9/16) 56.25vh, 100vw"><img data-edit-img="intestazione.foto_6" data-hero-slide class="hero__img" src="img/hero-luce-3.webp" srcset="img/hero-luce-3-800.webp 800w, img/hero-luce-3-1280.webp 1280w, img/hero-luce-3.webp 1920w, img/hero-luce-3-2400.webp 2400w" sizes="(max-aspect-ratio: 16/9) 177.78vh, 100vw" width="1920" height="1080" decoding="async"
+           alt="Cucina bianca con isola e sgabelli in legno"></picture>
+      <picture><source media="(orientation: portrait)" srcset="img/hero-luce-4-v720.webp 720w, img/hero-luce-4-v1080.webp 1080w" sizes="(max-aspect-ratio: 9/16) 56.25vh, 100vw"><img data-edit-img="intestazione.foto_7" data-hero-slide class="hero__img" src="img/hero-luce-4.webp" srcset="img/hero-luce-4-800.webp 800w, img/hero-luce-4-1280.webp 1280w, img/hero-luce-4.webp 1920w, img/hero-luce-4-2400.webp 2400w" sizes="(max-aspect-ratio: 16/9) 177.78vh, 100vw" width="1920" height="1080" decoding="async"
+           alt="Open space luminoso con scala in legno e grandi vetrate"></picture>
+      <picture><source media="(orientation: portrait)" srcset="img/hero-luce-5-v720.webp 720w, img/hero-luce-5-v1080.webp 1080w" sizes="(max-aspect-ratio: 9/16) 56.25vh, 100vw"><img data-edit-img="intestazione.foto_8" data-hero-slide class="hero__img" src="img/hero-luce-5.webp" srcset="img/hero-luce-5-800.webp 800w, img/hero-luce-5-1280.webp 1280w, img/hero-luce-5.webp 1920w, img/hero-luce-5-2400.webp 2400w" sizes="(max-aspect-ratio: 16/9) 177.78vh, 100vw" width="1920" height="1080" decoding="async"
+           alt="Soggiorno chiaro con divano angolare e piante"></picture>
+      <picture><source media="(orientation: portrait)" srcset="img/hero-3-v720.webp 720w, img/hero-3-v1080.webp 1080w" sizes="(max-aspect-ratio: 9/16) 56.25vh, 100vw"><img data-edit-img="intestazione.foto_3" data-hero-slide class="hero__img" src="img/hero-3.webp" srcset="img/hero-3-800.webp 800w, img/hero-3-1280.webp 1280w, img/hero-3.webp 1920w, img/hero-3-2400.webp 2400w" sizes="(max-aspect-ratio: 16/9) 177.78vh, 100vw" width="1920" height="1080" decoding="async"
+           alt="Villa moderna con piscina"></picture>
       <div class="container hero__content">
         <h1 data-edit="intestazione.titolo_1" id="hero-title">LA <span class="accent">MAISON</span> GROUP</h1>
         <p data-edit="intestazione.testo_1" class="hero__subtitle">Acquisizione, Valorizzazione e Gestione di Immobili a Reddito</p>

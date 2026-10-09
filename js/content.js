@@ -85,7 +85,8 @@
       var src = lookup(all, key);
       var alt = lookup(all, key + '_alt');
       if (typeof src === 'string' && src && img.getAttribute('src') !== src) {
-        img.removeAttribute('srcset'); // le versioni ridotte sono della foto originale
+        img.removeAttribute('srcset'); // le versioni ridotte e verticali sono della foto originale
+        if (img.parentNode && img.parentNode.tagName === 'PICTURE') img.parentNode.querySelectorAll('source').forEach(function (s) { s.remove(); });
         img.src = src;
       }
       if (typeof alt === 'string') img.alt = alt;
