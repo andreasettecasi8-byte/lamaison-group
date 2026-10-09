@@ -166,3 +166,7 @@ Recensioni: arrivano per email. Se va bene, aggiungila dall'area riservata (+ Ag
 - Area riservata: con il sito in inglese si modificano i testi inglesi (badge "Modifica · EN"); foto, immobili e impostazioni sono in comune.
   Immobili e progetti hanno i campi facoltativi "Titolo in inglese" e "Descrizione in inglese".
 - Le email dei moduli restano in italiano; se il cliente ha usato l'inglese l'oggetto finisce con **[EN]** e c'è il campo "lingua".
+
+## Prima di pubblicare una modifica a CSS o JavaScript
+Lancia `python3 strumenti/versione.py`: aggiorna il numero di versione (`?v=…`) dei file nelle pagine,
+così telefoni e computer scaricano subito la versione nuova invece di quella rimasta in memoria.

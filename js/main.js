@@ -129,28 +129,58 @@
 
   // ----- Scorrimento col dito (o trascinando col mouse) tra le foto -----
   // fn(+1) = foto successiva (dito verso sinistra), fn(-1) = precedente.
-  // Solo movimenti orizzontali: lo scorrimento verticale della pagina resta libero.
-  function swipe(el, fn) {
-    var x0 = null, y0 = 0, id = null, swallow = 0;
+  // Su iPhone/iPad si usano gli eventi touch (più affidabili su Safari); col mouse i pointer.
+  // Il primo movimento decide la direzione: in orizzontale si sfoglia, in verticale la pagina scorre.
+  // opts.move(dx) mostra la foto che segue il dito, opts.end() la riporta a posto.
+  function swipe(el, fn, opts) {
+    opts = opts || {};
+    var sx = 0, sy = 0, dx = 0, lock = null, active = false, swallow = 0;
     el.style.touchAction = 'pan-y';
-    el.addEventListener('pointerdown', function (e) {
-      // si può partire anche dalle frecce sopra la foto (sul telefono occupano i lati)
-      if (e.button || e.target.closest('a, input, select, textarea, .lm-ui')) return;
-      x0 = e.clientX; y0 = e.clientY; id = e.pointerId;
-    });
-    el.addEventListener('pointerup', function (e) {
-      if (x0 == null || e.pointerId !== id) return;
-      var dx = e.clientX - x0, dy = e.clientY - y0;
-      x0 = null;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
-        swallow = Date.now() + 400; // dopo uno scorrimento la freccia sotto il dito non scatta
+    function begin(x, y, target) {
+      if (target.closest && target.closest('a, input, select, textarea, .lm-ui')) return;
+      if (document.documentElement.classList.contains('lm-editing')) return;
+      sx = x; sy = y; dx = 0; lock = null; active = true;
+    }
+    function move(x, y, e) {
+      if (!active) return;
+      var mx = x - sx, my = y - sy;
+      if (!lock && (Math.abs(mx) > 8 || Math.abs(my) > 8)) lock = Math.abs(mx) > Math.abs(my) ? 'x' : 'y';
+      if (lock === 'y') { active = false; if (opts.end) opts.end(); return; }
+      if (lock === 'x') {
+        dx = mx;
+        if (e && e.cancelable) e.preventDefault(); // mentre si sfoglia la pagina non scorre
+        if (opts.move) opts.move(dx);
+      }
+    }
+    function finish() {
+      if (!active) return;
+      active = false;
+      var go = lock === 'x' && Math.abs(dx) > 40;
+      if (opts.end) opts.end(go);
+      if (go) {
+        swallow = Date.now() + 450; // la freccia o il pallino sotto il dito non scattano
         fn(dx < 0 ? 1 : -1);
       }
+    }
+    el.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) { active = false; return; }
+      begin(e.touches[0].clientX, e.touches[0].clientY, e.target);
+    }, { passive: true });
+    el.addEventListener('touchmove', function (e) {
+      if (e.touches.length === 1) move(e.touches[0].clientX, e.touches[0].clientY, e);
+    }, { passive: false });
+    el.addEventListener('touchend', finish);
+    el.addEventListener('touchcancel', function () { active = false; if (opts.end) opts.end(); });
+    // mouse (computer): si trascina
+    el.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'touch' || e.button) return;
+      begin(e.clientX, e.clientY, e.target);
     });
+    window.addEventListener('pointermove', function (e) { if (e.pointerType !== 'touch') move(e.clientX, e.clientY, null); });
+    window.addEventListener('pointerup', function (e) { if (e.pointerType !== 'touch') finish(); });
     el.addEventListener('click', function (e) {
       if (Date.now() < swallow) { e.preventDefault(); e.stopPropagation(); }
     }, true);
-    el.addEventListener('pointercancel', function () { x0 = null; });
     el.addEventListener('dragstart', function (e) { if (e.target.tagName === 'IMG') e.preventDefault(); });
   }
   window.LaMaisonSwipe = swipe;
@@ -186,10 +216,23 @@
     };
     goHero(0);
     restartHero();
+    // la foto segue il dito, poi passa alla successiva / precedente
     swipe(slides[0].closest('.hero'), function (dir) {
-      if (document.documentElement.classList.contains('lm-editing')) return;
       goHero(heroIndex + dir);
       restartHero();
+    }, {
+      // si sposta la posizione (left/right), così zoom lento e parallasse restano com'erano
+      move: function (dx) {
+        var img = slides[heroIndex], o = (dx * 0.35).toFixed(1) + 'px';
+        img.style.left = o; img.style.right = (-dx * 0.35).toFixed(1) + 'px';
+      },
+      end: function () {
+        slides.forEach(function (img) {
+          if (!img.style.left) return;
+          img.animate && img.animate([{ left: img.style.left, right: img.style.right }, { left: '0px', right: '0px' }], { duration: 250, easing: 'ease-out' });
+          img.style.left = ''; img.style.right = '';
+        });
+      }
     });
     window.LaMaisonHero = { go: goHero, current: function () { return heroIndex; } };
   }
@@ -251,7 +294,7 @@
   // ----- Area riservata: l'editor si carica solo quando serve -----
   function loadEditor(action) {
     if (window.LaMaisonEditor) return window.LaMaisonEditor[action]();
-    if (!document.querySelector('link[href="css/editor.css"]')) {
+    if (!document.querySelector('link[href^="css/editor.css"]')) {
       var css = document.createElement('link');
       css.rel = 'stylesheet';
       css.href = 'css/editor.css?v=' + Date.now(); // sempre l'ultima versione dell'area riservata

@@ -1970,3 +1970,4 @@ html { -webkit-tap-highlight-color: transparent; }
 .hero, .gallery__main { -webkit-user-select: none; user-select: none; }
 .hero img, .gallery__main img { -webkit-user-drag: none; }
 @media (hover: hover) and (pointer: fine) { .gallery__main { cursor: grab; } }
+.card__link::after { content: "→"; margin-left: 6px; }

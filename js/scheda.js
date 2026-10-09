@@ -114,7 +114,10 @@
     });
     // scorrimento col dito (o trascinando col mouse)
     if (window.LaMaisonSwipe && photos.length > 1) {
-      window.LaMaisonSwipe(g.querySelector('.gallery__main'), function (dir) { show(Number(g.dataset.index) + dir); });
+      window.LaMaisonSwipe(g.querySelector('.gallery__main'), function (dir) { show(Number(g.dataset.index) + dir); }, {
+        move: function (dx) { main.style.transition = 'none'; main.style.transform = 'translateX(' + dx.toFixed(1) + 'px)'; },
+        end: function () { main.style.transition = 'transform 0.25s ease'; main.style.transform = ''; }
+      });
     }
   }
 
