@@ -34,14 +34,14 @@
 .lm-editing .reveal { opacity: 1 !important; transform: none !important; }
 
 .lm-editable {
-  outline: 1px dashed rgba(201, 162, 39, 0.8);
+  outline: 1px dashed rgba(206, 185, 146, 0.8);
   outline-offset: 3px;
   border-radius: 2px;
   cursor: text;
   min-width: 1ch;
 }
 .lm-editable:hover { outline-style: solid; }
-.lm-editable:focus { outline: 2px solid var(--gold); background: rgba(201, 162, 39, 0.08); }
+.lm-editable:focus { outline: 2px solid var(--gold); background: rgba(206, 185, 146, 0.08); }
 /* i link-scheda coprono la card: in modifica devono restare cliccabili solo come testo */
 .lm-editing .card__stretched::before { display: none; }
 
@@ -55,7 +55,7 @@
 .lm-imgtools .lm-btn--ghost { background: rgba(255, 255, 255, 0.92); }
 /* Foto grandi in testata: i pulsanti vanno sotto la navbar */
 .hero > .lm-imgtools, .page-hero > .lm-imgtools { top: calc(var(--header-h) + var(--s-12)); }
-.header__logo .lm-editable-img { outline: 1px dashed rgba(201, 162, 39, 0.8); outline-offset: 2px; }
+.header__logo .lm-editable-img { outline: 1px dashed rgba(206, 185, 146, 0.8); outline-offset: 2px; }
 
 /* ---------- Schede (immobili, progetti, recensioni) ---------- */
 .lm-card { position: relative; }
