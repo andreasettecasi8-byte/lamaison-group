@@ -1965,3 +1965,8 @@ html { -webkit-tap-highlight-color: transparent; }
 }
 .hero #hero-title { letter-spacing: 6px; line-height: 1.08; }
 @media (max-width: 767px) { .hero #hero-title { letter-spacing: 4px; } }
+
+/* Foto che si sfogliano col dito: niente selezione o trascinamento dell'immagine */
+.hero, .gallery__main { -webkit-user-select: none; user-select: none; }
+.hero img, .gallery__main img { -webkit-user-drag: none; }
+@media (hover: hover) and (pointer: fine) { .gallery__main { cursor: grab; } }

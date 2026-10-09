@@ -127,6 +127,34 @@
     paint();
   }
 
+  // ----- Scorrimento col dito (o trascinando col mouse) tra le foto -----
+  // fn(+1) = foto successiva (dito verso sinistra), fn(-1) = precedente.
+  // Solo movimenti orizzontali: lo scorrimento verticale della pagina resta libero.
+  function swipe(el, fn) {
+    var x0 = null, y0 = 0, id = null, swallow = 0;
+    el.style.touchAction = 'pan-y';
+    el.addEventListener('pointerdown', function (e) {
+      // si può partire anche dalle frecce sopra la foto (sul telefono occupano i lati)
+      if (e.button || e.target.closest('a, input, select, textarea, .lm-ui')) return;
+      x0 = e.clientX; y0 = e.clientY; id = e.pointerId;
+    });
+    el.addEventListener('pointerup', function (e) {
+      if (x0 == null || e.pointerId !== id) return;
+      var dx = e.clientX - x0, dy = e.clientY - y0;
+      x0 = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        swallow = Date.now() + 400; // dopo uno scorrimento la freccia sotto il dito non scatta
+        fn(dx < 0 ? 1 : -1);
+      }
+    });
+    el.addEventListener('click', function (e) {
+      if (Date.now() < swallow) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+    el.addEventListener('pointercancel', function () { x0 = null; });
+    el.addEventListener('dragstart', function (e) { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  }
+  window.LaMaisonSwipe = swipe;
+
   // ----- Foto iniziale della Home: presentazione con dissolvenza -----
   var slides = [].slice.call(document.querySelectorAll('.hero [data-hero-slide]'));
   if (slides.length > 1) {
@@ -158,6 +186,11 @@
     };
     goHero(0);
     restartHero();
+    swipe(slides[0].closest('.hero'), function (dir) {
+      if (document.documentElement.classList.contains('lm-editing')) return;
+      goHero(heroIndex + dir);
+      restartHero();
+    });
     window.LaMaisonHero = { go: goHero, current: function () { return heroIndex; } };
   }
 

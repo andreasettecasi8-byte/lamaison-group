@@ -112,15 +112,10 @@
       else if (b.classList.contains('gallery__nav--next')) show(i + 1);
       else if (b.dataset.go != null) show(Number(b.dataset.go));
     });
-    // scorrimento col dito sul telefono
-    var x0 = null;
-    g.querySelector('.gallery__main').addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-    g.querySelector('.gallery__main').addEventListener('touchend', function (e) {
-      if (x0 == null) return;
-      var dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 40) show(Number(g.dataset.index) + (dx < 0 ? 1 : -1));
-      x0 = null;
-    });
+    // scorrimento col dito (o trascinando col mouse)
+    if (window.LaMaisonSwipe && photos.length > 1) {
+      window.LaMaisonSwipe(g.querySelector('.gallery__main'), function (dir) { show(Number(g.dataset.index) + dir); });
+    }
   }
 
   // indirizzo ufficiale per Google (e niente indicizzazione per le schede che non esistono)
