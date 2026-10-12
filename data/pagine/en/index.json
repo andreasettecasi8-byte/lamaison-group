@@ -57,10 +57,10 @@
     "titolo_1": "Our properties *for sale*",
     "pulsante_1": "See all"
   },
-  "progetti": {
-    "etichetta_1": "Projects",
-    "titolo_1": "Properties *reborn*",
-    "pulsante_1": "Discover our projects"
+  "affitti_brevi": {
+    "etichetta_1": "Short stays",
+    "titolo_1": "Our homes for *short stays*",
+    "pulsante_1": "See all homes"
   },
   "recensioni": {
     "etichetta_1": "Reviews",

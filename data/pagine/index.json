@@ -71,11 +71,11 @@
     "titolo_1": "Le nostre proposte *in vendita*",
     "pulsante_1": "Vedi tutti"
   },
-  "progetti": {
-    "_titolo": "Progetti",
-    "etichetta_1": "Progetti",
-    "titolo_1": "Immobili che *rinascono*",
-    "pulsante_1": "Scopri i progetti"
+  "affitti_brevi": {
+    "_titolo": "Affitti brevi",
+    "etichetta_1": "Affitti brevi",
+    "titolo_1": "I nostri alloggi per *affitti brevi*",
+    "pulsante_1": "Vedi gli alloggi"
   },
   "recensioni": {
     "_titolo": "Recensioni",

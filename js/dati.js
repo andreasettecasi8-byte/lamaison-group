@@ -45,10 +45,24 @@ var SUPABASE_KEY = 'sb_publishable_sD1mGEblZI7JrRkHD6lxpg_ilw0aZK4';
     });
   }
 
+  // Testi delle pagine: quelli salvati su Supabase vincono, ma le sezioni nuove
+  // aggiunte ai file (non ancora salvate dall'area riservata) compaiono lo stesso
+  function fill(d, base) {
+    if (!base || typeof base !== 'object' || !d || typeof d !== 'object' || Array.isArray(d)) return d;
+    Object.keys(base).forEach(function (k) {
+      if (!(k in d)) d[k] = base[k];
+      else if (d[k] && typeof d[k] === 'object' && !Array.isArray(d[k])) fill(d[k], base[k]);
+    });
+    return d;
+  }
+
   function json(path) {
     if (!cache[path]) {
       cache[path] = ACTIVE
-        ? remote(path).then(function (d) { return d === undefined ? file(path) : d; }, function () { return file(path); })
+        ? remote(path).then(function (d) {
+            if (d === undefined) return file(path);
+            return /^data\/pagine\//.test(path) ? file(path).then(function (f) { return fill(d, f); }) : d;
+          }, function () { return file(path); })
         : file(path);
     }
     return cache[path];
