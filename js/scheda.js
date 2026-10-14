@@ -154,7 +154,9 @@
     var links = [p.link_airbnb && ['Prenota su Airbnb', p.link_airbnb], p.link_booking && ['Prenota su Booking.com', p.link_booking]]
       .filter(function (l) { return l && /^https?:\/\//.test(l[1]); });
 
-    document.title = R.L(p, 'titolo') + ' | LA MAISON GROUP';
+    // Titolo per Google con il luogo, es. "Nido Alpino – Affitto breve a Samolaco | LA MAISON GROUP"
+    var place = p.citta || p.zona;
+    document.title = R.L(p, 'titolo') + ' – ' + R.CATEGORIES[cat].label + (place ? ' a ' + place : '') + ' | LA MAISON GROUP';
     var meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute('content', (R.L(p, 'descrizione') || R.L(p, 'titolo')).slice(0, 155));
     var sito = (window.LaMaisonContent && window.LaMaisonContent.data().comune || {}).sito || {};

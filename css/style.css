@@ -1971,3 +1971,6 @@ html { -webkit-tap-highlight-color: transparent; }
 .hero img, .gallery__main img { -webkit-user-drag: none; }
 @media (hover: hover) and (pointer: fine) { .gallery__main { cursor: grab; } }
 .card__link::after { content: "→"; margin-left: 6px; }
+
+/* Footer: zona in cui operiamo (aiuta anche Google a capire dove lavoriamo) */
+.footer__zona { margin-top: 6px; font-size: 13px; letter-spacing: .02em; opacity: .75; }

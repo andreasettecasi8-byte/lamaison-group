@@ -187,7 +187,16 @@
       done();
     });
 
-  // ----- Scheda azienda per Google (dati strutturati schema.org), solo in Home -----
+  // ----- Scheda azienda per Google (dati strutturati schema.org) -----
+  // In Home la scheda completa; nelle pagine dei servizi il servizio, con la stessa zona.
+  // Luoghi di cui ci occupiamo oltre alle province della mappa (ricerche tipo "affitti brevi lago di como")
+  var LUOGHI = ['Lago di Como', 'Valchiavenna', 'Valtellina', 'Chiavenna', 'Samolaco'];
+  var SERVIZI = {
+    'affitti-brevi': 'Gestione affitti brevi',
+    'affitti-tradizionali': 'Gestione affitti a lungo termine',
+    vendita: 'Compravendita immobiliare',
+    valutazione: 'Valutazione immobiliare gratuita'
+  };
   // Costruita dai dati del sito: se cambi telefono, email o province, si aggiorna da sola.
   function businessData() {
     var sito = (current.comune && current.comune.sito) || {};
@@ -214,7 +223,7 @@
           legalName: 'La Maison Group S.r.l.s.',
           url: base,
           logo: /^https?:\/\//.test(sito.logo || '') ? sito.logo : base + (sito.logo || 'img/logo.png'),
-          image: base + 'img/hero.webp',
+          image: base + 'img/hero-luce-1.webp',
           description: (current.page._seo && current.page._seo.descrizione) || '',
           email: email || undefined,
           telephone: phones[0] || undefined,
@@ -222,16 +231,29 @@
           founder: founders.length ? founders : undefined,
           areaServed: (Array.isArray(sito.province) ? sito.province : ['TO']).map(function (c) {
             return { '@type': 'AdministrativeArea', name: 'Provincia di ' + (names[c] || c) };
-          }),
+          }).concat(LUOGHI.map(function (n) { return { '@type': 'Place', name: n }; })),
+          knowsAbout: ['Affitti brevi', 'Property management', 'Affitti a lungo termine', 'Compravendita immobiliare', 'Investimenti immobiliari'],
           contactPoint: phones.map(function (t) { return { '@type': 'ContactPoint', telephone: t.replace(/\s+/g, ''), contactType: 'customer service', availableLanguage: ['Italian', 'English'] }; })
         };
         if (sito.sede_legale) data.address = sito.sede_legale;
         if (social.length) data.sameAs = social;
+        if (page !== 'index') {
+          data = {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: SERVIZI[page],
+            serviceType: SERVIZI[page],
+            description: data.description,
+            url: base + page + '.html',
+            areaServed: data.areaServed,
+            provider: { '@type': 'RealEstateAgent', name: data.name, url: base, telephone: data.telephone, address: data.address }
+          };
+        }
         var tag = document.getElementById('ld-azienda') || document.head.appendChild(Object.assign(document.createElement('script'), { id: 'ld-azienda', type: 'application/ld+json' }));
         tag.textContent = JSON.stringify(data);
       });
   }
-  if (page === 'index') ready.then(function () { setTimeout(businessData, 0); });
+  if (page === 'index' || SERVIZI[page]) ready.then(function () { setTimeout(businessData, 0); });
 
   // Usato dall'area riservata (js/editor.js)
   window.LaMaisonContent = { apply: apply, format: format, get: get, lookup: lookup, hrefFor: hrefFor, ready: ready,

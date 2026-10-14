@@ -9,7 +9,9 @@ Da rilanciare quando cambia il dominio o dopo aver aggiunto molti immobili
 import datetime
 import json
 import os
+import re
 import sys
+import urllib.request
 from urllib.parse import quote
 from xml.sax.saxutils import escape
 
@@ -25,11 +27,26 @@ base = sys.argv[1].rstrip('/') + '/'
 today = datetime.date.today().isoformat()
 
 urls = [(base + ('' if p == 'index.html' else p), prio) for p, prio in PAGES]
+def supabase():
+    # Gli immobili veri stanno su Supabase (js/dati.js): se risponde si usano quelli
+    try:
+        src = open(os.path.join(ROOT, 'js', 'dati.js'), encoding='utf-8').read()
+        url = re.search(r"SUPABASE_URL = '([^']+)'", src).group(1)
+        key = re.search(r"SUPABASE_KEY = '([^']+)'", src).group(1)
+        req = urllib.request.Request(url + '/rest/v1/contenuti?select=percorso,dati&percorso=like.data/*.json', headers={'apikey': key})
+        return {r['percorso']: r['dati'] for r in json.load(urllib.request.urlopen(req, timeout=10))}
+    except Exception:
+        return {}
+
+remote = supabase()
 for cat in CATEGORIES:
     path = os.path.join(ROOT, 'data', cat + '.json')
-    if not os.path.exists(path):
-        continue
-    for item in json.load(open(path, encoding='utf-8')).get('immobili', []):
+    data = remote.get('data/%s.json' % cat)
+    if data is None:
+        if not os.path.exists(path):
+            continue
+        data = json.load(open(path, encoding='utf-8'))
+    for item in data.get('immobili', []):
         if item.get('id') and item.get('pubblicata') is not False and not item.get('esempio'):
             urls.append((base + 'immobile.html?c=%s&id=%s' % (cat, quote(item['id'])), '0.8'))
 
