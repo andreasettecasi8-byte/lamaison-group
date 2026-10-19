@@ -787,9 +787,15 @@
       URL.revokeObjectURL(url);
       return new Promise(function (res) { canvas.toBlob(res, 'image/webp', 0.82); }).then(function (blob) {
         if (blob && blob.type === 'image/webp') return { blob: blob, ext: 'webp' };
-        // Safari non sa creare WebP: usa JPEG
-        return new Promise(function (res) { canvas.toBlob(res, 'image/jpeg', 0.85); })
-          .then(function (b) { return { blob: b, ext: 'jpg' }; });
+        // Safari non sa creare WebP: usa JPEG, abbassando la qualità finché la foto resta leggera
+        // (le foto molto dettagliate, es. da drone, superavano 1,5 MB e rallentavano il telefono)
+        var MAX = 450 * 1024;
+        function jpeg(q) {
+          return new Promise(function (res) { canvas.toBlob(res, 'image/jpeg', q); }).then(function (b) {
+            return b && b.size > MAX && q > 0.6 ? jpeg(Math.round((q - 0.08) * 100) / 100) : { blob: b, ext: 'jpg' };
+          });
+        }
+        return jpeg(0.85);
       });
     }).catch(function () {
       URL.revokeObjectURL(url);
