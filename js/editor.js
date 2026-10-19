@@ -116,7 +116,11 @@
       extra: [{ type: 'heading', label: 'Prenotazioni' },
               { name: 'link_airbnb', label: 'Link all\'annuncio Airbnb', type: 'url', hint: 'Facoltativo: compare il pulsante "Prenota su Airbnb".' },
               { name: 'link_booking', label: 'Link all\'annuncio Booking.com', type: 'url' },
-              { name: 'cin', label: 'Codice CIN', type: 'text', hint: 'Codice Identificativo Nazionale, obbligatorio negli annunci di affitto breve.' }]
+              { name: 'cin', label: 'Codice CIN', type: 'text', hint: 'Codice Identificativo Nazionale, obbligatorio negli annunci di affitto breve.' },
+              { type: 'heading', label: 'Voto degli ospiti' },
+              { name: 'voto', label: 'Voto medio', type: 'text', half: true, placeholder: 'Es. 4,9', hint: 'Compare sotto il titolo con una stella.' },
+              num('numero_recensioni', 'Numero di recensioni'),
+              { name: 'voto_fonte', label: 'Dove sono le recensioni', type: 'select', options: ['', 'Airbnb', 'Booking.com', 'Google'], half: true }]
     }),
     progetti: {
       singular: 'progetto', plural: 'progetti', title: 'titolo', newLabel: 'Nuovo progetto', addLabel: '+ Carica nuovo progetto',
@@ -141,6 +145,7 @@
         { name: 'stelle', label: 'Stelle', type: 'select', options: ['5', '4', '3', '2', '1'], number: true, value: 5 },
         { name: 'testo', label: 'Testo', type: 'textarea', required: true },
         { name: 'data', label: 'Data', type: 'date' },
+        { name: 'alloggio', label: 'Alloggio (facoltativo)', type: 'text', placeholder: 'Es. Nido Alpino', hint: 'Scrivi il nome dell\'alloggio: la recensione compare anche nella sua scheda.' },
         { name: 'pubblicata', label: 'Pubblicata sul sito', type: 'checkbox', value: true },
         { name: 'esempio', label: 'Recensione di esempio', type: 'checkbox' }
       ]

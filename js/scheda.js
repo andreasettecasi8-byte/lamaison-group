@@ -43,6 +43,42 @@
     return rows.filter(function (r) { return r[1] !== '' && r[1] != null && r[1] !== 'undefined'; });
   }
 
+  // Testi del riquadro "Prenota direttamente con noi" (comune.json → prenota_diretto, modificabili dalla pagina Affitti brevi)
+  var DIRECT = { titolo_1: 'Prenota direttamente con noi', voce_2: 'Risposta rapida, anche su WhatsApp', voce_3: 'Contatto diretto con i titolari' };
+  function directBox() {
+    var C = window.LaMaisonContent;
+    var t = Object.assign({}, DIRECT, (C && C.data() && C.data().comune && C.data().comune.prenota_diretto) || {});
+    var f = C ? C.format : esc;
+    return '<div class="direct direct--compact">' +
+      '<p class="direct__title">' + f(t.titolo_1) + '</p>' +
+      '<ul class="direct__list">' + ['voce_2', 'voce_3'].filter(function (k) { return String(t[k] || '').trim(); })
+        .map(function (k) { return '<li><span>' + f(t[k]) + '</span></li>'; }).join('') + '</ul></div>';
+  }
+  // Voto medio degli ospiti (campi "voto" e "numero_recensioni" dell'alloggio)
+  function rating(p) {
+    var v = Number(String(p.voto || '').replace(',', '.'));
+    if (!v) return '';
+    var n = Number(p.numero_recensioni) || 0;
+    return '<p class="scheda__rating">' + R.STAR + '<strong>' + String(Math.round(v * 100) / 100).replace('.', ',') + '</strong>' +
+      (n ? '<span>· ' + n + (n === 1 ? ' recensione' : ' recensioni') + (p.voto_fonte ? ' su ' + esc(p.voto_fonte) : '') + '</span>' : '') + '</p>';
+  }
+  // Recensioni collegate all'alloggio (recensioni.json, campo "alloggio" = nome o codice dell'alloggio)
+  function guestReviews(p) {
+    var slot = root.querySelector('[data-scheda-reviews]');
+    if (!slot) return;
+    var keys = [p.id, p.titolo].filter(Boolean).map(function (k) { return String(k).trim().toLowerCase(); });
+    window.LaMaisonDati.json('data/recensioni.json').then(function (data) {
+      var items = R.list(data, 'recensioni').filter(function (r) {
+        return keys.indexOf(String(r.alloggio || '').trim().toLowerCase()) !== -1;
+      }).slice(0, 3);
+      if (!items.length) return;
+      slot.innerHTML = '<h2>Cosa dicono gli ospiti</h2><div class="scheda__reviews">' +
+        items.map(function (r) { return R.templates.recensioni(r); }).join('') + '</div>';
+      slot.hidden = false;
+      if (window.LaMaison) window.LaMaison.observe(slot);
+    });
+  }
+
   function paragraphs(text) {
     return String(text || '').split(/\n{2,}/).filter(function (t) { return t.trim(); })
       .map(function (t) { return '<p>' + esc(t.trim()).replace(/\n/g, '<br>') + '</p>'; }).join('');
@@ -172,6 +208,7 @@
             '<span class="label">' + esc(R.CATEGORIES[cat].label) + (p.etichetta ? ' · ' + esc(p.etichetta) : '') + '</span>' +
             '<h1>' + esc(R.L(p, 'titolo')) + '</h1>' +
             (where ? '<p class="scheda__where">' + esc(where) + '</p>' : '') +
+            (cat === 'affitti-brevi' ? rating(p) : '') +
             (p.pubblicata === false ? '<p class="scheda__hidden">Non visibile ai visitatori</p>' : '') +
           '</div>' +
         '</div>' +
@@ -185,16 +222,23 @@
             (R.L(p, 'descrizione') ? '<section class="scheda__block"><h2>Descrizione</h2>' + paragraphs(R.L(p, 'descrizione')) + '</section>' : '') +
             (tags.length ? '<section class="scheda__block"><h2>Caratteristiche</h2><ul class="tags">' +
               tags.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></section>' : '') +
+            (cat === 'affitti-brevi' ? '<section class="scheda__block" data-scheda-reviews hidden></section>' : '') +
           '</div>' +
           '<aside class="scheda__side">' +
             '<div class="card scheda__box">' +
               (cost ? '<p class="price">' + cost + '</p>' : '') +
+              // affitti brevi: prima i vantaggi della prenotazione diretta, poi i dati dell'alloggio
+              (cat === 'affitti-brevi' ? directBox() : '') +
               '<dl class="facts">' + facts(p).map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>' +
               (cat === 'affitti-brevi'
-                ? '<p class="scheda__quote">Scegli le date e ricevi un preventivo su misura.</p>' +
-                  '<a class="btn btn--primary" href="#richiesta">Scegli le date</a>'
-                : '<a class="btn btn--primary" href="' + request + '">Richiedi informazioni</a>') +
-              links.map(function (l) { return '<a class="btn btn--secondary" href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + l[0] + '</a>'; }).join('') +
+                ? 
+                  '<a class="btn btn--primary" href="#richiesta">Scegli le date</a>' +
+                  // Airbnb e Booking restano, ma in secondo piano: prima la prenotazione diretta
+                  (links.length ? '<p class="scheda__also">Lo trovi anche su ' + links.map(function (l) {
+                    return '<a href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + l[0].replace('Prenota su ', '') + '</a>';
+                  }).join(' e ') + '</p>' : '')
+                : '<a class="btn btn--primary" href="' + request + '">Richiedi informazioni</a>' +
+                  links.map(function (l) { return '<a class="btn btn--secondary" href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + l[0] + '</a>'; }).join('')) +
             '</div>' +
           '</aside>' +
         '</div>' +
@@ -210,6 +254,7 @@
           '</section>'
         : '');
     wireGallery(p);
+    if (cat === 'affitti-brevi') guestReviews(p);
     var slot = root.querySelector('[data-booking-slot]');
     if (slot && window.LaMaisonBooking) window.LaMaisonBooking.mount(slot, { immobile: p });
   }

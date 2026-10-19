@@ -198,7 +198,7 @@
 
   window.LaMaisonRender = {
     draw: draw, all: all, list: list, LIST_KEY: LIST_KEY, EMPTY: EMPTY, CATEGORIES: CATEGORIES,
-    specsOf: specsOf, L: L, esc: esc, icon: icon, price: price, date: date
+    specsOf: specsOf, L: L, esc: esc, icon: icon, price: price, date: date, templates: templates, STAR: STAR
   };
 
   // ----- Media delle stelle (pagina Recensioni) -----

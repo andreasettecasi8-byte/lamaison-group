@@ -1974,3 +1974,50 @@ html { -webkit-tap-highlight-color: transparent; }
 
 /* Footer: zona in cui operiamo (aiuta anche Google a capire dove lavoriamo) */
 .footer__zona { margin-top: 6px; font-size: 13px; letter-spacing: .02em; opacity: .75; }
+
+/* ============================================================
+   Prenotazione diretta, voto, recensioni
+   Stile essenziale: linee sottili, niente riquadri, molto bianco
+   ============================================================ */
+
+/* "Prenota direttamente con noi": una riga, separata da linee sottili */
+.direct {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  margin: 0 auto var(--s-48, 48px); padding: 28px 0;
+  border-top: var(--line) solid var(--hairline); border-bottom: var(--line) solid var(--hairline);
+  text-align: center;
+}
+.direct__title { margin: 0; font-family: var(--font-title); font-size: 20px; font-weight: 300; letter-spacing: .01em; color: var(--navy); }
+.direct__title .accent { font-weight: 400; }
+.direct__list { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 0; margin: 0; padding: 0; list-style: none; }
+.direct__list li { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+.direct__list li + li::before { content: ""; display: inline-block; width: 18px; height: 1px; margin: 0 14px; vertical-align: middle; background: var(--gold); }
+/* nella scheda: tre righe sotto una linea, senza fondo */
+.direct--compact { align-items: flex-start; gap: 10px; margin: 0; padding: 0 0 18px; border-top: 0; text-align: left; }
+.direct--compact .direct__title { font-size: 17px; }
+.direct--compact .direct__list { flex-direction: column; align-items: flex-start; gap: 6px; }
+.direct--compact .direct__list li { font-size: 11px; letter-spacing: .12em; }
+.direct--compact .direct__list li { display: flex; align-items: baseline; }
+.direct--compact .direct__list li::before, .direct--compact .direct__list li + li::before { content: ""; flex: none; display: block; width: 10px; height: 1px; margin: 0 10px 0 0; transform: translateY(-4px); background: var(--gold); }
+.scheda__also { margin: 0; font-size: 13px; color: var(--text-muted); text-align: center; }
+.scheda__also a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Voto: stella sottile e numero */
+.scheda__rating { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 0; font-size: 14px; letter-spacing: .02em; color: var(--text-muted); }
+.scheda__rating svg { width: 14px; height: 14px; align-self: center; color: var(--gold); }
+.scheda__rating strong { font-weight: 500; color: var(--navy); }
+
+/* Recensioni nella scheda: citazioni, senza riquadri */
+.scheda__reviews { display: grid; gap: 32px; margin-top: 8px; }
+@media (min-width: 768px) { .scheda__reviews { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+.scheda__reviews .card { padding: 0 0 0 20px; background: none; border: 0; border-left: 1px solid var(--gold); border-radius: 0; box-shadow: none; }
+.scheda__reviews .card:hover { transform: none; box-shadow: none; }
+.scheda__reviews .stars svg { width: 12px; height: 12px; }
+.scheda__reviews blockquote { margin: 10px 0 12px; font-size: 16px; font-style: italic; font-weight: 300; line-height: 1.6; color: var(--navy); }
+
+@media (max-width: 767px) {
+  .direct { padding: 22px 0; }
+  .direct__title { font-size: 18px; }
+  .direct__list { flex-direction: column; gap: 8px; }
+  .direct__list li + li::before { display: none; }
+}
