@@ -1,4 +1,18 @@
 {
-  "aggiornato": "",
-  "annunci": {}
+  "aggiornato": "2026-11-02T16:25+00:00",
+  "annunci": {
+    "31154": {
+      "titolo": "Villa ristrutturata con balconi e cantina",
+      "comune": "Blessagno",
+      "prezzo": 395000,
+      "mq": 80,
+      "locali": 5,
+      "bagni": 2,
+      "classe_energetica": "C",
+      "descrizione": "A Blessagno, in Via XX Settembre 33, Homepanda propone in vendita una villa ristrutturata di 80 mq, in ottimo stato. L’immobile, libero su quattro lati ed esposto all’esterno, offre un contesto riservato e luminoso, ideale per chi desidera vivere in una soluzione indipendente con spazi ben distribuiti.\n\nLa villa si sviluppa su più livelli e accoglie una piacevole zona giorno con cucina a vista, perfetta per creare un ambiente conviviale e funzionale, servita da un bagno dedicato. La zona notte comprende tre camere da letto e un secondo bagno, garantendo comfort e praticità per tutta la famiglia. Completa la proprietà un ampio balcone che circonda buona parte della casa, regalando maggiore luminosità e una piacevole continuità tra gli spazi interni ed esterni.\n\nA servizio della proprietà troviamo una cantina, oltre a un box auto singolo e due posti auto scoperti. Gli spazi accessori rendono questa villa ancora più completa, offrendo soluzioni pratiche per auto, deposito e organizzazione quotidiana.\n\nLa casa viene proposta arredata. La distribuzione interna rende l’immobile pronto da abitare, con ambienti accoglienti e facilmente personalizzabili in base alle proprie esigenze.\n\nUna proposta interessante per chi cerca una villa curata, funzionale e subito disponibile per essere vissuta. Contattaci per scoprire tutti i dettagli e prenotare una visita.",
+      "foto": "img/homepanda/31154.webp",
+      "foto_origine": "https://thumb.homepanda.it/property/HP/1600x900/main/3b90c20f4bda4939a4b5c94a1032a802?f=webp",
+      "link": "https://www.homepanda.it/cerca-casa/vendita/como/villa/via-xx-settembre-33/31154"
+    }
+  }
 }
