@@ -11,12 +11,13 @@ jobs:
   aggiorna:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: pip install --quiet pillow
       - run: python3 strumenti/homepanda.py
       - name: Pubblica se ci sono novità
         run: |
           git config user.name "Annunci HomePanda"
           git config user.email "actions@users.noreply.github.com"
-          git add data/homepanda.json img/homepanda
+          git add data/homepanda.json
+          if [ -d img/homepanda ]; then git add img/homepanda; fi
           git diff --cached --quiet || (git commit -m "Annunci HomePanda aggiornati" && git pull --rebase -q && git push)
