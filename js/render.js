@@ -107,8 +107,57 @@
       '</div></article>';
   }
 
+  // ----- annunci HomePanda (pagina Vendita) -----
+  // Dall'area riservata si incolla solo il link; titolo, prezzo, foto e dati li legge
+  // strumenti/homepanda.py ogni ora e li scrive in data/homepanda.json.
+  var homepanda = fetch('data/homepanda.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : {}; })
+    .catch(function () { return {}; });
+  var hpData = null;
+  homepanda.then(function (d) { hpData = d; });
+  function hpCode(p) {
+    var m = String(p.homepanda || '').match(/^https:\/\/www\.homepanda\.it\/cerca-casa\/.+\/(\d+)\/?$/);
+    return m ? m[1] : '';
+  }
+  // i dati di HomePanda completano l'immobile; il prezzo scritto a mano, se c'è, vince
+  function withHomepanda(p, hp) {
+    var a = hp && hp.annunci && hp.annunci[hpCode(p)];
+    if (!a) return p;
+    var out = Object.assign({}, p, {
+      titolo: a.titolo || p.titolo, citta: a.comune || p.citta, zona: '', mq: a.mq, locali: a.locali, bagni: a.bagni,
+      classe_energetica: a.classe_energetica, foto: a.foto ? [a.foto] : p.foto, descrizione: p.descrizione || a.descrizione
+    });
+    out.prezzo = p.prezzo != null && p.prezzo !== '' ? p.prezzo : a.prezzo;
+    return out;
+  }
+  function sold(p) { return p.stato_vendita === 'Venduto'; }
+  function homepandaCard(p) {
+    var cover = (p.foto || [])[0];
+    var isSold = sold(p);
+    var specs = specsOf('vendita', p);
+    var status = isSold ? 'Venduto' : (p.stato_vendita || p.etichetta);
+    var ask = 'contatti.html?tipo=acquisto&amp;c=vendita&amp;immobile=' + encodeURIComponent(p.id || '');
+    return '<article class="card card--hp reveal' + (isSold ? ' is-sold' : '') + '">' +
+      '<div class="card__media">' + (cover ? img(cover, L(p, 'titolo') + (p.citta ? ' – ' + p.citta : '')) : '') +
+        (status ? '<span class="badge' + (isSold ? ' badge--sold' : '') + '">' + esc(status) + '</span>' : '') + exampleBadge(p) + '</div>' +
+      '<div class="card__body">' +
+        '<p class="card__meta">' + esc(p.citta || '') + (p.tipologia ? ' · ' + esc(p.tipologia) : '') + '</p>' +
+        '<h3>' + (isSold ? esc(L(p, 'titolo'))
+          : '<a class="card__stretched" href="' + esc(p.homepanda) + '" target="_blank" rel="noopener">' + esc(L(p, 'titolo')) + '</a>') + '</h3>' +
+        (!isSold && p.prezzo != null && p.prezzo !== '' ? '<p class="price">' + price(p.prezzo) + '</p>' : '') +
+        (specs ? '<ul class="specs" aria-label="Caratteristiche">' + specs + '</ul>' : '') +
+        '<p class="card__partner">In collaborazione con HomePanda</p>' +
+        '<div class="card__actions">' +
+          (isSold
+            ? '<a class="btn btn--secondary card__over" href="' + ask + '">Cerchi un immobile simile?</a>'
+            : '<span class="btn btn--secondary card__cta">Vedi su HomePanda <span aria-hidden="true">↗</span></span>' +
+              '<a class="card__link card__over" href="' + ask + '">Chiedi a noi</a>') +
+        '</div>' +
+      '</div></article>';
+  }
+
   var templates = {
-    vendita: function (p) { return propertyCard('vendita', p); },
+    vendita: function (p) { return hpCode(p) ? homepandaCard(p) : propertyCard('vendita', p); },
     'affitti-lungo': function (p) { return propertyCard('affitti-lungo', p); },
     'affitti-brevi': function (p, choose) { return propertyCard('affitti-brevi', p, choose); },
 
@@ -154,7 +203,8 @@
       .slice(0, limit);
     box.innerHTML = items.length
       ? items.map(function (e) {
-          return templates[name](e.item, box.hasAttribute('data-scelta')).replace('<article class="', '<article data-index="' + e.index + '" class="' +
+          var item = name === 'vendita' && hpData ? withHomepanda(e.item, hpData) : e.item;
+          return templates[name](item, box.hasAttribute('data-scelta')).replace('<article class="', '<article data-index="' + e.index + '" class="' +
             (e.item.pubblicata === false ? 'is-unpublished ' : ''));
         }).join('')
       : '<p class="empty">' + EMPTY[name] + '</p>';
@@ -173,7 +223,16 @@
     window.LaMaisonDati.json('data/' + box.dataset.render + '.json')
       .then(function (data) {
         if (!data) throw new Error('dati non trovati');
-        return data;
+        if (box.dataset.render !== 'vendita') return data;
+        return homepanda.then(function (hp) {
+          var items = all(data, 'vendita').map(function (p) { return withHomepanda(p, hp); });
+          // data-stato="venduti" mostra solo i venduti, "disponibili" (o niente) quelli ancora in vendita
+          var want = box.dataset.stato;
+          if (want === 'venduti') items = items.filter(sold);
+          else if (want === 'disponibili') items = items.filter(function (p) { return !sold(p); });
+          else items = items.filter(function (p) { return !sold(p); }).concat(items.filter(sold));
+          return { immobili: items };
+        });
       })
       .then(function (data) {
         if (!box.dataset.editing) draw(box, data, false);

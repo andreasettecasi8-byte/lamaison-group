@@ -19,7 +19,7 @@
   <meta property="og:site_name" content="LA MAISON GROUP">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/fonts.css?v=09f8ab51">
-  <link rel="stylesheet" href="css/style.css?v=37feeae8">
+  <link rel="stylesheet" href="css/style.css?v=9f68d031">
   <link rel="preload" as="image" href="img/vendita-intestazione.webp" imagesrcset="img/vendita-intestazione-800.webp 800w, img/vendita-intestazione-1280.webp 1280w, img/vendita-intestazione.webp 1920w" imagesizes="100vw" type="image/webp">
   <script>document.documentElement.classList.add('js', 'content-loading');</script>
   <script src="js/main.js?v=369428e8" defer></script>
@@ -27,7 +27,7 @@
   <script src="js/content.js?v=72977fe3" defer></script>
   <script src="js/statistiche.js?v=24aaef0d" defer></script>
   <script src="js/lingua.js?v=d5e54591" defer></script>
-  <script src="js/render.js?v=5c1ffaac" defer></script>
+  <script src="js/render.js?v=0d5ccb6c" defer></script>
 </head>
 <body data-page="vendita">
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
@@ -98,7 +98,18 @@
     <section class="section" aria-labelledby="lista-title">
       <div class="container">
         <h2 data-edit="tutti_gli_immobili.titolo_1" id="lista-title" class="visually-hidden">Tutti gli immobili in vendita</h2>
-        <div class="grid grid--3" data-render="vendita"></div>
+        <div class="grid grid--3" data-render="vendita" data-stato="disponibili"></div>
+      </div>
+    </section>
+
+    <!-- ===== Venduti di recente (immobili segnati "Venduto": senza prezzo) ===== -->
+    <section class="section section--grey" aria-labelledby="venduti-title" data-hide-empty hidden>
+      <div class="container">
+        <div class="section-head reveal">
+          <span data-edit="venduti.etichetta_1" class="label">Venduti</span>
+          <h2 data-edit="venduti.titolo_1" id="venduti-title">Venduti <span class="accent">di recente</span></h2>
+        </div>
+        <div class="grid grid--3" data-render="vendita" data-stato="venduti"></div>
       </div>
     </section>
 

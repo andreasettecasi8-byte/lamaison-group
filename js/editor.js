@@ -57,8 +57,9 @@
     return {
       singular: 'immobile', plural: 'immobili', title: 'titolo', newLabel: 'Nuovo immobile', addLabel: '+ Carica nuovo immobile',
       fields: [].concat(
+        o.top || [],
         [{ type: 'heading', label: 'Annuncio' },
-         { name: 'titolo', label: 'Titolo dell\'annuncio', type: 'text', required: true, hint: 'Es. "Trilocale luminoso con balcone"' },
+         { name: 'titolo', label: 'Titolo dell\'annuncio', type: 'text', required: true, requiredUnless: o.top ? 'homepanda' : '', hint: o.top ? 'Non serve se hai incollato il link HomePanda.' : 'Es. "Trilocale luminoso con balcone"' },
          { name: 'etichetta', label: 'Etichetta sulla foto', type: 'text', options: o.badges, hint: 'Facoltativa: scegli dall\'elenco o scrivila tu.' },
          { type: 'heading', label: 'Posizione' },
          { name: 'citta', label: 'Città', type: 'text', value: 'Torino', half: true },
@@ -88,6 +89,12 @@
 
   var SCHEMAS = {
     vendita: propertySchema({
+      // Annunci HomePanda: basta il link, il resto si compila da solo (strumenti/homepanda.py)
+      top: [{ type: 'heading', label: 'Annuncio HomePanda' },
+            { name: 'homepanda', label: 'Link dell\'annuncio su homepanda.it', type: 'url', placeholder: 'https://www.homepanda.it/cerca-casa/vendita/…',
+              hint: 'Incolla il link e lascia vuoto il resto: titolo, prezzo, foto e caratteristiche arrivano da HomePanda entro un\'ora. Il prezzo scritto qui sotto, se c\'è, vince su quello di HomePanda.' },
+            { name: 'stato_vendita', label: 'Stato', type: 'select', options: ['', 'In trattativa', 'Venduto'],
+              hint: 'Con "Venduto" il prezzo sparisce e l\'immobile passa in "Venduti di recente".' }],
       badges: ['Nuovo', 'Esclusiva', 'Prezzo ribassato', 'In trattativa', 'Venduto'],
       priceTitle: 'Prezzo',
       price: [num('prezzo', 'Prezzo di vendita (€)', { hint: 'Solo il numero, senza punti (es. 280000)', half: false }),
@@ -981,7 +988,7 @@
   }
   function deleteItem(name, i) {
     var list = items(name);
-    var label = list[i][SCHEMAS[name].title] || SCHEMAS[name].singular;
+    var label = list[i][SCHEMAS[name].title] || (list[i].homepanda ? 'Annuncio HomePanda' : SCHEMAS[name].singular);
     if (!window.confirm('Eliminare "' + label + '"?')) return false;
     list.splice(i, 1);
     markDirty(name);
@@ -994,7 +1001,8 @@
     var list = items(name);
     var ul = h('ol', { class: 'lm-list' }, list.map(function (it, i) {
       return h('li', {}, [
-        h('span', { class: 'lm-list__title', text: (it[schema.title] || '(senza titolo)') + (it.pubblicata === false ? ' — nascosta' : '') }),
+        h('span', { class: 'lm-list__title', text: (it[schema.title] || (it.homepanda ? 'Annuncio HomePanda ' + (String(it.homepanda).match(/(\d+)\/?$/) || ['', ''])[1] : '(senza titolo)')) +
+          (it.stato_vendita ? ' — ' + it.stato_vendita.toLowerCase() : '') + (it.pubblicata === false ? ' — nascosta' : '') }),
         h('span', { class: 'lm-list__actions' }, [
           h('button', { type: 'button', class: 'lm-btn lm-btn--small', text: 'Modifica', onclick: function () { editItem(name, i); } }),
           h('button', { type: 'button', class: 'lm-icon-btn', 'aria-label': 'Sposta prima', html: '&uarr;', disabled: i === 0, onclick: function () { moveItem(name, i, -1); } }),
@@ -1119,7 +1127,12 @@
     var form = h('form', { class: 'lm-form lm-form--grid' }, controls.concat([err, h('div', { class: 'lm-form__actions' }, [del, save])]));
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var missing = schema.fields.filter(function (f) { return f.required && !String(draft[f.name] || '').trim(); });
+      var missing = schema.fields.filter(function (f) {
+        return f.required && !String(draft[f.name] || '').trim() && !(f.requiredUnless && String(draft[f.requiredUnless] || '').trim());
+      });
+      if (draft.homepanda && !/^https:\/\/www\.homepanda\.it\/cerca-casa\/.+\/\d+\/?$/.test(String(draft.homepanda).trim())) {
+        err.textContent = 'Il link HomePanda non è valido: copialo dalla barra del browser, dalla pagina dell\'annuncio su homepanda.it.'; return;
+      }
       var badUrl = schema.fields.filter(function (f) { return f.type === 'url' && draft[f.name] && !/^https?:\/\//.test(draft[f.name]); });
       if (badUrl.length) { err.textContent = 'Il link deve iniziare con https:// (' + badUrl[0].label + ')'; return; }
       if (missing.length) { err.textContent = 'Compila: ' + missing.map(function (f) { return f.label; }).join(', '); return; }
@@ -1129,7 +1142,8 @@
       if (!draft.indirizzo_visibile) delete draft.indirizzo_visibile;
       if (!draft.esempio) delete draft.esempio;
       if (name !== 'recensioni' && !draft.id) {
-        var base = slug(draft.titolo), id = base, n = 2;
+        var hp = String(draft.homepanda || '').match(/\/(\d+)\/?$/);
+        var base = draft.titolo ? slug(draft.titolo) : (hp ? 'homepanda-' + hp[1] : 'immobile'), id = base, n = 2;
         var taken = list.map(function (it) { return it.id; });
         while (taken.indexOf(id) !== -1) id = base + '-' + n++;
         draft.id = id;

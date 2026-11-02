@@ -2021,3 +2021,11 @@ html { -webkit-tap-highlight-color: transparent; }
   .direct__list { flex-direction: column; gap: 8px; }
   .direct__list li + li::before { display: none; }
 }
+
+/* ---------- Annunci HomePanda (pagina Vendita) ---------- */
+.card__partner { margin: 4px 0 0; font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+.card--hp .card__actions .btn { white-space: normal; }
+.card__over { position: relative; z-index: 2; }
+.badge--sold { background: var(--gold); color: var(--navy); }
+.card.is-sold .card__media img { filter: grayscale(.35); opacity: .9; }
+.card.is-sold:hover { transform: none; }
