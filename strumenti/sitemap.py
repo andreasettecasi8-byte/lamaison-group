@@ -47,7 +47,8 @@ for cat in CATEGORIES:
             continue
         data = json.load(open(path, encoding='utf-8'))
     for item in data.get('immobili', []):
-        if item.get('id') and item.get('pubblicata') is not False and not item.get('esempio'):
+        # gli annunci HomePanda si aprono sul loro sito: non hanno una scheda da noi
+        if item.get('id') and item.get('pubblicata') is not False and not item.get('esempio') and not item.get('homepanda'):
             urls.append((base + 'immobile.html?c=%s&id=%s' % (cat, quote(item['id'])), '0.8'))
 
 xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
