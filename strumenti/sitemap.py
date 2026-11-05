@@ -56,6 +56,8 @@ for url, prio in urls:
     xml.append('  <url><loc>%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>' % (escape(url), today, prio))
 xml.append('</urlset>')
 open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write('\n'.join(xml) + '\n')
+# stessa mappa in testo semplice (un indirizzo per riga): Search Console accetta anche questa
+open(os.path.join(ROOT, 'sitemap.txt'), 'w', encoding='utf-8').write('\n'.join(u for u, _ in urls) + '\n')
 
 robots_path = os.path.join(ROOT, 'robots.txt')
 lines = [l for l in open(robots_path, encoding='utf-8').read().splitlines() if not l.lower().startswith('sitemap:')]
