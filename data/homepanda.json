@@ -1,6 +1,32 @@
 {
-  "aggiornato": "2026-11-02T16:25+00:00",
+  "aggiornato": "2026-11-07T16:55+00:00",
   "annunci": {
+    "31094": {
+      "titolo": "Appartamento, Via Tresivio Piateda",
+      "comune": "Piateda",
+      "prezzo": 39000,
+      "mq": 46,
+      "locali": 2,
+      "bagni": 1,
+      "classe_energetica": "G",
+      "descrizione": "APPARTAMENTO DA RISTRUTTURARE NEL CENTRO STORICO DI TRESIVIO\n\nNel caratteristico borgo di Tresivio, in Via Menatti 1, proponiamo un appartamento di circa 46 m² catastali, ideale per chi desidera personalizzare una soluzione abitativa in un contesto autentico e tranquillo.\n\nLocalità: Tresivio (SO), Via Menatti 1\n\nTipologia: bilocale\n\nSuperficie catastale: 46 m²\n\nConsistenza catastale: 2 vani\n\nCategoria: A/3\n\nCondizioni: da rinnovare / ristrutturare\n\nL'immobile rappresenta un'interessante opportunità per:\n\nRealizzare una casa su misura.\n\nCreare un punto d'appoggio in Valtellina.\n\nInvestire in un progetto immobiliare da valorizzare.\n\nUna soluzione ricca di potenziale, da trasformare secondo le proprie idee ed esigenze.",
+      "foto": "img/homepanda/31094.webp",
+      "foto_origine": "https://thumb.homepanda.it/property/HP/1600x900/main/aca8593991e54e1e98221896e6fea059?f=webp",
+      "link": "https://www.homepanda.it/cerca-casa/vendita/sondrio/appartamento/via-tresivio/31094"
+    },
+    "30876": {
+      "titolo": "Casa indipendente, Sondrio - Civo",
+      "comune": "Civo",
+      "prezzo": 297000,
+      "mq": 400,
+      "locali": 16,
+      "bagni": 4,
+      "classe_energetica": "G",
+      "descrizione": "Casa indipendente, Sondrio – Civo\n\nUna casa, infinite possibilità | 346 m²\n\nNel cuore di Civo, in una posizione tranquilla e immersa nel caratteristico contesto della Valtellina, proponiamo in vendita una proprietà di ampia metratura, ricca di storia e di potenzialità.\n\nLa casa si sviluppa su più livelli per una superficie complessiva di circa 346 m² ed è composta da due unità abitative indipendenti: una di circa 183 m², distribuita tra piano terra e primo piano, e una di circa 163 m², sviluppata ai piani superiori.\n\nUna soluzione ideale per chi cerca grandi spazi e flessibilità, perfetta per una famiglia numerosa, per due nuclei familiari oppure per chi desidera sviluppare un progetto di investimento e valorizzazione.\n\nGli ambienti sono ampi e luminosi e conservano dettagli dal sapore autentico, tra pavimentazioni originali e finiture caratteristiche. Spazi da personalizzare e reinterpretare, mantenendo il fascino e l'identità della casa.\n\nCompleta la proprietà ampi box e una porzione di terreno di pertinenza, che ne ampliano ulteriormente le possibilità di utilizzo.\n\nUna proprietà importante per dimensioni e potenzialità, pensata per chi non cerca semplicemente una casa, ma uno spazio da trasformare e far diventare davvero proprio, offrendo al contempo la tranquillità e il fascino di un contesto caratteristico.\n\nLa sua posizione centrale, a pochi passi dalla caratteristica fontana storica del borgo, permette di vivere appieno l’atmosfera di Civo e offre inoltre un facile accesso a diversi sentieri naturalistici, ideali per gli amanti delle passeggiate e del trekking. La vicinanza a Morbegno e ai principali servizi completa una posizione che unisce comodità, tranquillità e natura.",
+      "foto": "img/homepanda/30876.webp",
+      "foto_origine": "https://thumb.homepanda.it/property/HP/1600x900/main/bc031230652249b0a583450447821a9c?f=webp",
+      "link": "https://www.homepanda.it/cerca-casa/vendita/sondrio/casa-indipendente/frazione-civo-centro-81/30876"
+    },
     "31154": {
       "titolo": "Villa ristrutturata con balconi e cantina",
       "comune": "Blessagno",
