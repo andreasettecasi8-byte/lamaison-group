@@ -261,3 +261,7 @@
 .lm-stats__warn { padding: 10px 12px; border-radius: 6px; background: #fdecea; color: #b3261e; font-size: 14px; }
 .lm-stats__steps { padding-left: 20px; line-height: 1.6; }
 .lm-stats__steps li { margin-bottom: 6px; }
+
+/* Annuncio HomePanda: esito della lettura del link */
+.lm-hp-status:empty { display: none; }
+.lm-hp-status.is-ok { color: #1F7A4D; font-weight: 600; }

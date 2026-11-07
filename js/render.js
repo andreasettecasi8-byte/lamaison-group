@@ -121,7 +121,8 @@
   }
   // i dati di HomePanda completano l'immobile; il prezzo scritto a mano, se c'è, vince
   function withHomepanda(p, hp) {
-    var a = hp && hp.annunci && hp.annunci[hpCode(p)];
+    // prima i dati aggiornati ogni ora (data/homepanda.json), poi quelli letti al momento del salvataggio
+    var a = (hp && hp.annunci && hp.annunci[hpCode(p)]) || p.hp;
     if (!a) return p;
     var out = Object.assign({}, p, {
       titolo: a.titolo || p.titolo, citta: a.comune || p.citta, zona: '', mq: a.mq, locali: a.locali, bagni: a.bagni,

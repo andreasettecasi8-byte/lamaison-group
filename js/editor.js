@@ -393,6 +393,10 @@
     }
     return {
       name: 'supabase',
+      // legge un annuncio di homepanda.it (funzione Supabase "homepanda", vedi supabase/functions/homepanda)
+      homepanda: function (link) {
+        return token().then(function (t) { return supaFetch('/functions/v1/homepanda', { method: 'POST', token: t, json: { link: link } }); });
+      },
       read: function (path) {
         return table('?select=dati&percorso=eq.' + encodeURIComponent(path)).then(function (rows) {
           return rows && rows.length ? rows[0].dati : D.file(path);
@@ -996,6 +1000,39 @@
     return true;
   }
 
+  // Annuncio HomePanda: appena si incolla il link si leggono titolo, prezzo e foto,
+  // così l'immobile compare sul sito subito dopo il salvataggio (senza aspettare GitHub)
+  var HP_LINK = /^https:\/\/www\.homepanda\.it\/cerca-casa\/.+\/\d+\/?$/;
+  function homepandaLookup(input, draft) {
+    var status = h('span', { class: 'lm-field__hint lm-hp-status', 'aria-live': 'polite' });
+    var last = String(input.value || '').trim();
+    function look() {
+      var link = String(input.value || '').trim();
+      if (link === last) return;
+      last = link;
+      delete draft.hp;
+      status.className = 'lm-field__hint lm-hp-status';
+      if (!link) { status.textContent = ''; return; }
+      if (!HP_LINK.test(link)) { status.textContent = 'Incolla il link della pagina dell\'annuncio su homepanda.it.'; return; }
+      var b = state.backend;
+      if (!b || !b.homepanda) { status.textContent = 'L\'annuncio comparirà sul sito entro qualche ora.'; return; }
+      status.textContent = 'Leggo l\'annuncio da HomePanda…';
+      draft.__hpWait = b.homepanda(link).then(function (d) {
+        if (String(input.value || '').trim() !== link) return;
+        if (!d || !d.titolo) throw new Error('vuoto');
+        draft.hp = d;
+        status.classList.add('is-ok');
+        status.textContent = '✓ ' + d.titolo + (d.prezzo ? ' · € ' + Number(d.prezzo).toLocaleString('it-IT') : '') +
+          (d.comune ? ' · ' + d.comune : '') + '. Comparirà sul sito appena salvi.';
+      }).catch(function () {
+        status.textContent = 'Non riesco a leggerlo adesso: comparirà comunque sul sito entro qualche ora.';
+      }).then(function () { delete draft.__hpWait; });
+    }
+    input.addEventListener('change', look);
+    input.addEventListener('paste', function () { setTimeout(look, 50); });
+    return status;
+  }
+
   function manageList(name) {
     var schema = SCHEMAS[name];
     var list = items(name);
@@ -1117,6 +1154,7 @@
       }
       var fl = field(f.label + (f.required ? ' *' : ''), input, f.hint);
       if (f.half) fl.classList.add('is-half');
+      if (f.name === 'homepanda') fl.appendChild(homepandaLookup(el, draft));
       return fl;
     });
 
@@ -1127,6 +1165,11 @@
     var form = h('form', { class: 'lm-form lm-form--grid' }, controls.concat([err, h('div', { class: 'lm-form__actions' }, [del, save])]));
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (draft.__hpWait) {
+        save.disabled = true;
+        draft.__hpWait.then(function () { save.disabled = false; form.requestSubmit ? form.requestSubmit() : save.click(); });
+        return;
+      }
       var missing = schema.fields.filter(function (f) {
         return f.required && !String(draft[f.name] || '').trim() && !(f.requiredUnless && String(draft[f.requiredUnless] || '').trim());
       });
