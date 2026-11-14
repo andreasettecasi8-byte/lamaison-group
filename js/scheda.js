@@ -36,7 +36,7 @@
       'affitti-brevi': [
         ['Tipologia', esc(p.tipologia)],
         ['Ospiti', esc(p.ospiti)], ['Camere', esc(p.camere)], ['Letti', esc(p.letti)], ['Bagni', esc(p.bagni)],
-        ['Superficie', p.mq ? esc(p.mq) + ' m²' : ''], ['Soggiorno minimo', p.minimo_notti ? esc(p.minimo_notti) + (p.minimo_notti == 1 ? ' notte' : ' notti') : ''],
+        ['Superficie', p.mq ? esc(p.mq) + ' m²' : ''],
         ['Codice CIN', esc(p.cin)]
       ]
     }[cat];

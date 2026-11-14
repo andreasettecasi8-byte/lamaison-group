@@ -25,7 +25,6 @@ data/affitti-brevi.json  Immobili in affitto breve
 data/affitti-lungo.json  Immobili in affitto a lungo termine
 immobile.html       Scheda del singolo immobile (immobile.html?c=categoria&id=codice)
 js/scheda.js        Crea la scheda dell'immobile: galleria, dettagli, descrizione
-js/prenota.js       Calendario e richiesta di preventivo per gli affitti brevi
 js/mappa.js         Mappa delle province (Home)
 css/fonts.css, fonts/  Caratteri ospitati nel sito (nessun collegamento a Google Fonts)
 robots.txt          Istruzioni per i motori di ricerca
@@ -75,11 +74,10 @@ se la dimentichi, svuota `data/admin.json` (scrivi solo `{}`) e creane una nuova
   lo nasconde ai visitatori (es. quando è venduto o affittato) senza cancellarlo.
   Nelle pagine Affitti la sezione con gli immobili compare solo quando ce n'è almeno uno.
 - **Mappa "Dove operiamo"** (Home): in modifica clicca una provincia per evidenziarla o toglierla.
-- **Affitti brevi:** non c'è prezzo. Gli ospiti scelgono arrivo e partenza sul calendario
-  (nella pagina Affitti brevi e nella scheda di ogni immobile) e la richiesta di preventivo
-  arriva per email con date, notti e numero di ospiti. "Notti minime" dell'immobile viene rispettato.
-  In "Prenotazione diretta" si incolla il link del motore di prenotazione
-  (es. https://bookonline.pro/it/property/409168): nella scheda compare il pulsante "Prenota direttamente".
+- **Affitti brevi:** prezzi, tasse e notti minime si gestiscono solo in AvaiBook (channel manager),
+  così sono uguali ovunque. Sul sito non compaiono: in "Prenotazione diretta" si incolla il link
+  del motore di prenotazione AvaiBook (es. https://bookonline.pro/it/property/409168) e nella
+  pagina Affitti brevi e nella scheda dell'alloggio compare il pulsante "Prenota direttamente".
 - **Impostazioni** (ingranaggio): titolo e descrizione per Google della pagina, numeri WhatsApp,
   cambio password e collegamento a GitHub.
 - Cambia pagina dal menu in basso a sinistra (in modifica i link non portano altrove).
