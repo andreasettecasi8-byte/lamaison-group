@@ -27,9 +27,8 @@
   <script src="js/content.js?v=72977fe3" defer></script>
   <script src="js/statistiche.js?v=24aaef0d" defer></script>
   <script src="js/lingua.js?v=6b160435" defer></script>
-  <script src="js/render.js?v=f11c30cb" defer></script>
+  <script src="js/render.js?v=3ba0104d" defer></script>
   <script src="js/forms.js?v=83b0d0cc" defer></script>
-  <script src="js/prenota.js?v=13a1a1ce" defer></script>
 </head>
 <body data-page="affitti-brevi">
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
@@ -217,12 +216,12 @@
     </section>
 
     <!-- ===== Prenota il soggiorno ===== -->
-    <section class="section section--grey" id="preventivo-soggiorno" aria-labelledby="soggiorno-title">
+    <section class="section section--grey" id="preventivo-soggiorno" aria-labelledby="soggiorno-title" data-hide-empty>
       <div class="container">
         <div class="section-head section-head--center reveal">
           <span data-edit="preventivo_soggiorno.etichetta_1" class="label">Per gli ospiti</span>
           <h2 data-edit="preventivo_soggiorno.titolo_1" id="soggiorno-title">Prenota il tuo <span class="accent">soggiorno</span></h2>
-          <p data-edit="preventivo_soggiorno.testo_1">Scegli l'alloggio che preferisci, poi indica le date e quanti siete: ti rispondiamo con la disponibilità e un preventivo dedicato.</p>
+          <p data-edit="preventivo_soggiorno.testo_1">Scegli l'alloggio che preferisci e prenota direttamente online.</p>
         </div>
         <div class="direct reveal">
           <p class="direct__title" data-edit="@prenota_diretto.titolo_1">Prenota direttamente con noi</p>
@@ -231,13 +230,8 @@
             <li><span data-edit="@prenota_diretto.voce_3">Contatto diretto con i titolari</span></li>
           </ul>
         </div>
-        <div class="stay-step" id="alloggi" data-hide-empty>
-          <h3 class="stay-step__title"><span class="stay-step__n" aria-hidden="true">1</span><span data-edit="preventivo_soggiorno.sottotitolo_1">Scegli l'alloggio</span></h3>
+        <div class="stay-step" id="alloggi">
           <div class="grid grid--3" data-render="affitti-brevi" data-scelta></div>
-        </div>
-        <div class="stay-step">
-          <h3 class="stay-step__title"><span class="stay-step__n" aria-hidden="true">2</span><span data-edit="preventivo_soggiorno.sottotitolo_2">Scegli le date e invia la richiesta</span></h3>
-          <div class="booking-wrap" data-booking></div>
         </div>
       </div>
     </section>

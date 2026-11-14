@@ -98,12 +98,15 @@
         '<h3><a' + (choose ? '' : ' class="card__stretched"') + ' href="' + schedaUrl(cat, p) + '">' + esc(L(p, 'titolo')) + '</a></h3>' +
         (cost ? '<p class="price">' + cost + '</p>' : '') +
         (specs ? '<ul class="specs" aria-label="Caratteristiche">' + specs + '</ul>' : '') +
-        (choose
+        // elenco "Prenota il tuo soggiorno": pulsante per la prenotazione diretta (link dell'alloggio)
+        (choose && /^https?:\/\//.test(p.link_prenotazione || '')
           ? '<div class="card__actions">' +
-              '<button type="button" class="btn btn--primary" data-choose="' + esc(p.id || '') + '">Scegli questo alloggio</button>' +
+              '<a class="btn btn--primary" href="' + esc(p.link_prenotazione) + '" target="_blank" rel="noopener">Prenota direttamente</a>' +
               '<a class="card__link" href="' + schedaUrl(cat, p) + '">Dettagli</a>' +
             '</div>'
-          : '<span class="btn btn--secondary card__cta">Vedi la scheda</span>') +
+          : choose
+            ? '<div class="card__actions"><a class="btn btn--secondary" href="' + schedaUrl(cat, p) + '">Vedi la scheda</a></div>'
+            : '<span class="btn btn--secondary card__cta">Vedi la scheda</span>') +
       '</div></article>';
   }
 

@@ -231,35 +231,23 @@
               '<dl class="facts">' + facts(p).map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>' +
               (cat === 'affitti-brevi'
                 ? (direct
-                    // con il link di prenotazione diretta: prima "Prenota direttamente", poi il preventivo
-                    ? '<a class="btn btn--primary" href="' + esc(direct) + '" target="_blank" rel="noopener">Prenota direttamente</a>' +
-                      '<a class="btn btn--secondary" href="#richiesta">Scegli le date</a>'
-                    : '<a class="btn btn--primary" href="#richiesta">Scegli le date</a>')
+                    // affitti brevi: si prenota dal link di prenotazione diretta; senza link, richiesta di informazioni
+                    ? '<a class="btn btn--primary" href="' + esc(direct) + '" target="_blank" rel="noopener">Prenota direttamente</a>'
+                    : '<a class="btn btn--primary" href="' + request + '">Richiedi informazioni</a>')
                 : '<a class="btn btn--primary" href="' + request + '">Richiedi informazioni</a>') +
             '</div>' +
           '</aside>' +
         '</div>' +
       '</div>' +
-      '</section>' +
-      (cat === 'affitti-brevi'
-        ? '<section class="section section--grey" id="richiesta" aria-labelledby="richiesta-title">' +
-            '<div class="container"><div class="section-head">' +
-              '<span class="label">Preventivo</span>' +
-              '<h2 id="richiesta-title">Scegli le tue <span class="accent">date</span></h2>' +
-              '<p>Seleziona arrivo e partenza sul calendario: ti rispondiamo con disponibilità e preventivo.</p>' +
-            '</div><div data-booking-slot></div></div>' +
-          '</section>'
-        : '');
+      '</section>';
     wireGallery(p);
     if (cat === 'affitti-brevi') guestReviews(p);
-    var slot = root.querySelector('[data-booking-slot]');
-    if (slot && window.LaMaisonBooking) window.LaMaisonBooking.mount(slot, { immobile: p });
   }
 
   window.LaMaisonScheda = { category: cat, id: id, render: render };
 
   // cambio lingua: si ridisegna la scheda solo se ha titolo o descrizione in inglese
-  // (le altre scritte cambiano da sole, senza perdere le date già scelte)
+  // (le altre scritte cambiano da sole)
   var last = null;
   document.addEventListener('lm:lang', function () {
     if (!last || root.dataset.editing) return;

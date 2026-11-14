@@ -68,9 +68,7 @@
   "preventivo_soggiorno": {
     "etichetta_1": "For guests",
     "titolo_1": "Book your *stay*",
-    "testo_1": "Choose the accommodation you like, then tell us your dates and how many you are: we will reply with availability and a personal quote.",
-    "sottotitolo_1": "Choose your accommodation",
-    "sottotitolo_2": "Pick your dates and send your request"
+    "testo_1": "Choose the accommodation you like and book directly online."
   },
   "come_funziona": {
     "etichetta_1": "In 4 steps",
