@@ -78,6 +78,8 @@ se la dimentichi, svuota `data/admin.json` (scrivi solo `{}`) e creane una nuova
 - **Affitti brevi:** non c'è prezzo. Gli ospiti scelgono arrivo e partenza sul calendario
   (nella pagina Affitti brevi e nella scheda di ogni immobile) e la richiesta di preventivo
   arriva per email con date, notti e numero di ospiti. "Notti minime" dell'immobile viene rispettato.
+  In "Prenotazione diretta" si incolla il link del motore di prenotazione
+  (es. https://bookonline.pro/it/property/409168): nella scheda compare il pulsante "Prenota direttamente".
 - **Impostazioni** (ingranaggio): titolo e descrizione per Google della pagina, numeri WhatsApp,
   cambio password e collegamento a GitHub.
 - Cambia pagina dal menu in basso a sinistra (in modifica i link non portano altrove).

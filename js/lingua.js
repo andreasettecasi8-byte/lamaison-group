@@ -54,7 +54,7 @@
     'Caratteristiche': 'Features', 'Descrizione': 'Description', 'Preventivo': 'Quote', 'In breve': 'At a glance', 'Percorso': 'Breadcrumb',
     'Foto successiva': 'Next photo', 'Foto precedente': 'Previous photo', 'Affitti a lungo termine': 'Long-term rentals', 'Affitti brevi': 'Short-term rentals',
     'Tutti gli immobili in vendita': 'All properties for sale', 'Classe energetica': 'Energy class', 'Codice CIN': 'CIN code', 'Disponibile dal': 'Available from',
-    'Prenota su Airbnb': 'Book on Airbnb', 'Prenota su Booking.com': 'Book on Booking.com', 'Soggiorno minimo': 'Minimum stay', 'Spese condominiali': 'Service charges',
+    'Prenota direttamente': 'Book direct', 'Soggiorno minimo': 'Minimum stay', 'Spese condominiali': 'Service charges',
     'Tipologia': 'Type', 'Superficie': 'Floor area', 'Locali': 'Rooms', 'Camere': 'Bedrooms', 'Bagni': 'Bathrooms', 'Piano': 'Floor', 'Stato': 'Condition',
     'Contratto': 'Contract', 'Arredamento': 'Furnishing', 'Ospiti': 'Guests', 'Letti': 'Beds', 'Prezzo': 'Price', 'Canone': 'Rent', 'Canone mensile': 'Monthly rent',
     'Prezzo su richiesta': 'Price on request', 'Indirizzo': 'Address', 'Zona': 'Area', 'Città': 'Town',

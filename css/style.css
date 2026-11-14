@@ -1999,8 +1999,6 @@ html { -webkit-tap-highlight-color: transparent; }
 .direct--compact .direct__list li { font-size: 11px; letter-spacing: .12em; }
 .direct--compact .direct__list li { display: flex; align-items: baseline; }
 .direct--compact .direct__list li::before, .direct--compact .direct__list li + li::before { content: ""; flex: none; display: block; width: 10px; height: 1px; margin: 0 10px 0 0; transform: translateY(-4px); background: var(--gold); }
-.scheda__also { margin: 0; font-size: 13px; color: var(--text-muted); text-align: center; }
-.scheda__also a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 
 /* Voto: stella sottile e numero */
 .scheda__rating { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 0; font-size: 14px; letter-spacing: .02em; color: var(--text-muted); }

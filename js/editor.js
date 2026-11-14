@@ -120,9 +120,9 @@
       priceTitle: 'Soggiorno',
       price: [num('minimo_notti', 'Notti minime', { hint: 'Sul sito non compare il prezzo: gli ospiti scelgono le date e chiedono un preventivo.', half: false })],
       details: [num('ospiti', 'Ospiti max'), num('camere', 'Camere'), num('letti', 'Letti'), num('bagni', 'Bagni'), num('mq', 'Superficie (m²)')],
-      extra: [{ type: 'heading', label: 'Prenotazioni' },
-              { name: 'link_airbnb', label: 'Link all\'annuncio Airbnb', type: 'url', hint: 'Facoltativo: compare il pulsante "Prenota su Airbnb".' },
-              { name: 'link_booking', label: 'Link all\'annuncio Booking.com', type: 'url' },
+      extra: [{ type: 'heading', label: 'Prenotazione diretta' },
+              { name: 'link_prenotazione', label: 'Link per la prenotazione diretta', type: 'url', placeholder: 'https://bookonline.pro/it/property/…',
+                hint: 'Facoltativo: la pagina dell\'alloggio sul vostro motore di prenotazione (es. https://bookonline.pro/it/property/409168), dove l\'ospite prenota e paga direttamente con voi. Compare il pulsante "Prenota direttamente" nella scheda dell\'alloggio.' },
               { name: 'cin', label: 'Codice CIN', type: 'text', hint: 'Codice Identificativo Nazionale, obbligatorio negli annunci di affitto breve.' },
               { type: 'heading', label: 'Voto degli ospiti' },
               { name: 'voto', label: 'Voto medio', type: 'text', half: true, placeholder: 'Es. 4,9', hint: 'Compare sotto il titolo con una stella.' },
@@ -1162,7 +1162,7 @@
     var del = isNew ? null : h('button', { type: 'button', class: 'lm-btn lm-btn--ghost lm-danger', text: 'Elimina', onclick: function () {
       if (deleteItem(name, index)) closeModal();
     } });
-    var form = h('form', { class: 'lm-form lm-form--grid' }, controls.concat([err, h('div', { class: 'lm-form__actions' }, [del, save])]));
+    var form = h('form', { class: 'lm-form lm-form--grid', novalidate: '' }, controls.concat([err, h('div', { class: 'lm-form__actions' }, [del, save])]));
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (draft.__hpWait) {
@@ -1176,6 +1176,15 @@
       if (draft.homepanda && !/^https:\/\/www\.homepanda\.it\/cerca-casa\/.+\/\d+\/?$/.test(String(draft.homepanda).trim())) {
         err.textContent = 'Il link HomePanda non è valido: copialo dalla barra del browser, dalla pagina dell\'annuncio su homepanda.it.'; return;
       }
+      // link incollati: spazi tolti, "https://" aggiunto se manca, "//" doppi nel percorso ridotti
+      // (es. https://bookonline.pro//it/property/409168 → https://bookonline.pro/it/property/409168)
+      schema.fields.forEach(function (f) {
+        if (f.type !== 'url' || !draft[f.name]) return;
+        var u = String(draft[f.name]).trim();
+        if (u && !/^https?:\/\//i.test(u) && /^[a-z0-9-]+(\.[a-z0-9-]+)+(\/|$)/i.test(u)) u = 'https://' + u;
+        if (f.name === 'link_prenotazione') u = u.replace(/^(https?:\/\/[^\/]+)\/{2,}/i, '$1/');
+        draft[f.name] = u;
+      });
       var badUrl = schema.fields.filter(function (f) { return f.type === 'url' && draft[f.name] && !/^https?:\/\//.test(draft[f.name]); });
       if (badUrl.length) { err.textContent = 'Il link deve iniziare con https:// (' + badUrl[0].label + ')'; return; }
       if (missing.length) { err.textContent = 'Compila: ' + missing.map(function (f) { return f.label; }).join(', '); return; }

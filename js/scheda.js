@@ -187,8 +187,7 @@
     var specs = R.specsOf(cat, p);
     var tags = (p.caratteristiche || []).filter(Boolean);
     var request = 'contatti.html?tipo=' + R.CATEGORIES[cat].request + '&amp;c=' + encodeURIComponent(cat) + '&amp;immobile=' + encodeURIComponent(p.id);
-    var links = [p.link_airbnb && ['Prenota su Airbnb', p.link_airbnb], p.link_booking && ['Prenota su Booking.com', p.link_booking]]
-      .filter(function (l) { return l && /^https?:\/\//.test(l[1]); });
+    var direct = /^https?:\/\//.test(p.link_prenotazione || '') ? p.link_prenotazione : '';
 
     // Titolo per Google con il luogo, es. "Nido Alpino – Affitto breve a Samolaco | LA MAISON GROUP"
     var place = p.citta || p.zona;
@@ -231,14 +230,12 @@
               (cat === 'affitti-brevi' ? directBox() : '') +
               '<dl class="facts">' + facts(p).map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>' +
               (cat === 'affitti-brevi'
-                ? 
-                  '<a class="btn btn--primary" href="#richiesta">Scegli le date</a>' +
-                  // Airbnb e Booking restano, ma in secondo piano: prima la prenotazione diretta
-                  (links.length ? '<p class="scheda__also">Lo trovi anche su ' + links.map(function (l) {
-                    return '<a href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + l[0].replace('Prenota su ', '') + '</a>';
-                  }).join(' e ') + '</p>' : '')
-                : '<a class="btn btn--primary" href="' + request + '">Richiedi informazioni</a>' +
-                  links.map(function (l) { return '<a class="btn btn--secondary" href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + l[0] + '</a>'; }).join('')) +
+                ? (direct
+                    // con il link di prenotazione diretta: prima "Prenota direttamente", poi il preventivo
+                    ? '<a class="btn btn--primary" href="' + esc(direct) + '" target="_blank" rel="noopener">Prenota direttamente</a>' +
+                      '<a class="btn btn--secondary" href="#richiesta">Scegli le date</a>'
+                    : '<a class="btn btn--primary" href="#richiesta">Scegli le date</a>')
+                : '<a class="btn btn--primary" href="' + request + '">Richiedi informazioni</a>') +
             '</div>' +
           '</aside>' +
         '</div>' +
