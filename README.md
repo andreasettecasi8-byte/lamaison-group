@@ -78,6 +78,9 @@ se la dimentichi, svuota `data/admin.json` (scrivi solo `{}`) e creane una nuova
   così sono uguali ovunque. Sul sito non compaiono: in "Prenotazione diretta" si incolla il link
   del motore di prenotazione AvaiBook (es. https://bookonline.pro/it/property/409168) e nella
   pagina Affitti brevi e nella scheda dell'alloggio compare il pulsante "Prenota direttamente".
+  Il link va incollato per primo: titolo, città, indirizzo, descrizione, ospiti, camere, letti,
+  bagni, dotazioni, codice CIN e foto si importano da AvaiBook (solo nei campi ancora vuoti; le foto
+  solo se la scheda non ne ha). Serve la funzione Supabase "AvaiBook" (vedi sotto).
 - **Impostazioni** (ingranaggio): titolo e descrizione per Google della pagina, numeri WhatsApp,
   cambio password e collegamento a GitHub.
 - Cambia pagina dal menu in basso a sinistra (in modifica i link non portano altrove).
@@ -109,6 +112,11 @@ I file in `data/` restano come **copia di riserva**: se Supabase non risponde il
    (Project Settings → API). Mai la chiave secret / service_role.
 5. Area riservata → entra con email e password: al primo accesso i contenuti vengono copiati
    su Supabase. Da Impostazioni → "Password e copia di sicurezza" puoi scaricarli tutti in un file.
+
+6. Edge Functions → Deploy a new function → Via editor: crea la funzione `homepanda`
+   (incolla `supabase/functions/homepanda/index.ts`) e la funzione `AvaiBook` (con la A e la B maiuscole)
+   (incolla `supabase/functions/avaibook/index.ts`), lasciando attivo "Verify JWT".
+   Servono a leggere gli annunci HomePanda e gli alloggi AvaiBook quando si incolla il link.
 
 Senza `SUPABASE_URL` il sito funziona come prima (file in `data/` e salvataggio su GitHub).
 

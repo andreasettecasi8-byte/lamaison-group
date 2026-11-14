@@ -59,7 +59,7 @@
       fields: [].concat(
         o.top || [],
         [{ type: 'heading', label: 'Annuncio' },
-         { name: 'titolo', label: 'Titolo dell\'annuncio', type: 'text', required: true, requiredUnless: o.top ? 'homepanda' : '', hint: o.top ? 'Non serve se hai incollato il link HomePanda.' : 'Es. "Trilocale luminoso con balcone"' },
+         { name: 'titolo', label: 'Titolo dell\'annuncio', type: 'text', required: true, requiredUnless: o.titleUnless || '', hint: o.titleHint || 'Es. "Trilocale luminoso con balcone"' },
          { name: 'etichetta', label: 'Etichetta sulla foto', type: 'text', options: o.badges, hint: 'Facoltativa: scegli dall\'elenco o scrivila tu.' },
          { type: 'heading', label: 'Posizione' },
          { name: 'citta', label: 'Città', type: 'text', value: 'Torino', half: true },
@@ -90,6 +90,7 @@
   var SCHEMAS = {
     vendita: propertySchema({
       // Annunci HomePanda: basta il link, il resto si compila da solo (strumenti/homepanda.py)
+      titleUnless: 'homepanda', titleHint: 'Non serve se hai incollato il link HomePanda.',
       top: [{ type: 'heading', label: 'Annuncio HomePanda' },
             { name: 'homepanda', label: 'Link dell\'annuncio su homepanda.it', type: 'url', placeholder: 'https://www.homepanda.it/cerca-casa/vendita/…',
               hint: 'Incolla il link e lascia vuoto il resto: titolo, prezzo, foto e caratteristiche arrivano da HomePanda entro un\'ora. Il prezzo scritto qui sotto, se c\'è, vince su quello di HomePanda.' },
@@ -117,11 +118,13 @@
     }),
     'affitti-brevi': propertySchema({
       badges: ['Nuovo', 'Più richiesto', 'Vista panoramica'],
-      // prezzi, tasse e notti minime stanno solo in AvaiBook: il sito porta al motore di prenotazione
+      // prezzi, tasse e notti minime stanno solo in AvaiBook: il sito porta al motore di prenotazione.
+      // Incollando il link si importano da AvaiBook titolo, descrizione, dati, dotazioni, CIN e foto.
+      top: [{ type: 'heading', label: 'Prenotazione diretta (AvaiBook)' },
+            { name: 'link_prenotazione', label: 'Link per la prenotazione diretta', type: 'url', placeholder: 'https://bookonline.pro/it/property/…',
+              hint: 'La pagina dell\'alloggio sul motore di prenotazione AvaiBook (es. https://bookonline.pro/it/property/409168). Incollalo per primo: titolo, descrizione, ospiti, camere, dotazioni, CIN e foto si compilano da soli. Sul sito compare il pulsante "Prenota direttamente", che mostra prezzi, tasse e notti minime di AvaiBook.' }],
       details: [num('ospiti', 'Ospiti max'), num('camere', 'Camere'), num('letti', 'Letti'), num('bagni', 'Bagni'), num('mq', 'Superficie (m²)')],
-      extra: [{ type: 'heading', label: 'Prenotazione diretta' },
-              { name: 'link_prenotazione', label: 'Link per la prenotazione diretta', type: 'url', placeholder: 'https://bookonline.pro/it/property/…',
-                hint: 'Facoltativo: la pagina dell\'alloggio sul vostro motore di prenotazione (es. https://bookonline.pro/it/property/409168), dove l\'ospite vede prezzi, tasse e notti minime di AvaiBook e prenota direttamente con voi. Compare il pulsante "Prenota direttamente" nella scheda dell\'alloggio.' },
+      extra: [{ type: 'heading', label: 'Dati obbligatori' },
               { name: 'cin', label: 'Codice CIN', type: 'text', hint: 'Codice Identificativo Nazionale, obbligatorio negli annunci di affitto breve.' },
               { type: 'heading', label: 'Voto degli ospiti' },
               { name: 'voto', label: 'Voto medio', type: 'text', half: true, placeholder: 'Es. 4,9', hint: 'Compare sotto il titolo con una stella.' },
@@ -395,6 +398,10 @@
       // legge un annuncio di homepanda.it (funzione Supabase "homepanda", vedi supabase/functions/homepanda)
       homepanda: function (link) {
         return token().then(function (t) { return supaFetch('/functions/v1/homepanda', { method: 'POST', token: t, json: { link: link } }); });
+      },
+      // legge un alloggio dal motore di prenotazione AvaiBook (funzione Supabase "AvaiBook", vedi supabase/functions/avaibook)
+      avaibook: function (link) {
+        return token().then(function (t) { return supaFetch('/functions/v1/AvaiBook', { method: 'POST', token: t, json: { link: link } }); });
       },
       read: function (path) {
         return table('?select=dati&percorso=eq.' + encodeURIComponent(path)).then(function (rows) {
@@ -1032,6 +1039,89 @@
     return status;
   }
 
+  // Alloggio AvaiBook: incollando il link di bookonline.pro si compilano i campi vuoti
+  // (titolo, luogo, descrizione, ospiti, camere, letti, bagni, dotazioni, CIN) e, se la scheda
+  // non ha ancora foto, si scaricano le foto: vengono ridotte e salvate come quelle caricate a mano.
+  var AB_LINK = /^https?:\/\/(?:www\.)?bookonline\.pro\/+(?:[a-z]{2}\/+)?property\/+\d+/i;
+  var AB_MAX_FOTO = 30;
+  function avaibookLookup(input, draft, reopen) {
+    var status = h('span', { class: 'lm-field__hint lm-hp-status', 'aria-live': 'polite' });
+    var last = String(input.value || '').trim();
+    function look() {
+      var link = String(input.value || '').trim();
+      if (link === last) return;
+      last = link;
+      status.className = 'lm-field__hint lm-hp-status';
+      if (!link) { status.textContent = ''; return; }
+      if (!AB_LINK.test(link)) { status.textContent = 'Per importare l\'alloggio incolla il link della sua pagina su bookonline.pro.'; return; }
+      var b = state.backend;
+      if (!b || !b.avaibook) { status.textContent = 'L\'importazione da AvaiBook funziona sul sito online (con Supabase): qui compila i campi a mano.'; return; }
+      status.textContent = 'Leggo l\'alloggio da AvaiBook…';
+      var input0 = input;
+      draft.__hpWait = b.avaibook(link).then(function (d) {
+        if (String(input0.value || '').trim() !== link) return;
+        if (!d || !d.titolo) throw new Error('vuoto');
+        var filled = [];
+        function fill(key, value, label) {
+          var empty = draft[key] == null || draft[key] === '' || (Array.isArray(draft[key]) && !draft[key].length);
+          if (empty && value != null && value !== '' && !(Array.isArray(value) && !value.length)) { draft[key] = value; filled.push(label); }
+        }
+        draft.link_prenotazione = link;
+        // nuovo alloggio: la città proposta di serie (Torino) lascia il posto a quella di AvaiBook
+        if (!draft.id && draft.citta === 'Torino') delete draft.citta;
+        fill('titolo', d.titolo, 'titolo');
+        fill('citta', d.citta, 'città');
+        fill('indirizzo', d.indirizzo, 'indirizzo');
+        fill('descrizione', d.descrizione, 'descrizione');
+        fill('titolo_en', d.titolo_en, 'titolo in inglese');
+        fill('descrizione_en', d.descrizione_en, 'descrizione in inglese');
+        fill('ospiti', d.ospiti, 'ospiti');
+        fill('camere', d.camere, 'camere');
+        fill('letti', d.letti, 'letti');
+        fill('bagni', d.bagni, 'bagni');
+        fill('cin', d.cin, 'CIN');
+        if (d.caratteristiche && d.caratteristiche.length) {
+          var tags = Array.isArray(draft.caratteristiche) ? draft.caratteristiche.slice() : [];
+          d.caratteristiche.forEach(function (t) { if (tags.indexOf(t) === -1) tags.push(t); });
+          if (tags.length !== (draft.caratteristiche || []).length) filled.push('dotazioni');
+          draft.caratteristiche = tags;
+        }
+        var urls = (Array.isArray(draft.foto) && draft.foto.length) ? [] : (d.foto || []).slice(0, AB_MAX_FOTO);
+        var done = 0, photos = [];
+        // una foto alla volta, per non bloccare il telefono
+        var chain = urls.reduce(function (pr, url, i) {
+          return pr.then(function () {
+            status.textContent = 'Scarico le foto da AvaiBook: ' + (done + 1) + ' di ' + urls.length + '…';
+            return fetch(url).then(function (r) { if (!r.ok) throw new Error(); return r.blob(); })
+              .then(processImage)
+              .then(function (out) {
+                var fname = slug(draft.titolo || 'alloggio') + '-' + (i + 1) + '-' + Date.now().toString(36) + '.' + out.ext;
+                var path = state.backend && state.backend.name === 'supabase' ? D.url + '/storage/v1/object/public/foto/' + fname : 'img/' + fname;
+                state.uploads[path] = out.blob;
+                state.previews[path] = URL.createObjectURL(out.blob);
+                photos.push(path);
+              })
+              .catch(function () { /* foto non scaricabile: si salta */ })
+              .then(function () { done++; });
+          });
+        }, Promise.resolve());
+        return chain.then(function () {
+          if (photos.length) { draft.foto = photos; filled.push(photos.length + ' foto'); updateSaveButton(); }
+          delete draft.__hpWait;
+          // la scheda si riapre con i campi compilati
+          if (document.body.contains(input0)) reopen();
+          toast(filled.length ? 'Importato da AvaiBook: ' + filled.join(', ') + '. Controlla e premi Applica.' : 'Da AvaiBook non c\'era niente di nuovo da aggiungere.', 'ok');
+        });
+      }).catch(function () {
+        delete draft.__hpWait;
+        status.textContent = 'Non riesco a leggere l\'alloggio da AvaiBook adesso: compila i campi a mano (il link resta salvato).';
+      });
+    }
+    input.addEventListener('change', look);
+    input.addEventListener('paste', function () { setTimeout(look, 50); });
+    return status;
+  }
+
   function manageList(name) {
     var schema = SCHEMAS[name];
     var list = items(name);
@@ -1069,12 +1159,12 @@
     return wrap;
   }
 
-  function editItem(name, index) {
+  function editItem(name, index, preset) {
     var schema = SCHEMAS[name];
     var list = items(name);
     var isNew = index < 0;
-    var draft = isNew ? {} : clone(list[index]);
-    if (isNew) schema.fields.forEach(function (f) { if (f.value !== undefined) draft[f.name] = f.value; });
+    var draft = preset || (isNew ? {} : clone(list[index]));
+    if (isNew && !preset) schema.fields.forEach(function (f) { if (f.value !== undefined) draft[f.name] = f.value; });
     if (isNew && name === 'recensioni') draft.data = new Date().toISOString().slice(0, 10);
     var err = errorBox();
 
@@ -1154,6 +1244,7 @@
       var fl = field(f.label + (f.required ? ' *' : ''), input, f.hint);
       if (f.half) fl.classList.add('is-half');
       if (f.name === 'homepanda') fl.appendChild(homepandaLookup(el, draft));
+      if (f.name === 'link_prenotazione') fl.appendChild(avaibookLookup(el, draft, function () { editItem(name, index, draft); }));
       return fl;
     });
 
